@@ -1,0 +1,1018 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-08-26",
+  "generated_at": "2026-08-26T14:34:49+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://github.com/trending?since=daily",
+  "model": "qwen3.7-plus",
+  "candidate_count": 16,
+  "included_count": 14,
+  "candidates": [
+    {
+      "repository": {
+        "rank": 1,
+        "full_name": "freestylefly/awesome-gpt-image-2",
+        "url": "https://github.com/freestylefly/awesome-gpt-image-2",
+        "description": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+        "language": "JavaScript",
+        "stars_total": 19275,
+        "stars_today": 1698,
+        "forks": 1970,
+        "license": "MIT",
+        "topics": [
+          "agents",
+          "ai-image-generation",
+          "chatgpt",
+          "dsh-plugin",
+          "gpt-image-2",
+          "image-prompts",
+          "prompt-as-code",
+          "prompt-engineering",
+          "skills",
+          "workflow-automation"
+        ],
+        "readme_sha256": "a1c096123ecb8a112380d7ec342739d8b98c9524f90534b7e078574c225985f6"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "mcp"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "prompt_context",
+          "mcp_tools"
+        ],
+        "reason_zh": "该项目明确支持Agent生态，提供原生远程MCP及Agent Skills插件，可直接接入Claude Code与Cursor等开发环境。其设计的结构化提示词专为智能体、脚本及自动化系统优化，实现了从自然语言到可执行代码资产的转化，显著提升了AI工作流的复用性与稳定性。",
+        "confidence": "high",
+        "summary_zh": "该仓库构建面向GPT-Image2的工业级提示词引擎与模板库，包含530多个逆向工程案例及20多套工业级模板。项目将散文式提示词压缩为结构化协议，提炼出可复用的原子化模式以支持智能体与工作流自动化。其核心目标是通过结构化控制提升布局与信息层级的可控性，使AI图像生成更稳定且易于集成到自动化系统中。",
+        "highlights_zh": [
+          "提供原生远程MCP和Agent Skills插件，能够直接插入Claude Code与Cursor等工具中，实现AI图像生成能力的无缝集成与调用。",
+          "将散文式提示词转化为结构化协议，通过原子化模式拆分主体、光照等要素，显著提升智能体在批量生成与工作流中的可控性。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "prompt_context",
+        "mcp_tools"
+      ],
+      "summary_zh": "该仓库构建面向GPT-Image2的工业级提示词引擎与模板库，包含530多个逆向工程案例及20多套工业级模板。项目将散文式提示词压缩为结构化协议，提炼出可复用的原子化模式以支持智能体与工作流自动化。其核心目标是通过结构化控制提升布局与信息层级的可控性，使AI图像生成更稳定且易于集成到自动化系统中。",
+      "relevance_reason_zh": "该项目明确支持Agent生态，提供原生远程MCP及Agent Skills插件，可直接接入Claude Code与Cursor等开发环境。其设计的结构化提示词专为智能体、脚本及自动化系统优化，实现了从自然语言到可执行代码资产的转化，显著提升了AI工作流的复用性与稳定性。",
+      "highlights_zh": [
+        "提供原生远程MCP和Agent Skills插件，能够直接插入Claude Code与Cursor等工具中，实现AI图像生成能力的无缝集成与调用。",
+        "将散文式提示词转化为结构化协议，通过原子化模式拆分主体、光照等要素，显著提升智能体在批量生成与工作流中的可控性。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 2,
+        "full_name": "anthropics/claude-plugins-community",
+        "url": "https://github.com/anthropics/claude-plugins-community",
+        "description": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
+        "language": "Python",
+        "stars_total": 1897,
+        "stars_today": 351,
+        "forks": 182,
+        "license": "Apache-2.0",
+        "topics": [],
+        "readme_sha256": "a4e71cd7fc5b6b67bb74d556ac17985c3858aa70b755cc6c50685b2f3450fb64"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "claude plugin",
+          "claude-plugins"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk",
+          "agent_framework"
+        ],
+        "reason_zh": "该仓库直接服务于Claude AI助手的插件生态系统，提供了扩展其代码编写和协作能力的社区资源。作为官方认可的插件分发渠道镜像，它体现了Agent应用通过插件机制增强功能的核心特征，符合Agent应用生态的定义。",
+        "confidence": "high",
+        "summary_zh": "该仓库是Anthropic官方维护的Claude Cowork和Claude Code社区插件市场的只读镜像。它通过每晚同步内部审查管道，提供经过自动安全扫描并获准分发的社区贡献插件列表。开发者可通过特定命令行工具安装这些插件以扩展AI助手功能，但直接提交代码的请求会被自动关闭，所有变更需通过官方指定渠道提交审核。",
+        "highlights_zh": [
+          "提供Claude Cowork和Claude Code的社区插件市场只读镜像，确保插件来源的官方性和安全性。",
+          "所有列出的插件均经过自动安全扫描和内部审查管道批准，保障了用户安装使用的可靠性。",
+          "支持通过命令行工具便捷安装社区插件，简化了开发者扩展AI助手功能的流程。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk",
+        "agent_framework"
+      ],
+      "summary_zh": "该仓库是Anthropic官方维护的Claude Cowork和Claude Code社区插件市场的只读镜像。它通过每晚同步内部审查管道，提供经过自动安全扫描并获准分发的社区贡献插件列表。开发者可通过特定命令行工具安装这些插件以扩展AI助手功能，但直接提交代码的请求会被自动关闭，所有变更需通过官方指定渠道提交审核。",
+      "relevance_reason_zh": "该仓库直接服务于Claude AI助手的插件生态系统，提供了扩展其代码编写和协作能力的社区资源。作为官方认可的插件分发渠道镜像，它体现了Agent应用通过插件机制增强功能的核心特征，符合Agent应用生态的定义。",
+      "highlights_zh": [
+        "提供Claude Cowork和Claude Code的社区插件市场只读镜像，确保插件来源的官方性和安全性。",
+        "所有列出的插件均经过自动安全扫描和内部审查管道批准，保障了用户安装使用的可靠性。",
+        "支持通过命令行工具便捷安装社区插件，简化了开发者扩展AI助手功能的流程。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 3,
+        "full_name": "MadsLorentzen/ai-job-search",
+        "url": "https://github.com/MadsLorentzen/ai-job-search",
+        "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
+        "language": "Python",
+        "stars_total": 35621,
+        "stars_today": 1265,
+        "forks": 12202,
+        "license": "MIT",
+        "topics": [
+          "ai",
+          "ai-agents",
+          "career",
+          "claude-code",
+          "cover-letter",
+          "cv",
+          "interview-preparation",
+          "job-application",
+          "job-hunting",
+          "job-search",
+          "latex",
+          "resume"
+        ],
+        "readme_sha256": "64d3d09000b1d460e638a93083ffe0b2cffa3444caf9fc7cdf2cb4b791beea58"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "agentic",
+          "mcp"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库明确标记为ai-agents主题，核心功能依赖Claude Code代理执行任务。其工作流包含起草者与审查者代理协作，具备典型的智能体应用特征。系统通过MCP服务器集成外部工具，展示了代理在复杂个人任务中的自动化能力，完全符合Agent应用生态的定义。",
+        "confidence": "high",
+        "summary_zh": "这是一个基于Claude Code构建的本地化AI求职应用框架。该工具通过结构化工作流协助用户评估职位匹配度、定制简历与求职信以及准备面试。它支持从多个招聘门户抓取信息，利用代理机制进行内容生成与审查，并提供Notion和Gmail同步功能以追踪申请状态。项目强调数据隐私，所有操作均在用户本地机器上运行，旨在将AI代理技术应用于个人职业发展全流程。",
+        "highlights_zh": [
+          "该框架构建了完整的求职工作流，包括职位搜索、匹配度评估、简历定制及面试准备，所有步骤均由AI代理自动化执行。",
+          "采用起草者与审查者双代理模式，确保生成的求职材料经过批判性评估与修订，提高了输出内容的质量与针对性。",
+          "支持与Notion数据库及Gmail邮箱同步，自动追踪申请状态并归档相关材料，实现了求职过程的数字化管理与可视化监控。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "这是一个基于Claude Code构建的本地化AI求职应用框架。该工具通过结构化工作流协助用户评估职位匹配度、定制简历与求职信以及准备面试。它支持从多个招聘门户抓取信息，利用代理机制进行内容生成与审查，并提供Notion和Gmail同步功能以追踪申请状态。项目强调数据隐私，所有操作均在用户本地机器上运行，旨在将AI代理技术应用于个人职业发展全流程。",
+      "relevance_reason_zh": "该仓库明确标记为ai-agents主题，核心功能依赖Claude Code代理执行任务。其工作流包含起草者与审查者代理协作，具备典型的智能体应用特征。系统通过MCP服务器集成外部工具，展示了代理在复杂个人任务中的自动化能力，完全符合Agent应用生态的定义。",
+      "highlights_zh": [
+        "该框架构建了完整的求职工作流，包括职位搜索、匹配度评估、简历定制及面试准备，所有步骤均由AI代理自动化执行。",
+        "采用起草者与审查者双代理模式，确保生成的求职材料经过批判性评估与修订，提高了输出内容的质量与针对性。",
+        "支持与Notion数据库及Gmail邮箱同步，自动追踪申请状态并归档相关材料，实现了求职过程的数字化管理与可视化监控。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 4,
+        "full_name": "apache/maka",
+        "url": "https://github.com/apache/maka",
+        "description": "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.",
+        "language": "TypeScript",
+        "stars_total": 3460,
+        "stars_today": 543,
+        "forks": 342,
+        "license": "Apache-2.0",
+        "topics": [
+          "agent-runtime",
+          "ai",
+          "ai-agent",
+          "apache",
+          "cli",
+          "desktop",
+          "electron",
+          "event-sourcing",
+          "incubator",
+          "llm",
+          "local-first",
+          "maka",
+          "tool-use",
+          "typescript"
+        ],
+        "readme_sha256": "39b15aa8d47b27fc309353c42a32dda4ee44457b7c97f648cc6a40db039a678d"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "llm"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库明确标识为AI智能体工作区，具备智能体运行时、工具使用及大语言模型集成能力。其核心架构围绕智能体执行日志、沙箱工具调用及多模态交互展开，完全符合智能体应用生态的定义，展示了本地化智能体部署与管理的完整技术栈。",
+        "confidence": "high",
+        "summary_zh": "Apache Maka是一个处于孵化阶段的本地优先AI智能体工作区。它将模型消息、工具调用及权限决策记录为只追加日志，确保数据保留在本地。项目提供桌面端、命令行及评估框架，支持沙箱隔离的工具执行与崩溃恢复。用户需自行配置模型连接，目前主要支持macOS Apple Silicon平台，旨在通过统一的运行时主机实现可恢复的智能体交互与实验基准测试。",
+        "highlights_zh": [
+          "采用本地优先架构，会话数据与运行记录默认存储在用户机器上，支持接入云端API或本地模型，确保数据隐私与控制权。",
+          "基于事件溯源机制，将模型消息、工具调用结果及终止事件记录为不可变日志，支持从历史记录中恢复上下文而非简单删除。",
+          "提供统一的运行时主机，桌面端、命令行界面及评估系统均通过该核心组件执行智能体任务，确保行为一致性与可复现性。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "Apache Maka是一个处于孵化阶段的本地优先AI智能体工作区。它将模型消息、工具调用及权限决策记录为只追加日志，确保数据保留在本地。项目提供桌面端、命令行及评估框架，支持沙箱隔离的工具执行与崩溃恢复。用户需自行配置模型连接，目前主要支持macOS Apple Silicon平台，旨在通过统一的运行时主机实现可恢复的智能体交互与实验基准测试。",
+      "relevance_reason_zh": "该仓库明确标识为AI智能体工作区，具备智能体运行时、工具使用及大语言模型集成能力。其核心架构围绕智能体执行日志、沙箱工具调用及多模态交互展开，完全符合智能体应用生态的定义，展示了本地化智能体部署与管理的完整技术栈。",
+      "highlights_zh": [
+        "采用本地优先架构，会话数据与运行记录默认存储在用户机器上，支持接入云端API或本地模型，确保数据隐私与控制权。",
+        "基于事件溯源机制，将模型消息、工具调用结果及终止事件记录为不可变日志，支持从历史记录中恢复上下文而非简单删除。",
+        "提供统一的运行时主机，桌面端、命令行界面及评估系统均通过该核心组件执行智能体任务，确保行为一致性与可复现性。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 5,
+        "full_name": "TauricResearch/TradingAgents",
+        "url": "https://github.com/TauricResearch/TradingAgents",
+        "description": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+        "language": "Python",
+        "stars_total": 100459,
+        "stars_today": 218,
+        "forks": 19380,
+        "license": "Apache-2.0",
+        "topics": [
+          "agent",
+          "finance",
+          "llm",
+          "multiagent",
+          "trading"
+        ],
+        "readme_sha256": "8f21a91603d23ed3a9ec7d7a8258135cf2c80880489adeec789b8666b43dc4e3"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "multi-agent",
+          "llm"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application"
+        ],
+        "reason_zh": "该仓库明确构建了一个多智能体协作系统，包含分析师、研究员、交易员及风控经理等多个具有特定角色的LLM智能体。这些智能体通过动态讨论和结构化辩论协同工作，符合Agent应用生态中关于多智能体交互、角色分工及自主决策的核心特征，因此被判定为相关。",
+        "confidence": "high",
+        "summary_zh": "TradingAgents是一个基于大语言模型的多智能体金融交易框架，旨在模拟真实交易公司的运作动态。该系统部署了包括基本面、情绪、新闻和技术分析师在内的专用智能体，协同评估市场状况。通过研究员团队的辩论平衡风险与收益，最终由交易员制定策略并经风险管理团队审核后执行。框架支持多种LLM提供商及全球主要金融市场数据，专为研究目的设计，提供模块化架构以辅助复杂交易决策的分析与制定。",
+        "highlights_zh": [
+          "框架模拟真实交易公司结构，部署基本面、情绪、新闻及技术分析等多类专用LLM智能体，协同评估市场条件并制定交易策略。",
+          "引入多空研究员团队对分析师洞察进行批判性评估，通过结构化辩论平衡潜在收益与内在风险，优化最终交易决策质量。",
+          "支持OpenAI、Anthropic、Google及本地Ollama等多种LLM提供商，兼容全球主要金融市场数据，具备高度灵活性与模块化架构。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application"
+      ],
+      "summary_zh": "TradingAgents是一个基于大语言模型的多智能体金融交易框架，旨在模拟真实交易公司的运作动态。该系统部署了包括基本面、情绪、新闻和技术分析师在内的专用智能体，协同评估市场状况。通过研究员团队的辩论平衡风险与收益，最终由交易员制定策略并经风险管理团队审核后执行。框架支持多种LLM提供商及全球主要金融市场数据，专为研究目的设计，提供模块化架构以辅助复杂交易决策的分析与制定。",
+      "relevance_reason_zh": "该仓库明确构建了一个多智能体协作系统，包含分析师、研究员、交易员及风控经理等多个具有特定角色的LLM智能体。这些智能体通过动态讨论和结构化辩论协同工作，符合Agent应用生态中关于多智能体交互、角色分工及自主决策的核心特征，因此被判定为相关。",
+      "highlights_zh": [
+        "框架模拟真实交易公司结构，部署基本面、情绪、新闻及技术分析等多类专用LLM智能体，协同评估市场条件并制定交易策略。",
+        "引入多空研究员团队对分析师洞察进行批判性评估，通过结构化辩论平衡潜在收益与内在风险，优化最终交易决策质量。",
+        "支持OpenAI、Anthropic、Google及本地Ollama等多种LLM提供商，兼容全球主要金融市场数据，具备高度灵活性与模块化架构。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 6,
+        "full_name": "AgriciDaniel/claude-obsidian",
+        "url": "https://github.com/AgriciDaniel/claude-obsidian",
+        "description": "Self-organizing AI second brain for Obsidian + Claude Code. Drop any source and Claude reads, links, and files it into one connected knowledge graph of plain Markdown you own. AI note-taking, personal knowledge management (PKM), and an open-source Notion alternative. Based on Karpathy's LLM Wiki pattern.",
+        "language": "Python",
+        "stars_total": 12928,
+        "stars_today": 813,
+        "forks": 1388,
+        "license": "MIT",
+        "topics": [
+          "agent-skills",
+          "ai-note-taking",
+          "ai-second-brain",
+          "claude-code",
+          "claude-code-skill",
+          "claude-memory",
+          "claude-plugin",
+          "karpathy-llm-wiki",
+          "knowledge-graph",
+          "knowledge-management",
+          "note-taking",
+          "notion-alternative",
+          "obsidian",
+          "obsidian-ai",
+          "obsidian-plugin",
+          "obsidian-second-brain",
+          "open-source",
+          "personal-knowledge-management",
+          "pkm",
+          "second-brain"
+        ],
+        "readme_sha256": "b384f942c9c728340f1f9880bf96a43ab18802751c4614e72afbd7d46f747985"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "multi-agent",
+          "llm"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "prompt_context",
+          "mcp_tools"
+        ],
+        "reason_zh": "该仓库明确标记为Agent Skills兼容项目，并提供针对Claude Code及其他AI代理主机的插件支持。它定义了十五个具体的Agent技能，如自动研究、内容摄取和知识库查询，实现了多代理协作下的知识管理自动化，完全符合Agent应用生态的定义。",
+        "confidence": "high",
+        "summary_zh": "claude-obsidian是一个基于Python的本地优先知识管理系统，专为Obsidian和Claude Code设计。它通过十五个协调的技能将源材料转化为相互关联的Markdown笔记，构建用户拥有的知识图谱。该系统强调数据所有权，所有文件以纯文本形式存储，不依赖云端数据库。其核心架构包含来源追踪、主张验证及事务性写入机制，支持多种知识管理方法论，旨在提供可检索且 grounded 的AI辅助笔记体验。",
+        "highlights_zh": [
+          "提供十五个模块化技能，涵盖从内容摄取、自动研究到知识检索和维护的全流程，支持在Obsidian中构建动态连接的知识图谱。",
+          "采用本地优先架构，确保所有笔记以纯Markdown和JSON格式存储，用户完全拥有数据所有权，避免云端锁定或隐性上传风险。",
+          "实施严格的事务性写入机制，通过原子替换和状态恢复保证数据一致性，防止并行代理操作导致的数据竞争或意外覆盖。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "prompt_context",
+        "mcp_tools"
+      ],
+      "summary_zh": "claude-obsidian是一个基于Python的本地优先知识管理系统，专为Obsidian和Claude Code设计。它通过十五个协调的技能将源材料转化为相互关联的Markdown笔记，构建用户拥有的知识图谱。该系统强调数据所有权，所有文件以纯文本形式存储，不依赖云端数据库。其核心架构包含来源追踪、主张验证及事务性写入机制，支持多种知识管理方法论，旨在提供可检索且 grounded 的AI辅助笔记体验。",
+      "relevance_reason_zh": "该仓库明确标记为Agent Skills兼容项目，并提供针对Claude Code及其他AI代理主机的插件支持。它定义了十五个具体的Agent技能，如自动研究、内容摄取和知识库查询，实现了多代理协作下的知识管理自动化，完全符合Agent应用生态的定义。",
+      "highlights_zh": [
+        "提供十五个模块化技能，涵盖从内容摄取、自动研究到知识检索和维护的全流程，支持在Obsidian中构建动态连接的知识图谱。",
+        "采用本地优先架构，确保所有笔记以纯Markdown和JSON格式存储，用户完全拥有数据所有权，避免云端锁定或隐性上传风险。",
+        "实施严格的事务性写入机制，通过原子替换和状态恢复保证数据一致性，防止并行代理操作导致的数据竞争或意外覆盖。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 7,
+        "full_name": "rohitg00/ai-engineering-from-scratch",
+        "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "description": "Learn it. Build it. Ship it for others.",
+        "language": "Python",
+        "stars_total": 49238,
+        "stars_today": 569,
+        "forks": 8593,
+        "license": "MIT",
+        "topics": [
+          "agents",
+          "ai",
+          "ai-agents",
+          "ai-engineering",
+          "computer-vision",
+          "course",
+          "deep-learning",
+          "from-scratch",
+          "generative-ai",
+          "llm",
+          "machine-learning",
+          "mcp",
+          "nlp",
+          "python",
+          "reinforcement-learning",
+          "rust",
+          "swarm-intelligence",
+          "transformers",
+          "tutorial",
+          "typescript"
+        ],
+        "readme_sha256": "72f04462c37631b4155b2f54b445c827b97dd9be730062063e30039e6f9a8458"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "multi-agent",
+          "llm",
+          "mcp",
+          "model context protocol",
+          "agent memory",
+          "prompt engineering",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [
+          "fine-tuning"
+        ],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk",
+          "mcp_tools"
+        ],
+        "reason_zh": "仓库明确包含Agent Engineering阶段，教授智能体循环构建。支持Model Context Protocol和Agent Skills开发，涉及多智能体群集系统。标签包含agents和ai-agents，且提供针对编码代理的集成技能，完全符合Agent应用生态定义。",
+        "confidence": "high",
+        "summary_zh": "该仓库提供从基础数学到自主智能体系统的完整AI工程课程。包含511个课时和20个阶段，涵盖LLM工程、Agent构建及模型上下文协议。支持Python等多种语言，强调从零构建可复用工件如提示词和技能。通过集成编码代理作为导师，指导用户完成环境配置、核心算法实现及生产级应用部署，旨在填补理论学习与专业实践之间的差距。",
+        "highlights_zh": [
+          "提供511个课时和20个阶段的系统化课程，涵盖从数学基础到自主智能体系统的全栈AI工程知识。",
+          "支持Model Context Protocol和Agent Skills开发，允许用户构建可复用的智能体技能和工具。",
+          "集成编码代理作为导师，通过npx命令快速安装课程技能，实现交互式学习和个性化路径规划。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk",
+        "mcp_tools"
+      ],
+      "summary_zh": "该仓库提供从基础数学到自主智能体系统的完整AI工程课程。包含511个课时和20个阶段，涵盖LLM工程、Agent构建及模型上下文协议。支持Python等多种语言，强调从零构建可复用工件如提示词和技能。通过集成编码代理作为导师，指导用户完成环境配置、核心算法实现及生产级应用部署，旨在填补理论学习与专业实践之间的差距。",
+      "relevance_reason_zh": "仓库明确包含Agent Engineering阶段，教授智能体循环构建。支持Model Context Protocol和Agent Skills开发，涉及多智能体群集系统。标签包含agents和ai-agents，且提供针对编码代理的集成技能，完全符合Agent应用生态定义。",
+      "highlights_zh": [
+        "提供511个课时和20个阶段的系统化课程，涵盖从数学基础到自主智能体系统的全栈AI工程知识。",
+        "支持Model Context Protocol和Agent Skills开发，允许用户构建可复用的智能体技能和工具。",
+        "集成编码代理作为导师，通过npx命令快速安装课程技能，实现交互式学习和个性化路径规划。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 8,
+        "full_name": "tinyhumansai/openhuman",
+        "url": "https://github.com/tinyhumansai/openhuman",
+        "description": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+        "language": "Rust",
+        "stars_total": 37901,
+        "stars_today": 542,
+        "forks": 3737,
+        "license": "GPL-3.0",
+        "topics": [],
+        "readme_sha256": "f220e2a132508ebb5c290cbdce703421d8445ac3b0c2a3118fa4290ce9cb2fa1"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "mcp",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库明确描述为代理生态应用，具备代理舰队编排、工作流自动化及多代理协作能力。它支持MCP协议集成大量技能，通过图结构管理代理执行路径，并实现代理间的加密通信与经济系统，完全符合Agent应用生态的定义。",
+        "confidence": "high",
+        "summary_zh": "OpenHuman是一个基于Rust开发的个人AI超级智能应用，定位为本地优先的记忆构建器、代理舰队编排器和深度研究者。它通过记忆树和Obsidian Wiki在本地SQLite中持久化存储用户数据，支持超过一百种OAuth集成和五千多个MCP服务器。该系统采用图结构运行可检查点的代理工作流，具备分裂大脑架构以协调快速反射代理和深度推理核心，并提供端到端加密的代理间通信及隐私模式，确保数据不离设备。",
+        "highlights_zh": [
+          "OpenHuman构建本地优先的个人记忆系统，利用记忆树和Obsidian Wiki将用户数据压缩为Markdown存储在SQLite中，避免向量数据库的黑盒问题，并支持自动获取邮件和文档上下文。",
+          "作为强大的编排器，它在开源tinyagents上运行可检查点的图结构工作流，支持暂停、恢复和人工审批，并通过分裂大脑架构协调快速反射代理与深度推理核心代理舰队。",
+          "提供深度研究能力，内置由Exa支持的网页搜索、浏览器操作和代码工具集，支持模型路由以混合使用本地Ollama模型或云端提供商，并具备图像和视频生成功能。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "OpenHuman是一个基于Rust开发的个人AI超级智能应用，定位为本地优先的记忆构建器、代理舰队编排器和深度研究者。它通过记忆树和Obsidian Wiki在本地SQLite中持久化存储用户数据，支持超过一百种OAuth集成和五千多个MCP服务器。该系统采用图结构运行可检查点的代理工作流，具备分裂大脑架构以协调快速反射代理和深度推理核心，并提供端到端加密的代理间通信及隐私模式，确保数据不离设备。",
+      "relevance_reason_zh": "该仓库明确描述为代理生态应用，具备代理舰队编排、工作流自动化及多代理协作能力。它支持MCP协议集成大量技能，通过图结构管理代理执行路径，并实现代理间的加密通信与经济系统，完全符合Agent应用生态的定义。",
+      "highlights_zh": [
+        "OpenHuman构建本地优先的个人记忆系统，利用记忆树和Obsidian Wiki将用户数据压缩为Markdown存储在SQLite中，避免向量数据库的黑盒问题，并支持自动获取邮件和文档上下文。",
+        "作为强大的编排器，它在开源tinyagents上运行可检查点的图结构工作流，支持暂停、恢复和人工审批，并通过分裂大脑架构协调快速反射代理与深度推理核心代理舰队。",
+        "提供深度研究能力，内置由Exa支持的网页搜索、浏览器操作和代码工具集，支持模型路由以混合使用本地Ollama模型或云端提供商，并具备图像和视频生成功能。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 9,
+        "full_name": "basecamp/omarchy",
+        "url": "https://github.com/basecamp/omarchy",
+        "description": "Beautiful, Modern & Opinionated Linux",
+        "language": "Shell",
+        "stars_total": 31500,
+        "stars_today": 1083,
+        "forks": 3201,
+        "license": "MIT",
+        "topics": [],
+        "readme_sha256": "b79a649d941a80fa81f92e341cd5710fd5633ea5e911cc0c26679001a3b08d63"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 10,
+        "full_name": "Shubhamsaboo/awesome-llm-apps",
+        "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+        "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
+        "language": "Python",
+        "stars_total": 134372,
+        "stars_today": 161,
+        "forks": 19752,
+        "license": "Apache-2.0",
+        "topics": [
+          "agents",
+          "llms",
+          "python",
+          "rag"
+        ],
+        "readme_sha256": "05653bf7f79142b23872e4310416c7b0c11fd5abe637d969a22e7d597f9b3ef9"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "multi-agent",
+          "llm",
+          "rag",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk",
+          "rag_knowledge"
+        ],
+        "reason_zh": "该仓库明确聚焦于人工智能代理生态，提供了大量基于LLM的Agent应用实例。其内容涵盖单代理、多智能体团队及代理技能扩展，完全符合Agent应用领域的定义。丰富的开源代码和实战模板为研究代理架构设计与应用场景提供了直接且高质量的参考证据。",
+        "confidence": "high",
+        "summary_zh": "该仓库汇集了超过一百个开源人工智能代理、代理技能及检索增强生成应用。项目采用Apache 2.0协议，支持Claude、Gemini、GPT等多种主流模型。内容涵盖从单文件入门代理到具备工具调用与记忆功能的高级生产级代理，以及持续运行的后台监控代理和多智能体协作团队。所有应用均经过端到端测试，提供详细的分步教程与快速启动指南，旨在帮助开发者快速构建并部署各类AI应用。",
+        "highlights_zh": [
+          "提供超过一百个经过端到端测试的开源AI代理应用，涵盖代理技能与检索增强生成场景，支持多种主流大语言模型。",
+          "包含自改进代理技能模块，能够利用特定模型自动优化代理能力，并通过评估与安全检查确保代码质量与可靠性。",
+          "收录多种持续运行型后台代理，如新闻简报与依赖发布监控代理，能够按计划执行任务并主动推送更新信息。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk",
+        "rag_knowledge"
+      ],
+      "summary_zh": "该仓库汇集了超过一百个开源人工智能代理、代理技能及检索增强生成应用。项目采用Apache 2.0协议，支持Claude、Gemini、GPT等多种主流模型。内容涵盖从单文件入门代理到具备工具调用与记忆功能的高级生产级代理，以及持续运行的后台监控代理和多智能体协作团队。所有应用均经过端到端测试，提供详细的分步教程与快速启动指南，旨在帮助开发者快速构建并部署各类AI应用。",
+      "relevance_reason_zh": "该仓库明确聚焦于人工智能代理生态，提供了大量基于LLM的Agent应用实例。其内容涵盖单代理、多智能体团队及代理技能扩展，完全符合Agent应用领域的定义。丰富的开源代码和实战模板为研究代理架构设计与应用场景提供了直接且高质量的参考证据。",
+      "highlights_zh": [
+        "提供超过一百个经过端到端测试的开源AI代理应用，涵盖代理技能与检索增强生成场景，支持多种主流大语言模型。",
+        "包含自改进代理技能模块，能够利用特定模型自动优化代理能力，并通过评估与安全检查确保代码质量与可靠性。",
+        "收录多种持续运行型后台代理，如新闻简报与依赖发布监控代理，能够按计划执行任务并主动推送更新信息。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 11,
+        "full_name": "multica-ai/andrej-karpathy-skills",
+        "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+        "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+        "language": null,
+        "stars_total": 207368,
+        "stars_today": 830,
+        "forks": 21149,
+        "license": null,
+        "topics": [],
+        "readme_sha256": "daf314efb31894b86d68b67786c820bd8470bb2126e578ba9cd0e3e2667883f8"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk",
+          "prompt_context"
+        ],
+        "reason_zh": "该仓库直接针对编程智能体的核心痛点，通过结构化提示词规范其推理与执行流程。它将人类专家的经验转化为智能体可遵循的行为准则，有效抑制幻觉与过度工程化倾向。这种对智能体决策逻辑的深度干预与优化，体现了Agent应用生态中对于可控性与可靠性的关键需求，具有显著的实践价值。",
+        "confidence": "high",
+        "summary_zh": "该仓库提供基于Andrej Karpathy观察的CLAUDE.md文件，旨在优化Claude Code等编程智能体的行为。通过确立思考后编码、极简优先、手术式变更及目标驱动执行四大原则，解决模型过度假设、代码臃肿及非预期修改等问题。它支持作为插件或项目规则部署，引导智能体明确假设、简化抽象并验证成功标准，从而提升代码生成的准确性与可维护性，属于典型的智能体行为约束应用。",
+        "highlights_zh": [
+          "提出思考后编码原则，强制智能体在实现前显式陈述假设、展示多种解释并主动澄清模糊点，避免模型因隐性假设而偏离用户意图。",
+          "倡导极简优先理念，要求智能体仅编写解决问题所需的最小代码量，拒绝未请求的功能扩展、过度抽象及不必要的灵活性配置，防止代码臃肿。",
+          "实施手术式变更策略，限制智能体仅修改与任务直接相关的代码行，禁止重构无关代码或清理既有死代码，确保变更范围可控且精准。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk",
+        "prompt_context"
+      ],
+      "summary_zh": "该仓库提供基于Andrej Karpathy观察的CLAUDE.md文件，旨在优化Claude Code等编程智能体的行为。通过确立思考后编码、极简优先、手术式变更及目标驱动执行四大原则，解决模型过度假设、代码臃肿及非预期修改等问题。它支持作为插件或项目规则部署，引导智能体明确假设、简化抽象并验证成功标准，从而提升代码生成的准确性与可维护性，属于典型的智能体行为约束应用。",
+      "relevance_reason_zh": "该仓库直接针对编程智能体的核心痛点，通过结构化提示词规范其推理与执行流程。它将人类专家的经验转化为智能体可遵循的行为准则，有效抑制幻觉与过度工程化倾向。这种对智能体决策逻辑的深度干预与优化，体现了Agent应用生态中对于可控性与可靠性的关键需求，具有显著的实践价值。",
+      "highlights_zh": [
+        "提出思考后编码原则，强制智能体在实现前显式陈述假设、展示多种解释并主动澄清模糊点，避免模型因隐性假设而偏离用户意图。",
+        "倡导极简优先理念，要求智能体仅编写解决问题所需的最小代码量，拒绝未请求的功能扩展、过度抽象及不必要的灵活性配置，防止代码臃肿。",
+        "实施手术式变更策略，限制智能体仅修改与任务直接相关的代码行，禁止重构无关代码或清理既有死代码，确保变更范围可控且精准。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 12,
+        "full_name": "openai/codex",
+        "url": "https://github.com/openai/codex",
+        "description": "Lightweight coding agent that runs in your terminal",
+        "language": "Rust",
+        "stars_total": 118386,
+        "stars_today": 1181,
+        "forks": 18040,
+        "license": "Apache-2.0",
+        "topics": [],
+        "readme_sha256": "ba4e1f69ff48386e72a9c5e1edaf76aad64a475c2d51af79ccba6d1128261ba7"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application"
+        ],
+        "reason_zh": "仓库明确描述其为运行在终端的轻量级编码智能体，符合Agent应用生态定义。其核心功能是通过自然语言交互辅助编程，具备自主执行代码任务的能力，且支持多种部署形态，体现了智能体在开发场景中的实际应用价值。",
+        "confidence": "high",
+        "summary_zh": "该仓库提供名为Codex CLI的轻量级编码智能体，基于Rust语言开发并支持在本地终端运行。用户可通过命令行脚本、npm或Homebrew等多种方式安装，并支持macOS、Linux及Windows平台。该工具允许用户通过ChatGPT账户登录或使用API密钥进行身份验证，旨在为开发者提供便捷的本地代码辅助体验，同时也可集成至主流IDE或作为桌面应用使用。",
+        "highlights_zh": [
+          "提供基于Rust开发的轻量级编码智能体Codex CLI，支持在本地终端直接运行，确保低资源占用与高效响应。",
+          "支持跨平台部署，涵盖macOS、Linux和Windows系统，并提供curl脚本、npm包及Homebrew等多种便捷安装方式。",
+          "集成ChatGPT账户登录与API密钥认证机制，允许用户根据Plus或Enterprise等不同计划灵活使用智能体服务。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application"
+      ],
+      "summary_zh": "该仓库提供名为Codex CLI的轻量级编码智能体，基于Rust语言开发并支持在本地终端运行。用户可通过命令行脚本、npm或Homebrew等多种方式安装，并支持macOS、Linux及Windows平台。该工具允许用户通过ChatGPT账户登录或使用API密钥进行身份验证，旨在为开发者提供便捷的本地代码辅助体验，同时也可集成至主流IDE或作为桌面应用使用。",
+      "relevance_reason_zh": "仓库明确描述其为运行在终端的轻量级编码智能体，符合Agent应用生态定义。其核心功能是通过自然语言交互辅助编程，具备自主执行代码任务的能力，且支持多种部署形态，体现了智能体在开发场景中的实际应用价值。",
+      "highlights_zh": [
+        "提供基于Rust开发的轻量级编码智能体Codex CLI，支持在本地终端直接运行，确保低资源占用与高效响应。",
+        "支持跨平台部署，涵盖macOS、Linux和Windows系统，并提供curl脚本、npm包及Homebrew等多种便捷安装方式。",
+        "集成ChatGPT账户登录与API密钥认证机制，允许用户根据Plus或Enterprise等不同计划灵活使用智能体服务。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 13,
+        "full_name": "marin-community/marin",
+        "url": "https://github.com/marin-community/marin",
+        "description": "Open-source framework for the research and development of foundation models.",
+        "language": "Python",
+        "stars_total": 2246,
+        "stars_today": 231,
+        "forks": 198,
+        "license": "Apache-2.0",
+        "topics": [],
+        "readme_sha256": "b70e415b672f9995436c6d77981e11081bbc6cebda8d8ac1885bb6b6545924fb"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "large language model"
+        ],
+        "matched_excluded_terms": [
+          "pretraining"
+        ],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": false,
+        "primary_category": "out_of_scope",
+        "related_tags": [],
+        "reason_zh": "该项目是一个用于基础模型（Foundation Models）研发和训练的开源框架。README 明确指出其核心关注点是大型语言模型的训练，包括数据清洗、分词、预训练（pretraining）、后训练（posttraining）等流程。虽然项目中包含 `.agents/skills` 目录用于辅助开发工作流，但这属于开发基础设施的一部分，而非构建 Agent 应用生态的核心组件。根据规则，主要用于模型训练、微调及推理引擎的项目应被排除。",
+        "confidence": "high",
+        "summary_zh": "",
+        "highlights_zh": []
+      },
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "该项目是一个用于基础模型（Foundation Models）研发和训练的开源框架。README 明确指出其核心关注点是大型语言模型的训练，包括数据清洗、分词、预训练（pretraining）、后训练（posttraining）等流程。虽然项目中包含 `.agents/skills` 目录用于辅助开发工作流，但这属于开发基础设施的一部分，而非构建 Agent 应用生态的核心组件。根据规则，主要用于模型训练、微调及推理引擎的项目应被排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 14,
+        "full_name": "DietrichGebert/ponytail",
+        "url": "https://github.com/DietrichGebert/ponytail",
+        "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+        "language": "JavaScript",
+        "stars_total": 111427,
+        "stars_today": 982,
+        "forks": 6125,
+        "license": "MIT",
+        "topics": [
+          "agent-skills",
+          "ai-agents",
+          "claude",
+          "claude-code",
+          "claude-code-plugin",
+          "cursor-rules",
+          "developer-tools",
+          "llm",
+          "prompt-engineering",
+          "yagni"
+        ],
+        "readme_sha256": "03432a62c4f08b4312f7f85fd7349d6510c765e3bc94608df0b28e9f752e9a15"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "agentic",
+          "llm"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application"
+        ],
+        "reason_zh": "该仓库直接服务于AI代理生态，通过提供特定技能和规则集来增强代理的编码决策能力。它明确支持多种代理框架如Claude Code和Codex，属于典型的代理应用层工具，旨在优化代理在执行编程任务时的行为逻辑和资源效率，符合Agent应用生态的定义。",
+        "confidence": "high",
+        "summary_zh": "Ponytail是一个旨在优化AI代理编码行为的工具，通过模拟资深开发者的极简思维模式，引导代理在编写代码前进行多层级必要性判断。它支持Claude Code、Codex、GitHub Copilot CLI等多种主流代理平台，通过插件或规则注入方式工作。基准测试显示，该工具能显著减少代码行数、令牌消耗及成本，同时保持安全性。其核心机制是优先利用原生功能或现有依赖，避免过度工程化，从而实现更高效、更安全的代码生成。",
+        "highlights_zh": [
+          "通过七层决策阶梯引导代理优先使用原生功能或现有依赖，避免不必要的代码编写，实现极简主义编码风格。",
+          "在真实代理工作流基准测试中，相比无技能基线，平均减少54%代码行数、20%成本及27%时间，且保持100%安全性。",
+          "广泛兼容主流AI代理平台，包括Claude Code、Codex、GitHub Copilot CLI、OpenCode及Qoder等，提供无缝插件集成体验。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application"
+      ],
+      "summary_zh": "Ponytail是一个旨在优化AI代理编码行为的工具，通过模拟资深开发者的极简思维模式，引导代理在编写代码前进行多层级必要性判断。它支持Claude Code、Codex、GitHub Copilot CLI等多种主流代理平台，通过插件或规则注入方式工作。基准测试显示，该工具能显著减少代码行数、令牌消耗及成本，同时保持安全性。其核心机制是优先利用原生功能或现有依赖，避免过度工程化，从而实现更高效、更安全的代码生成。",
+      "relevance_reason_zh": "该仓库直接服务于AI代理生态，通过提供特定技能和规则集来增强代理的编码决策能力。它明确支持多种代理框架如Claude Code和Codex，属于典型的代理应用层工具，旨在优化代理在执行编程任务时的行为逻辑和资源效率，符合Agent应用生态的定义。",
+      "highlights_zh": [
+        "通过七层决策阶梯引导代理优先使用原生功能或现有依赖，避免不必要的代码编写，实现极简主义编码风格。",
+        "在真实代理工作流基准测试中，相比无技能基线，平均减少54%代码行数、20%成本及27%时间，且保持100%安全性。",
+        "广泛兼容主流AI代理平台，包括Claude Code、Codex、GitHub Copilot CLI、OpenCode及Qoder等，提供无缝插件集成体验。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 15,
+        "full_name": "anthropics/claude-plugins-official",
+        "url": "https://github.com/anthropics/claude-plugins-official",
+        "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+        "language": "Python",
+        "stars_total": 34158,
+        "stars_today": 55,
+        "forks": 3875,
+        "license": "Apache-2.0",
+        "topics": [
+          "claude-code",
+          "mcp",
+          "skills"
+        ],
+        "readme_sha256": "f34b8730d2b61617045c61ea2d9bf3ab08561305bfac77ea061e755bf46aeac2"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "mcp",
+          "claude-plugins"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "agent_framework"
+        ],
+        "reason_zh": "该仓库直接服务于Agent应用生态，提供了构建和扩展Claude Code Agent能力的插件机制。通过支持MCP服务器配置、Agent定义和技能注入，它允许开发者为AI助手添加特定领域的工具和行为，是Agent功能扩展的核心基础设施。",
+        "confidence": "high",
+        "summary_zh": "该仓库是Anthropic官方管理的Claude Code插件目录，旨在提供高质量的插件资源。它包含内部开发的插件以及经过审核的第三方合作伙伴和社区插件。用户可以通过命令行或界面发现并安装这些插件，以扩展Claude Code的功能。仓库详细规定了插件的结构标准、命名不可变性原则以及技能包插件的配置方式，确保生态系统的稳定性和安全性。",
+        "highlights_zh": [
+          "提供官方 curated 目录，区分内部维护插件与经审核的第三方插件，确保资源质量与安全。",
+          "定义标准插件结构，支持MCP配置、Slash命令、Agent定义及Skills，实现功能模块化扩展。",
+          "实施严格的插件命名不可变策略，并通过重命名映射机制保障用户安装体验的连续性与稳定性。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "agent_framework"
+      ],
+      "summary_zh": "该仓库是Anthropic官方管理的Claude Code插件目录，旨在提供高质量的插件资源。它包含内部开发的插件以及经过审核的第三方合作伙伴和社区插件。用户可以通过命令行或界面发现并安装这些插件，以扩展Claude Code的功能。仓库详细规定了插件的结构标准、命名不可变性原则以及技能包插件的配置方式，确保生态系统的稳定性和安全性。",
+      "relevance_reason_zh": "该仓库直接服务于Agent应用生态，提供了构建和扩展Claude Code Agent能力的插件机制。通过支持MCP服务器配置、Agent定义和技能注入，它允许开发者为AI助手添加特定领域的工具和行为，是Agent功能扩展的核心基础设施。",
+      "highlights_zh": [
+        "提供官方 curated 目录，区分内部维护插件与经审核的第三方插件，确保资源质量与安全。",
+        "定义标准插件结构，支持MCP配置、Slash命令、Agent定义及Skills，实现功能模块化扩展。",
+        "实施严格的插件命名不可变策略，并通过重命名映射机制保障用户安装体验的连续性与稳定性。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 16,
+        "full_name": "asciimoo/hister",
+        "url": "https://github.com/asciimoo/hister",
+        "description": "Your own search engine",
+        "language": "Go",
+        "stars_total": 2909,
+        "stars_today": 98,
+        "forks": 132,
+        "license": "AGPL-3.0",
+        "topics": [
+          "browser-history",
+          "go",
+          "golang",
+          "history",
+          "index",
+          "mcp",
+          "mcp-server",
+          "personal-search",
+          "personal-search-engine",
+          "privacy",
+          "search",
+          "search-engine",
+          "semantic-search",
+          "web"
+        ],
+        "readme_sha256": "61cb77515204e7e6b9368dbcc6e0c1c63b5cd19b89fe7917598004f2b5823a83"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "mcp",
+          "ai assistant"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "memory"
+        ],
+        "reason_zh": "该仓库明确标记为mcp-server，并在功能描述中指出支持通过MCP连接AI助手。这种设计使得外部智能体能够直接访问和检索用户的本地历史与文件数据，完美契合Agent应用生态中关于工具集成和数据交互的核心需求，因此被判定为Agent应用。",
+        "confidence": "high",
+        "summary_zh": "Hister是一个注重隐私的本地个人搜索引擎，支持对访问过的网页和本地文件进行全文索引。它提供Web界面、终端和命令行等多种搜索方式，并特别集成了MCP服务器功能，允许AI助手通过模型上下文协议直接连接并检索用户的私有数据。该工具无需复杂配置即可运行，支持语义搜索和多用户隔离，旨在让用户在完全控制数据的前提下高效找回信息，是构建个人知识管理与AI代理交互的重要基础设施。",
+        "highlights_zh": [
+          "支持通过模型上下文协议(MCP)连接AI助手，使智能体能够直接检索用户的浏览历史和本地文件内容，实现私有数据与AI的高效交互。",
+          "提供完全的本地化部署选项，无遥测且无强制云服务，确保用户数据隐私安全，同时支持可选的远程嵌入端点以实现语义搜索功能。",
+          "具备强大的全文索引能力，不仅搜索标题和URL，还能深入检索网页实际内容及本地文件，支持字段过滤、通配符等高级查询语法。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "memory"
+      ],
+      "summary_zh": "Hister是一个注重隐私的本地个人搜索引擎，支持对访问过的网页和本地文件进行全文索引。它提供Web界面、终端和命令行等多种搜索方式，并特别集成了MCP服务器功能，允许AI助手通过模型上下文协议直接连接并检索用户的私有数据。该工具无需复杂配置即可运行，支持语义搜索和多用户隔离，旨在让用户在完全控制数据的前提下高效找回信息，是构建个人知识管理与AI代理交互的重要基础设施。",
+      "relevance_reason_zh": "该仓库明确标记为mcp-server，并在功能描述中指出支持通过MCP连接AI助手。这种设计使得外部智能体能够直接访问和检索用户的本地历史与文件数据，完美契合Agent应用生态中关于工具集成和数据交互的核心需求，因此被判定为Agent应用。",
+      "highlights_zh": [
+        "支持通过模型上下文协议(MCP)连接AI助手，使智能体能够直接检索用户的浏览历史和本地文件内容，实现私有数据与AI的高效交互。",
+        "提供完全的本地化部署选项，无遥测且无强制云服务，确保用户数据隐私安全，同时支持可选的远程嵌入端点以实现语义搜索功能。",
+        "具备强大的全文索引能力，不仅搜索标题和URL，还能深入检索网页实际内容及本地文件，支持字段过滤、通配符等高级查询语法。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 1
+    }
+  ]
+}
