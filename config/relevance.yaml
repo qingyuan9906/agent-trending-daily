@@ -39,6 +39,8 @@ positive_terms:
   - ai assistant
   - coding agent
   - browser agent
+  - claude plugin
+  - claude-plugins
 
 # 当项目同时命中排除词且只命中这些宽泛 AI 词时，视为训练/推理/部署类项目，规则排除。
 generic_ai_terms:

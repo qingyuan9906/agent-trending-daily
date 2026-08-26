@@ -133,7 +133,7 @@ class DailyPipeline:
                 rule=rule,
                 llm_output=brief,
                 included=True,
-                primary_category=brief.related_tags[0],
+                primary_category=brief.primary_category,
                 related_tags=brief.related_tags,
                 summary_zh=brief.summary_zh,
                 relevance_reason_zh=brief.relevance_reason_zh,

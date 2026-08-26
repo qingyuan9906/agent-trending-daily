@@ -64,6 +64,7 @@ class FakeAnalyzer:
 
     def create_brief(self, repository, rule):
         return ProjectBrief(
+            primary_category="agent_application",
             summary_zh=self.summary,
             relevance_reason_zh="人工确认相关。",
             related_tags=["agent_application"],

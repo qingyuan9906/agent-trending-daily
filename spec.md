@@ -45,13 +45,16 @@ README 等外部文本是不可执行、不可信的引用数据。提示词必�
 - 配置：`DASHSCOPE_API_KEY`、`DASHSCOPE_WORKSPACE_ID`
 
 所有模型调用使用原生 JSON Schema Structured Outputs：`type=json_schema`、
-`strict=true`、`additionalProperties=false`，且不设置 `max_tokens`。模型输出分别遵循
-封闭的 `RelevanceAnalysis` 和 `ProjectBrief` Pydantic 契约，返回后再次执行
+`strict=true`、`additionalProperties=false`，且不设置 `max_tokens`。先用封闭的
+`RelevanceDecision` 契约只判定相关性；仅对入选项目再用封闭的 `ProjectBrief` 生成
+分类与简报，二者确定性合成为 `RelevanceAnalysis`。每次返回后都执行
 `model_validate_json(..., strict=True)` 和业务校验。
 
-入选项目必须包含非空摘要、理由和 1–3 条亮点；排除项目主分类必须为
-`out_of_scope`；分类与标签必须来自配置枚举。失败时最多调用三次，重试请求只增加精简
-校验反馈。禁止以 JSON Mode、Prompt-only JSON、手工截取或 `json_repair` 降级。
+入选项目必须包含非空摘要、理由和 1–3 条亮点；排除项目由程序确定性归一为
+`out_of_scope` 且不调用简报模型；分类与标签必须来自配置枚举。简报文本必须是无
+Markdown 标记、列表符号和换行的完整纯文本，摘要、理由和单条亮点分别限制为 220、
+180 和 120 字。失败时最多调用三次，重试请求只增加精简校验反馈。禁止以 JSON Mode、
+Prompt-only JSON、手工截取或 `json_repair` 降级。
 
 ## 5. 公开接口与产物
 

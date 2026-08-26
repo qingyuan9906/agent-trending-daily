@@ -58,6 +58,12 @@ class RuleEvidence(StrictModel):
     override: Literal["allowlist", "denylist"] | None = None
 
 
+class RelevanceDecision(StrictModel):
+    is_relevant: bool
+    reason_zh: str = Field(min_length=1, max_length=240)
+    confidence: Literal["high", "medium", "low"]
+
+
 class RelevanceAnalysis(StrictModel):
     is_relevant: bool
     primary_category: str = Field(min_length=1)
@@ -91,6 +97,7 @@ class RelevanceAnalysis(StrictModel):
 
 
 class ProjectBrief(StrictModel):
+    primary_category: str = Field(min_length=1)
     summary_zh: str = Field(min_length=1, max_length=280)
     relevance_reason_zh: str = Field(min_length=1, max_length=240)
     related_tags: list[str] = Field(min_length=1, max_length=3)
