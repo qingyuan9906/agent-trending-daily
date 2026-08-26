@@ -60,10 +60,15 @@ uv sync --locked
 uv run agent-trending run
 
 run_date="$(TZ=Asia/Shanghai date +%F)"
-report_path="$project_root/reports/$run_date.md"
+report_path="$project_root/reports/$run_date.html"
 test -f "$report_path"
 
-git add "data/$run_date.json" "reports/$run_date.md" reports/latest.md
+git add \
+    "data/$run_date.json" \
+    "reports/$run_date.md" \
+    "reports/$run_date.html" \
+    reports/latest.md \
+    reports/latest.html
 if ! git diff --cached --quiet; then
     git commit -m "chore(report): update $run_date trending digest"
     git push origin HEAD

@@ -13,6 +13,7 @@ from agent_trending.models import DailySnapshot
 from agent_trending.pipeline import DailyPipeline
 from agent_trending.publish import AtomicPublisher
 from agent_trending.render import render_report
+from agent_trending.render_html import render_html_report
 from agent_trending.sources import GitHubClient, HttpRequester, TrendingSource
 
 
@@ -48,8 +49,13 @@ def main(argv: list[str] | None = None, *, root: Path | None = None) -> int:
             snapshot_path.read_text(encoding="utf-8"), strict=True
         )
         report = render_report(snapshot, config)
-        AtomicPublisher(project_root).publish_reports(run_date=snapshot.run_date, report=report)
-        print(f"rendered reports/{snapshot.run_date}.md and reports/latest.md")
+        html_report = render_html_report(snapshot, config)
+        AtomicPublisher(project_root).publish_reports(
+            run_date=snapshot.run_date,
+            report=report,
+            html_report=html_report,
+        )
+        print(f"rendered Markdown and HTML reports for {snapshot.run_date}")
         return 0
 
     validate_environment()

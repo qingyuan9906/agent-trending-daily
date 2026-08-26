@@ -98,8 +98,14 @@ def test_pipeline_publishes_snapshot_and_matching_report(tmp_path, relevance_con
     dated = (tmp_path / "reports" / "2026-08-26.md").read_text(encoding="utf-8")
     latest = (tmp_path / "reports" / "latest.md").read_text(encoding="utf-8")
     assert dated == latest == result.report
+    dated_html = (tmp_path / "reports" / "2026-08-26.html").read_text(encoding="utf-8")
+    latest_html = (tmp_path / "reports" / "latest.html").read_text(encoding="utf-8")
+    assert dated_html == latest_html == result.html_report
     assert "## #1 [owner/repo01]" in dated
     assert "owner/repo02" not in dated
+    assert "GitHub Agent Trending" in dated_html
+    assert "owner/repo01" in dated_html
+    assert "owner/repo02" not in dated_html
 
 
 def test_pipeline_uses_all_sixteen_candidates_returned_by_daily_page(tmp_path, relevance_config):
@@ -140,6 +146,7 @@ def test_zero_result_is_valid_and_does_not_call_llm(tmp_path, relevance_config):
     assert result.snapshot.included_count == 0
     assert analyzer.analysis_calls == 0
     assert "今日 Daily 页面 20 个候选中无符合筛选范围的项目" in result.report
+    assert "今日 Daily 页面 20 个候选中无符合筛选范围的项目" in result.html_report
 
 
 def test_dry_run_does_not_write_artifacts(tmp_path, relevance_config):
@@ -237,8 +244,11 @@ def test_report_escapes_untrusted_markdown_and_html(tmp_path, relevance_config):
         clock=clock(26),
     )
 
-    report = pipeline.run(dry_run=True).report
+    result = pipeline.run(dry_run=True)
+    report = result.report
 
     assert "&lt;script&gt;" in report
     assert "\\[click\\]" in report
     assert "\\*bold\\*" in report
+    assert "&lt;script&gt;" in result.html_report
+    assert "<script>" not in result.html_report

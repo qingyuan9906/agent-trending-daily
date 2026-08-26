@@ -63,7 +63,7 @@ CLI：
 - `agent-trending run`：执行当前日期的完整流程并发布。
 - `agent-trending run --dry-run`：完成抓取、模型调用、构建和校验，但不写正式产物。
 - `agent-trending validate-config`：校验配置、人工名单及必要环境变量。
-- `agent-trending render data/YYYY-MM-DD.json`：仅从已验证快照重新生成 Markdown。
+- `agent-trending render data/YYYY-MM-DD.json`：仅从已验证快照重新生成 Markdown 和 HTML。
 
 不提供历史日期参数，因为 Trending 页面不能按任意日期回溯。
 
@@ -72,13 +72,14 @@ CLI：
 统计；不保存完整 README。
 
 `reports/YYYY-MM-DD.md` 展示入选项目的原始排名、链接、原始描述、中文摘要、分类、
-相关理由、亮点、语言、总/当日 Star、Fork、License 和上榜历史。
-`reports/latest.md` 与当日日报内容相同。零结果日报必须明确说明当日没有符合项目。
+相关理由、亮点、语言、总/当日 Star、Fork、License 和上榜历史；同时生成响应式的
+`reports/YYYY-MM-DD.html` 浏览器版本。`reports/latest.md` 和 `reports/latest.html`
+分别作为两种格式的最新入口。零结果日报必须明确说明当日没有符合项目。
 
 ## 6. 自动化与可靠性
 
-本机 macOS `launchd` 任务每天本地时间 09:00 运行完整流程，成功后弹出可直接打开日报
-的窗口，失败则提示查看本地日志且不覆盖旧日报。百炼凭据存放在当前用户的 macOS
+本机 macOS `launchd` 任务每天本地时间 09:00 运行完整流程，成功后弹出可由默认浏览器
+直接打开当天 HTML 网页的窗口，失败则提示查看本地日志且不覆盖旧日报。百炼凭据存放在当前用户的 macOS
 Keychain 中，不写入 plist、日志或报告。GitHub Actions 保留 `workflow_dispatch` 手动
 备用路径。相同并发组内串行执行。`GITHUB_TOKEN` 只授予
 `contents: write`；第三方 Action 固定到 commit SHA。

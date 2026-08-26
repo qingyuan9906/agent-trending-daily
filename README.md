@@ -36,7 +36,8 @@ uv run agent-trending render data/YYYY-MM-DD.json
 
 - `data/YYYY-MM-DD.json`：当天页面全部候选及完整判定链路；
 - `reports/YYYY-MM-DD.md`：当日中文研究简报；
-- `reports/latest.md`：与当日日报内容一致的最新入口。
+- `reports/latest.md`：与当日日报内容一致的 Markdown 入口；
+- `reports/YYYY-MM-DD.html` 和 `reports/latest.html`：适合浏览器阅读的网页简报。
 
 ## 配置
 
@@ -74,8 +75,8 @@ GitHub Actions 仅作为手动备用路径。本机定时任务每天 09:00 自�
 
 安装器会把百炼配置保存到当前用户的 macOS Keychain，并加载
 `com.lxy.agent-trending-daily` LaunchAgent。每天 Mac 本地时间 09:00，任务会先确认 Git
-工作区干净、拉取最新代码，再生成、提交并推送日报。成功后弹窗提供“打开简报”按钮；
-失败时旧日报保持不变，并弹窗提供日志入口。
+工作区干净、拉取最新代码，再生成、提交并推送日报。成功后弹窗提供“打开简报”按钮，
+点击后由默认浏览器打开当天 HTML 网页；失败时旧日报保持不变，并弹窗提供日志入口。
 
 Mac 在 09:00 休眠时，`launchd` 会在唤醒后补跑任务。弹窗需要用户已登录桌面会话，且
 Mac 时区应保持为 `Asia/Shanghai`。

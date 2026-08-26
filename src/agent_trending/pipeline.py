@@ -21,6 +21,7 @@ from agent_trending.models import (
 )
 from agent_trending.publish import AtomicPublisher
 from agent_trending.render import render_report
+from agent_trending.render_html import render_html_report
 from agent_trending.rules import evaluate_rules
 from agent_trending.sources import TRENDING_URL
 
@@ -44,6 +45,7 @@ class RunResult:
     snapshot: DailySnapshot
     snapshot_json: str
     report: str
+    html_report: str
     published: bool
 
 
@@ -95,6 +97,7 @@ class DailyPipeline:
             json.dumps(snapshot.model_dump(mode="json"), ensure_ascii=False, indent=2) + "\n"
         )
         report = render_report(snapshot, self.config)
+        html_report = render_html_report(snapshot, self.config)
         # Re-parse before any write so serialization is part of the contract.
         DailySnapshot.model_validate_json(snapshot_json, strict=True)
         if not dry_run:
@@ -102,11 +105,13 @@ class DailyPipeline:
                 run_date=snapshot.run_date,
                 snapshot_json=snapshot_json,
                 report=report,
+                html_report=html_report,
             )
         return RunResult(
             snapshot=snapshot,
             snapshot_json=snapshot_json,
             report=report,
+            html_report=html_report,
             published=not dry_run,
         )
 
