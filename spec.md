@@ -77,8 +77,10 @@ CLI：
 
 ## 6. 自动化与可靠性
 
-GitHub Actions 使用 Python 3.13 和 `uv`，每天 `09:00`、`Asia/Shanghai` 运行并支持
-`workflow_dispatch`。相同并发组内串行执行。`GITHUB_TOKEN` 只授予
+本机 macOS `launchd` 任务每天本地时间 09:00 运行完整流程，成功后弹出可直接打开日报
+的窗口，失败则提示查看本地日志且不覆盖旧日报。百炼凭据存放在当前用户的 macOS
+Keychain 中，不写入 plist、日志或报告。GitHub Actions 保留 `workflow_dispatch` 手动
+备用路径。相同并发组内串行执行。`GITHUB_TOKEN` 只授予
 `contents: write`；第三方 Action 固定到 commit SHA。
 
 网络请求最多尝试三次，尊重 `Retry-After` 并指数退避。任何抓取、补充、模型、校验或

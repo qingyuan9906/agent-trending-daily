@@ -58,8 +58,24 @@ uv run ruff check .
 1. 将仓库推送到 GitHub，并在 Actions 设置中允许工作流写入仓库内容。
 2. 新建 Actions Secret `DASHSCOPE_API_KEY`。
 3. 新建 Actions Variable `DASHSCOPE_WORKSPACE_ID`，填写百炼华北 2（北京）业务空间 ID。
-4. 在 **Actions → Daily Agent Trending Report → Run workflow** 手动验收一次。
+4. 在 **Actions → Daily Agent Trending Report → Run workflow** 手动运行。
 
-定时工作流每天北京时间 09:00 运行。候选数量完全由当天 Daily 页面决定；例如页面
-返回 16 个仓库，就从这 16 个仓库中筛选。页面没有任何仓库卡片或卡片结构损坏时，
-任务才会失败并保留上一份日报。
+GitHub Actions 仅作为手动备用路径。本机定时任务每天 09:00 自动运行，避免两端重复
+调用模型。候选数量完全由当天 Daily 页面决定；例如页面返回 16 个仓库，就从这 16 个
+仓库中筛选。页面没有任何仓库卡片或卡片结构损坏时，任务才会失败并保留上一份日报。
+
+## macOS 每日弹窗
+
+安装前让 `DASHSCOPE_API_KEY` 和 `DASHSCOPE_WORKSPACE_ID` 存在于当前终端环境，然后执行：
+
+```bash
+./scripts/install_macos_launch_agent.sh
+```
+
+安装器会把百炼配置保存到当前用户的 macOS Keychain，并加载
+`com.lxy.agent-trending-daily` LaunchAgent。每天 Mac 本地时间 09:00，任务会先确认 Git
+工作区干净、拉取最新代码，再生成、提交并推送日报。成功后弹窗提供“打开简报”按钮；
+失败时旧日报保持不变，并弹窗提供日志入口。
+
+Mac 在 09:00 休眠时，`launchd` 会在唤醒后补跑任务。弹窗需要用户已登录桌面会话，且
+Mac 时区应保持为 `Asia/Shanghai`。

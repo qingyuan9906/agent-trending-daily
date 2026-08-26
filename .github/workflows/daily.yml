@@ -1,9 +1,6 @@
 name: Daily Agent Trending Report
 
 on:
-  schedule:
-    - cron: "0 9 * * *"
-      timezone: Asia/Shanghai
   workflow_dispatch:
 
 permissions:
