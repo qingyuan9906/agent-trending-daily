@@ -58,7 +58,6 @@ def test_config_rejects_override_overlap(tmp_path: Path):
     config = tmp_path / "relevance.yaml"
     config.write_text(
         """
-candidate_limit: 20
 readme_char_limit: 12000
 timezone: Asia/Shanghai
 model: qwen3.7-plus

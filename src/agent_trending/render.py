@@ -22,7 +22,7 @@ def render_report(snapshot: DailySnapshot, config: RelevanceConfig) -> str:
             [
                 "## 今日结论",
                 "",
-                "今日总榜前 20 中无符合筛选范围的项目。",
+                f"今日 Daily 页面 {snapshot.candidate_count} 个候选中无符合筛选范围的项目。",
                 "",
             ]
         )

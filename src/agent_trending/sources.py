@@ -79,9 +79,8 @@ class HttpRequester:
 
 
 class TrendingSource:
-    def __init__(self, requester: HttpRequester, *, limit: int = 20) -> None:
+    def __init__(self, requester: HttpRequester) -> None:
         self.requester = requester
-        self.limit = limit
 
     def fetch(self) -> list[TrendingRepository]:
         response = self.requester.request(
@@ -89,14 +88,14 @@ class TrendingSource:
             TRENDING_URL,
             headers={"User-Agent": USER_AGENT, "Accept": "text/html"},
         )
-        return parse_trending_html(response.text, limit=self.limit)
+        return parse_trending_html(response.text)
 
 
-def parse_trending_html(html: str, *, limit: int = 20) -> list[TrendingRepository]:
+def parse_trending_html(html: str) -> list[TrendingRepository]:
     soup = BeautifulSoup(html, "html.parser")
     articles = soup.select("article.Box-row")
     repositories: list[TrendingRepository] = []
-    for article in articles[:limit]:
+    for article in articles:
         link = article.select_one("h2 a[href]")
         if link is None:
             raise SourceError("trending repository card is missing its repository link")
@@ -124,10 +123,8 @@ def parse_trending_html(html: str, *, limit: int = 20) -> list[TrendingRepositor
                 stars_today=stars_today,
             )
         )
-    if len(repositories) < limit:
-        raise SourceError(
-            f"expected at least {limit} complete trending repositories, found {len(repositories)}"
-        )
+    if not repositories:
+        raise SourceError("daily trending page contains no repository cards")
     return repositories
 
 

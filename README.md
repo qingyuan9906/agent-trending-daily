@@ -1,7 +1,7 @@
 # Agent Trending Daily
 
-每天北京时间 09:00 获取 GitHub Trending 日榜总榜前 20 个仓库，筛选与 Agent
-应用生态相关的项目，并生成中文研究简报。
+每天北京时间 09:00 获取 GitHub Trending Daily 页面当天返回的全部仓库，筛选与
+Agent 应用生态相关的项目，并生成中文研究简报。
 
 - [最新日报](reports/latest.md)
 - [历史日报](reports/)
@@ -34,14 +34,15 @@ uv run agent-trending render data/YYYY-MM-DD.json
 
 `run` 只获取当前 GitHub Trending Daily 页面，不支持伪造历史日期。正式运行成功后写入：
 
-- `data/YYYY-MM-DD.json`：全部 20 个候选及完整判定链路；
+- `data/YYYY-MM-DD.json`：当天页面全部候选及完整判定链路；
 - `reports/YYYY-MM-DD.md`：当日中文研究简报；
 - `reports/latest.md`：与当日日报内容一致的最新入口。
 
 ## 配置
 
 相关词、排除词、分类标签、`allowlist` 和 `denylist` 位于
-[`config/relevance.yaml`](config/relevance.yaml)。名单只会影响当日总榜前 20，不能引入榜外项目。
+[`config/relevance.yaml`](config/relevance.yaml)。名单只会影响当天 Daily 页面实际返回的
+候选，不能引入页面之外的项目。
 
 ## 测试
 
@@ -59,5 +60,6 @@ uv run ruff check .
 3. 新建 Actions Variable `DASHSCOPE_WORKSPACE_ID`，填写百炼华北 2（北京）业务空间 ID。
 4. 在 **Actions → Daily Agent Trending Report → Run workflow** 手动验收一次。
 
-定时工作流每天北京时间 09:00 运行。GitHub 当日页面若实际少于 20 个完整仓库卡片，
-任务会按规格失败并保留上一份日报，不会用榜外项目补足。
+定时工作流每天北京时间 09:00 运行。候选数量完全由当天 Daily 页面决定；例如页面
+返回 16 个仓库，就从这 16 个仓库中筛选。页面没有任何仓库卡片或卡片结构损坏时，
+任务才会失败并保留上一份日报。

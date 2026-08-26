@@ -19,14 +19,21 @@ def test_parse_trending_preserves_top_twenty_order():
     assert repositories[1].language == "TypeScript"
 
 
-def test_parse_trending_rejects_partial_page():
+def test_parse_trending_accepts_the_page_actual_repository_count():
     html = (
         "<article class='Box-row'><h2><a href='/owner/repo'>repo</a></h2>"
         "<span>10 stars today</span></article>"
     )
 
-    with pytest.raises(SourceError, match="expected at least 20"):
-        parse_trending_html(html)
+    repositories = parse_trending_html(html)
+
+    assert len(repositories) == 1
+    assert repositories[0].full_name == "owner/repo"
+
+
+def test_parse_trending_rejects_page_without_repository_cards():
+    with pytest.raises(SourceError, match="contains no repository cards"):
+        parse_trending_html("<html><body>No repositories today</body></html>")
 
 
 def test_parse_trending_rejects_card_without_daily_stars():

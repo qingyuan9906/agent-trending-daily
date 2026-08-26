@@ -14,7 +14,6 @@ class ConfigurationError(ValueError):
 
 
 class RelevanceConfig(StrictModel):
-    candidate_limit: int = Field(ge=1)
     readme_char_limit: int = Field(ge=1)
     timezone: str
     model: str = Field(min_length=1)
@@ -37,8 +36,6 @@ class RelevanceConfig(StrictModel):
 
     @model_validator(mode="after")
     def validate_contract(self) -> RelevanceConfig:
-        if self.candidate_limit != 20:
-            raise ValueError("candidate_limit must be 20")
         if self.readme_char_limit != 12_000:
             raise ValueError("readme_char_limit must be 12000")
         if self.timezone != "Asia/Shanghai":

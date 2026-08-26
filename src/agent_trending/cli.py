@@ -63,7 +63,7 @@ def main(argv: list[str] | None = None, *, root: Path | None = None) -> int:
         pipeline = DailyPipeline(
             root=project_root,
             config=config,
-            trending_provider=TrendingSource(requester, limit=config.candidate_limit),
+            trending_provider=TrendingSource(requester),
             repository_provider=GitHubClient(
                 requester,
                 token=os.getenv("GITHUB_TOKEN"),

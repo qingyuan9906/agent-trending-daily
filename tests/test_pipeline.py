@@ -15,6 +15,9 @@ from agent_trending.pipeline import DailyPipeline
 
 
 class FakeTrendingProvider:
+    def __init__(self, count=20):
+        self.count = count
+
     def fetch(self):
         return [
             TrendingRepository(
@@ -25,7 +28,7 @@ class FakeTrendingProvider:
                 language="Python",
                 stars_today=rank,
             )
-            for rank in range(1, 21)
+            for rank in range(1, self.count + 1)
         ]
 
 
@@ -72,11 +75,11 @@ def clock(day: int):
     return lambda: datetime(2026, 8, day, 9, 0, tzinfo=ZoneInfo("Asia/Shanghai"))
 
 
-def make_pipeline(root: Path, config, *, day=26, relevant_rank=1, analyzer=None):
+def make_pipeline(root: Path, config, *, day=26, relevant_rank=1, analyzer=None, count=20):
     return DailyPipeline(
         root=root,
         config=config,
-        trending_provider=FakeTrendingProvider(),
+        trending_provider=FakeTrendingProvider(count),
         repository_provider=FakeRepositoryProvider(relevant_rank=relevant_rank),
         analyzer=analyzer or FakeAnalyzer(),
         clock=clock(day),
@@ -98,6 +101,31 @@ def test_pipeline_publishes_snapshot_and_matching_report(tmp_path, relevance_con
     assert "owner/repo02" not in dated
 
 
+def test_pipeline_uses_all_sixteen_candidates_returned_by_daily_page(tmp_path, relevance_config):
+    result = make_pipeline(tmp_path, relevance_config, count=16).run()
+
+    assert result.snapshot.candidate_count == 16
+    assert len(result.snapshot.candidates) == 16
+    assert result.snapshot.candidates[-1].repository.rank == 16
+
+
+def test_pipeline_rejects_empty_daily_page_without_publishing(tmp_path, relevance_config):
+    pipeline = DailyPipeline(
+        root=tmp_path,
+        config=relevance_config,
+        trending_provider=FakeTrendingProvider(0),
+        repository_provider=FakeRepositoryProvider(),
+        analyzer=FakeAnalyzer(),
+        clock=clock(26),
+    )
+
+    with pytest.raises(ValueError, match="at least one candidate"):
+        pipeline.run()
+
+    assert not (tmp_path / "data").exists()
+    assert not (tmp_path / "reports").exists()
+
+
 def test_zero_result_is_valid_and_does_not_call_llm(tmp_path, relevance_config):
     analyzer = FakeAnalyzer()
 
@@ -110,7 +138,7 @@ def test_zero_result_is_valid_and_does_not_call_llm(tmp_path, relevance_config):
 
     assert result.snapshot.included_count == 0
     assert analyzer.analysis_calls == 0
-    assert "今日总榜前 20 中无符合筛选范围的项目" in result.report
+    assert "今日 Daily 页面 20 个候选中无符合筛选范围的项目" in result.report
 
 
 def test_dry_run_does_not_write_artifacts(tmp_path, relevance_config):

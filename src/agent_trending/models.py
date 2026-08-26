@@ -134,14 +134,12 @@ class DailySnapshot(StrictModel):
     timezone: Literal["Asia/Shanghai"]
     source_url: Literal["https://github.com/trending?since=daily"]
     model: str
-    candidate_count: int = Field(ge=0)
+    candidate_count: int = Field(ge=1)
     included_count: int = Field(ge=0)
-    candidates: list[CandidateRecord]
+    candidates: list[CandidateRecord] = Field(min_length=1)
 
     @model_validator(mode="after")
     def validate_counts_and_ranks(self) -> DailySnapshot:
-        if self.candidate_count != 20:
-            raise ValueError("daily snapshot must contain exactly 20 candidates")
         if self.candidate_count != len(self.candidates):
             raise ValueError("candidate_count does not match candidates")
         included_count = sum(candidate.included for candidate in self.candidates)

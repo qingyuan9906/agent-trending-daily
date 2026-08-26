@@ -75,8 +75,8 @@ class DailyPipeline:
         local_now = now.astimezone(ZoneInfo(self.config.timezone))
         run_date = local_now.date()
         trending = self.trending_provider.fetch()
-        if len(trending) != self.config.candidate_limit:
-            raise ValueError(f"expected exactly {self.config.candidate_limit} trending candidates")
+        if not trending:
+            raise ValueError("daily trending source must provide at least one candidate")
         enriched = [self.repository_provider.enrich(item) for item in trending]
         history = HistoryIndex.load(self.root / "data", run_date)
         candidates = [self._classify(item, history, run_date) for item in enriched]
