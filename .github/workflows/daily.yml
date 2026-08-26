@@ -1,0 +1,59 @@
+name: Daily Agent Trending Report
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+      timezone: Asia/Shanghai
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-agent-trending-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    env:
+      DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+      DASHSCOPE_WORKSPACE_ID: ${{ vars.DASHSCOPE_WORKSPACE_ID }}
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        run: python -m pip install uv==0.9.28
+
+      - name: Sync locked environment
+        run: uv sync --locked
+
+      - name: Validate project
+        run: |
+          uv run pytest
+          uv run ruff check .
+          uv run agent-trending validate-config
+
+      - name: Generate daily report
+        run: uv run agent-trending run
+
+      - name: Commit generated artifacts
+        shell: bash
+        run: |
+          git add data reports
+          if git diff --cached --quiet; then
+            echo "No report changes to commit."
+            exit 0
+          fi
+          report_date="$(TZ=Asia/Shanghai date +%F)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(report): update ${report_date} trending digest"
+          git push

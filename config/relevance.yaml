@@ -1,0 +1,65 @@
+candidate_limit: 20
+readme_char_limit: 12000
+timezone: Asia/Shanghai
+model: qwen3.7-plus
+
+categories:
+  agent_application: Agent 应用
+  agent_framework: Agent 框架与编排
+  llm_app_sdk: LLM 应用与 SDK
+  mcp_tools: MCP 与工具调用
+  rag_knowledge: RAG 与知识检索
+  memory: Agent Memory
+  evaluation_observability: 评测与可观测性
+  prompt_context: Prompt 与上下文工程
+  agent_infrastructure: Agent 开发基础设施
+
+positive_terms:
+  - agent
+  - agents
+  - agentic
+  - multi-agent
+  - multi agent
+  - llm
+  - large language model
+  - mcp
+  - model context protocol
+  - tool calling
+  - tool use
+  - function calling
+  - rag
+  - retrieval augmented generation
+  - retrieval-augmented generation
+  - agent memory
+  - llm memory
+  - agent evaluation
+  - llm evaluation
+  - llm observability
+  - prompt engineering
+  - context engineering
+  - ai assistant
+  - coding agent
+  - browser agent
+
+# 当项目同时命中排除词且只命中这些宽泛 AI 词时，视为训练/推理/部署类项目，规则排除。
+generic_ai_terms:
+  - llm
+  - large language model
+
+excluded_focus_terms:
+  - pretraining
+  - pre-training
+  - model training
+  - fine-tuning
+  - finetuning
+  - inference engine
+  - inference server
+  - model serving
+  - model deployment
+  - quantization
+  - distributed training
+  - llm training
+  - gpu kernel
+
+allowlist: []
+denylist: []
