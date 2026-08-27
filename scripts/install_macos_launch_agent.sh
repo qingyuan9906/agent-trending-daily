@@ -7,9 +7,6 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
     exit 1
 fi
 
-: "${DASHSCOPE_API_KEY:?DASHSCOPE_API_KEY is required}"
-: "${DASHSCOPE_WORKSPACE_ID:?DASHSCOPE_WORKSPACE_ID is required}"
-
 project_root="$(cd "$(dirname "$0")/.." && pwd)"
 label="com.lxy.agent-trending-daily"
 user_id="$(/usr/bin/id -u)"
@@ -18,17 +15,38 @@ launch_agents_dir="$HOME/Library/LaunchAgents"
 target_plist="$launch_agents_dir/$label.plist"
 template_plist="$project_root/config/macos/$label.plist"
 
+dashscope_api_key="${DASHSCOPE_API_KEY:-}"
+dashscope_workspace_id="${DASHSCOPE_WORKSPACE_ID:-}"
+if [[ -z "$dashscope_api_key" ]]; then
+    dashscope_api_key="$(
+        /usr/bin/security find-generic-password \
+            -a "$keychain_account" \
+            -s "agent-trending-daily/DASHSCOPE_API_KEY" \
+            -w
+    )"
+fi
+if [[ -z "$dashscope_workspace_id" ]]; then
+    dashscope_workspace_id="$(
+        /usr/bin/security find-generic-password \
+            -a "$keychain_account" \
+            -s "agent-trending-daily/DASHSCOPE_WORKSPACE_ID" \
+            -w
+    )"
+fi
+: "${dashscope_api_key:?DASHSCOPE_API_KEY is required}"
+: "${dashscope_workspace_id:?DASHSCOPE_WORKSPACE_ID is required}"
+
 /usr/bin/security add-generic-password \
     -U \
     -a "$keychain_account" \
     -s "agent-trending-daily/DASHSCOPE_API_KEY" \
-    -w "$DASHSCOPE_API_KEY" \
+    -w "$dashscope_api_key" \
     -T /usr/bin/security >/dev/null
 /usr/bin/security add-generic-password \
     -U \
     -a "$keychain_account" \
     -s "agent-trending-daily/DASHSCOPE_WORKSPACE_ID" \
-    -w "$DASHSCOPE_WORKSPACE_ID" \
+    -w "$dashscope_workspace_id" \
     -T /usr/bin/security >/dev/null
 
 /bin/mkdir -p "$launch_agents_dir" "$project_root/logs"
@@ -37,8 +55,8 @@ if /bin/launchctl print "gui/$user_id/$label" >/dev/null 2>&1; then
 fi
 
 /usr/bin/install -m 600 "$template_plist" "$target_plist"
-/usr/bin/plutil -replace ProgramArguments.1 \
-    -string "$project_root/scripts/run_daily_macos.sh" "$target_plist"
+/usr/bin/plutil -replace ProgramArguments \
+    -json "[\"/bin/zsh\",\"$project_root/scripts/run_daily_macos.sh\"]" "$target_plist"
 /usr/bin/plutil -replace WorkingDirectory -string "$project_root" "$target_plist"
 /usr/bin/plutil -replace StandardOutPath \
     -string "$project_root/logs/launchd.out.log" "$target_plist"

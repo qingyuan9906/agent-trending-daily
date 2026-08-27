@@ -67,13 +67,17 @@ GitHub Actions 仅作为手动备用路径。本机定时任务每天 09:00 自�
 
 ## macOS 每日弹窗
 
-安装前让 `DASHSCOPE_API_KEY` 和 `DASHSCOPE_WORKSPACE_ID` 存在于当前终端环境，然后执行：
+为避免 macOS TCC 阻止后台进程访问 `Documents`，自动化副本应放在非保护目录。推荐：
 
 ```bash
+git clone https://github.com/qingyuan9906/agent-trending-daily.git \
+  ~/.local/share/agent-trending-daily
+cd ~/.local/share/agent-trending-daily
 ./scripts/install_macos_launch_agent.sh
 ```
 
-安装器会把百炼配置保存到当前用户的 macOS Keychain，并加载
+安装器优先使用当前终端的 `DASHSCOPE_API_KEY` 和 `DASHSCOPE_WORKSPACE_ID`；未设置时会
+读取此前保存在 macOS Keychain 中的值。随后加载
 `com.lxy.agent-trending-daily` LaunchAgent。每天 Mac 本地时间 09:00，任务会先确认 Git
 工作区干净、拉取最新代码，再生成、提交并推送日报。成功后弹窗提供“打开简报”按钮，
 点击后由默认浏览器打开当天 HTML 网页；失败时旧日报保持不变，并弹窗提供日志入口。

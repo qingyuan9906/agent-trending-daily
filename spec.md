@@ -78,10 +78,11 @@ CLI：
 
 ## 6. 自动化与可靠性
 
-本机 macOS `launchd` 任务每天本地时间 09:00 运行完整流程，成功后弹出可由默认浏览器
-直接打开当天 HTML 网页的窗口，失败则提示查看本地日志且不覆盖旧日报。百炼凭据存放在当前用户的 macOS
-Keychain 中，不写入 plist、日志或报告。GitHub Actions 保留 `workflow_dispatch` 手动
-备用路径。相同并发组内串行执行。`GITHUB_TOKEN` 只授予
+本机 macOS `launchd` 任务从 `~/.local/share/agent-trending-daily` 独立运行副本每天本地
+时间 09:00 执行完整流程，避免后台进程访问 `Documents` 时被 TCC 拒绝。成功后弹出可由
+默认浏览器直接打开当天 HTML 网页的窗口，失败则提示查看本地日志且不覆盖旧日报。百炼
+凭据存放在当前用户的 macOS Keychain 中，不写入 plist、日志或报告。GitHub Actions
+保留 `workflow_dispatch` 手动备用路径。相同并发组内串行执行。`GITHUB_TOKEN` 只授予
 `contents: write`；第三方 Action 固定到 commit SHA。
 
 网络请求最多尝试三次，尊重 `Retry-After` 并指数退避。任何抓取、补充、模型、校验或
