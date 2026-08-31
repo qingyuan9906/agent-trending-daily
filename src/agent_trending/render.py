@@ -7,6 +7,7 @@ from agent_trending.models import CandidateRecord, DailySnapshot
 
 
 def render_report(snapshot: DailySnapshot, config: RelevanceConfig) -> str:
+    validate_snapshot_categories(snapshot, config)
     lines = [
         f"# GitHub Agent Trending 日报 · {snapshot.run_date}",
         "",
@@ -38,6 +39,20 @@ def render_report(snapshot: DailySnapshot, config: RelevanceConfig) -> str:
         ]
     )
     return "\n".join(lines)
+
+
+def validate_snapshot_categories(snapshot: DailySnapshot, config: RelevanceConfig) -> None:
+    configured = config.category_keys
+    for candidate in snapshot.candidates:
+        if not candidate.included:
+            continue
+        unknown = set(candidate.related_tags) - configured
+        if unknown:
+            names = ", ".join(sorted(unknown))
+            raise ValueError(
+                f"snapshot candidate {candidate.repository.full_name} "
+                f"uses unknown categories: {names}"
+            )
 
 
 def _render_candidate(candidate: CandidateRecord, config: RelevanceConfig) -> list[str]:

@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Protocol
 from zoneinfo import ZoneInfo
 
+from agent_trending.checkpoint import CheckpointStore, candidate_fingerprint
 from agent_trending.config import RelevanceConfig
 from agent_trending.history import HistoryIndex
 from agent_trending.models import (
@@ -17,6 +18,7 @@ from agent_trending.models import (
     ProjectBrief,
     RelevanceAnalysis,
     RuleEvidence,
+    TokenUsage,
     TrendingRepository,
 )
 from agent_trending.publish import AtomicPublisher
@@ -35,6 +37,11 @@ class RepositoryProvider(Protocol):
 
 
 class Analyzer(Protocol):
+    def reset_usage(self) -> None: ...
+
+    @property
+    def token_usage(self) -> TokenUsage: ...
+
     def analyze(self, repository: EnrichedRepository, rule: RuleEvidence) -> RelevanceAnalysis: ...
 
     def create_brief(self, repository: EnrichedRepository, rule: RuleEvidence) -> ProjectBrief: ...
@@ -71,6 +78,7 @@ class DailyPipeline:
         self.publisher = publisher or AtomicPublisher(root)
 
     def run(self, *, dry_run: bool = False) -> RunResult:
+        self.analyzer.reset_usage()
         now = self.clock()
         if now.tzinfo is None:
             raise ValueError("pipeline clock must return a timezone-aware datetime")
@@ -79,16 +87,56 @@ class DailyPipeline:
         trending = self.trending_provider.fetch()
         if not trending:
             raise ValueError("daily trending source must provide at least one candidate")
-        enriched = [self.repository_provider.enrich(item) for item in trending]
         history = HistoryIndex.load(self.root / "data", run_date)
-        candidates = [self._classify(item, history, run_date) for item in enriched]
+        checkpoint = None
+        if not dry_run:
+            checkpoint = CheckpointStore(
+                root=self.root,
+                run_date=run_date,
+                config=self.config,
+                initial_usage=self.analyzer.token_usage,
+            )
+        candidates: list[CandidateRecord] = []
+        for item in trending:
+            enriched = self.repository_provider.enrich(item)
+            rule = evaluate_rules(enriched, self.config)
+            input_sha256 = candidate_fingerprint(enriched, rule)
+            cached = (
+                checkpoint.cached_candidate(
+                    full_name=enriched.info.full_name,
+                    input_sha256=input_sha256,
+                )
+                if checkpoint is not None
+                else None
+            )
+            if cached is not None:
+                candidates.append(cached)
+                continue
+            try:
+                candidate = self._classify(enriched, history, run_date, rule=rule)
+            except Exception:
+                if checkpoint is not None:
+                    checkpoint.save_progress(current_usage=self.analyzer.token_usage)
+                raise
+            candidates.append(candidate)
+            if checkpoint is not None:
+                checkpoint.save_progress(
+                    current_usage=self.analyzer.token_usage,
+                    full_name=enriched.info.full_name,
+                    input_sha256=input_sha256,
+                    candidate=candidate,
+                )
+        token_usage = (
+            checkpoint.state.token_usage if checkpoint is not None else self.analyzer.token_usage
+        )
         snapshot = DailySnapshot(
-            schema_version=1,
+            schema_version=2,
             run_date=run_date.isoformat(),
             generated_at=local_now.isoformat(timespec="seconds"),
             timezone="Asia/Shanghai",
             source_url=TRENDING_URL,
             model=self.config.model,
+            token_usage=token_usage,
             candidate_count=len(candidates),
             included_count=sum(candidate.included for candidate in candidates),
             candidates=candidates,
@@ -107,6 +155,8 @@ class DailyPipeline:
                 report=report,
                 html_report=html_report,
             )
+            if checkpoint is not None:
+                checkpoint.clear()
         return RunResult(
             snapshot=snapshot,
             snapshot_json=snapshot_json,
@@ -120,8 +170,10 @@ class DailyPipeline:
         repository: EnrichedRepository,
         history: HistoryIndex,
         run_date: date,
+        *,
+        rule: RuleEvidence | None = None,
     ) -> CandidateRecord:
-        rule = evaluate_rules(repository, self.config)
+        rule = rule or evaluate_rules(repository, self.config)
         if rule.decision in {"force_exclude", "rule_exclude"}:
             reason = (
                 "人工 denylist 强制排除。"
@@ -132,35 +184,37 @@ class DailyPipeline:
 
         if rule.decision == "force_include":
             brief = self.analyzer.create_brief(repository, rule)
-            first_seen, consecutive = history.active_history(repository.info.full_name, run_date)
-            return CandidateRecord(
-                repository=repository.info,
-                rule=rule,
-                llm_output=brief,
-                included=True,
-                primary_category=brief.primary_category,
-                related_tags=brief.related_tags,
-                summary_zh=brief.summary_zh,
-                relevance_reason_zh=brief.relevance_reason_zh,
-                highlights_zh=brief.highlights_zh,
-                first_seen_date=first_seen,
-                consecutive_days=consecutive,
-            )
+            return self._included(repository, rule, brief, history, run_date)
 
         analysis = self.analyzer.analyze(repository, rule)
         if not analysis.is_relevant:
             return self._excluded(repository, rule, reason=analysis.reason_zh, llm_output=analysis)
+        return self._included(repository, rule, analysis, history, run_date)
+
+    @staticmethod
+    def _included(
+        repository: EnrichedRepository,
+        rule: RuleEvidence,
+        llm_output: RelevanceAnalysis | ProjectBrief,
+        history: HistoryIndex,
+        run_date: date,
+    ) -> CandidateRecord:
         first_seen, consecutive = history.active_history(repository.info.full_name, run_date)
+        reason = (
+            llm_output.relevance_reason_zh
+            if isinstance(llm_output, ProjectBrief)
+            else llm_output.reason_zh
+        )
         return CandidateRecord(
             repository=repository.info,
             rule=rule,
-            llm_output=analysis,
+            llm_output=llm_output,
             included=True,
-            primary_category=analysis.primary_category,
-            related_tags=analysis.related_tags,
-            summary_zh=analysis.summary_zh,
-            relevance_reason_zh=analysis.reason_zh,
-            highlights_zh=analysis.highlights_zh,
+            primary_category=llm_output.primary_category,
+            related_tags=llm_output.related_tags,
+            summary_zh=llm_output.summary_zh,
+            relevance_reason_zh=reason,
+            highlights_zh=llm_output.highlights_zh,
             first_seen_date=first_seen,
             consecutive_days=consecutive,
         )

@@ -41,6 +41,6 @@ def evaluate_rules(repository: EnrichedRepository, config: RelevanceConfig) -> R
 
 def _contains_term(text: str, term: str) -> bool:
     escaped = re.escape(term.casefold())
-    if term.replace("-", "").isalnum() and len(term) <= 4:
-        return re.search(rf"(?<![\w]){escaped}(?![\w])", text) is not None
+    if re.fullmatch(r"[\w-]+", term) is not None:
+        return re.search(rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])", text) is not None
     return term.casefold() in text

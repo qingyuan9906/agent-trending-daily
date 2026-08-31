@@ -31,6 +31,17 @@ def test_parse_trending_accepts_the_page_actual_repository_count():
     assert repositories[0].full_name == "owner/repo"
 
 
+def test_parse_trending_accepts_abbreviated_daily_star_count():
+    html = (
+        "<article class='Box-row'><h2><a href='/owner/repo'>repo</a></h2>"
+        "<span>1.2k stars today</span></article>"
+    )
+
+    repositories = parse_trending_html(html)
+
+    assert repositories[0].stars_today == 1_200
+
+
 def test_parse_trending_rejects_page_without_repository_cards():
     with pytest.raises(SourceError, match="contains no repository cards"):
         parse_trending_html("<html><body>No repositories today</body></html>")

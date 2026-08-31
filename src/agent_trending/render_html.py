@@ -6,9 +6,11 @@ import html
 
 from agent_trending.config import RelevanceConfig
 from agent_trending.models import CandidateRecord, DailySnapshot
+from agent_trending.render import validate_snapshot_categories
 
 
 def render_html_report(snapshot: DailySnapshot, config: RelevanceConfig) -> str:
+    validate_snapshot_categories(snapshot, config)
     included = [candidate for candidate in snapshot.candidates if candidate.included]
     cards = "\n".join(_render_candidate(candidate, config) for candidate in included)
     if not cards:
@@ -17,6 +19,7 @@ def render_html_report(snapshot: DailySnapshot, config: RelevanceConfig) -> str:
             f"<p>今日 Daily 页面 {_e(snapshot.candidate_count)} 个候选中无符合筛选范围的项目。"
             "</p></section>"
         )
+    token_stat = _render_token_stat(snapshot)
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -71,10 +74,11 @@ def render_html_report(snapshot: DailySnapshot, config: RelevanceConfig) -> str:
     .eyebrow {{ margin: 0 0 8px; opacity: 0.72; font-size: 13px; letter-spacing: 0.16em; }}
     h1 {{ margin: 0; font-size: clamp(30px, 5vw, 52px); line-height: 1.12; }}
     .subtitle {{ margin: 14px 0 0; max-width: 720px; color: rgba(255, 255, 255, 0.8); }}
-    .stats {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 30px; }}
+    .stats {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 30px; }}
     .stat {{ padding: 15px 18px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; background: rgba(255,255,255,.08); }}
     .stat strong {{ display: block; font-size: 25px; line-height: 1.2; }}
     .stat span {{ color: rgba(255,255,255,.7); font-size: 13px; }}
+    .token-stat strong {{ overflow-wrap: anywhere; font-size: clamp(17px, 2vw, 23px); }}
     .source {{ display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 18px 4px 32px; color: var(--muted); font-size: 13px; }}
     .source a {{ color: var(--brand); font-weight: 650; }}
     .projects {{ display: grid; gap: 22px; }}
@@ -119,6 +123,7 @@ def render_html_report(snapshot: DailySnapshot, config: RelevanceConfig) -> str:
         <div class="stat"><strong>{_e(snapshot.run_date)}</strong><span>报告日期</span></div>
         <div class="stat"><strong>{_e(snapshot.candidate_count)}</strong><span>今日候选</span></div>
         <div class="stat"><strong>{_e(snapshot.included_count)}</strong><span>最终入选</span></div>
+        {token_stat}
       </div>
     </header>
     <div class="source">
@@ -134,6 +139,24 @@ def render_html_report(snapshot: DailySnapshot, config: RelevanceConfig) -> str:
 </body>
 </html>
 """
+
+
+def _render_token_stat(snapshot: DailySnapshot) -> str:
+    usage = snapshot.token_usage
+    if usage is None:
+        return ""
+    cost = (
+        f"{usage.estimated_cost_cny:.4f}"
+        if 0 < usage.estimated_cost_cny < 0.01
+        else f"{usage.estimated_cost_cny:.2f}"
+    )
+    checked_at = usage.pricing_basis.rpartition("checked-")[2] or "未知日期"
+    return (
+        '<div class="stat token-stat">'
+        f"<strong>token量{usage.total_tokens:,}折{cost}元</strong>"
+        f"<span>按百炼华北2限时8折价格估算（价格核验：{_e(checked_at)}）</span>"
+        "</div>"
+    )
 
 
 def _render_candidate(candidate: CandidateRecord, config: RelevanceConfig) -> str:

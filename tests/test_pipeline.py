@@ -9,6 +9,7 @@ from agent_trending.models import (
     EnrichedRepository,
     ProjectBrief,
     RelevanceAnalysis,
+    TokenUsage,
     TrendingRepository,
 )
 from agent_trending.pipeline import DailyPipeline
@@ -45,10 +46,37 @@ class FakeRepositoryProvider:
         )
 
 
+class AllRelevantRepositoryProvider(FakeRepositoryProvider):
+    def __init__(self, *, changed_readme_rank: int | None = None):
+        super().__init__()
+        self.changed_readme_rank = changed_readme_rank
+
+    def enrich(self, trending: TrendingRepository) -> EnrichedRepository:
+        readme = "changed evidence" if trending.rank == self.changed_readme_rank else "evidence"
+        return make_repository(
+            trending.rank,
+            full_name=trending.full_name,
+            description="agent framework",
+            readme=readme,
+        )
+
+
 class FakeAnalyzer:
     def __init__(self, *, summary: str = "Agent 编排框架"):
         self.summary = summary
         self.analysis_calls = 0
+        self.token_usage = TokenUsage(
+            input_tokens=1_000,
+            output_tokens=200,
+            cached_input_tokens=0,
+            total_tokens=1_200,
+            estimated_cost_cny=0.00288,
+            pricing_basis="test-pricing/checked-2026-08-27",
+        )
+        self.reset_calls = 0
+
+    def reset_usage(self):
+        self.reset_calls += 1
 
     def analyze(self, repository, rule):
         self.analysis_calls += 1
@@ -70,6 +98,38 @@ class FakeAnalyzer:
             related_tags=["agent_application"],
             highlights_zh=["面向 Agent 应用"],
         )
+
+
+class CountingAnalyzer(FakeAnalyzer):
+    def __init__(self, *, fail_rank: int | None = None):
+        self.summary = "Agent 编排框架"
+        self.analysis_calls = 0
+        self.reset_calls = 0
+        self.fail_rank = fail_rank
+        self.called_ranks = []
+        self._tokens = 0
+
+    def reset_usage(self):
+        self.reset_calls += 1
+        self._tokens = 0
+
+    @property
+    def token_usage(self):
+        return TokenUsage(
+            input_tokens=self._tokens,
+            output_tokens=0,
+            cached_input_tokens=0,
+            total_tokens=self._tokens,
+            estimated_cost_cny=self._tokens / 1_000_000,
+            pricing_basis="test-pricing/checked-2026-08-27",
+        )
+
+    def analyze(self, repository, rule):
+        self.called_ranks.append(repository.info.rank)
+        self._tokens += 100
+        if repository.info.rank == self.fail_rank:
+            raise RuntimeError("model unavailable")
+        return super().analyze(repository, rule)
 
 
 def clock(day: int):
@@ -106,6 +166,11 @@ def test_pipeline_publishes_snapshot_and_matching_report(tmp_path, relevance_con
     assert "GitHub Agent Trending" in dated_html
     assert "owner/repo01" in dated_html
     assert "owner/repo02" not in dated_html
+    assert '"schema_version": 2' in result.snapshot_json
+    assert '"total_tokens": 1200' in result.snapshot_json
+    assert "token量1,200折0.0029元" in dated_html
+    assert 'class="stat token-stat"' in dated_html
+    assert "最终入选" in dated_html
 
 
 def test_pipeline_uses_all_sixteen_candidates_returned_by_daily_page(tmp_path, relevance_config):
@@ -157,6 +222,17 @@ def test_dry_run_does_not_write_artifacts(tmp_path, relevance_config):
     assert not (tmp_path / "reports").exists()
 
 
+def test_reusing_pipeline_resets_analyzer_usage_for_each_run(tmp_path, relevance_config):
+    analyzer = FakeAnalyzer()
+    pipeline = make_pipeline(tmp_path, relevance_config, analyzer=analyzer)
+
+    first = pipeline.run(dry_run=True)
+    second = pipeline.run(dry_run=True)
+
+    assert first.snapshot.token_usage == second.snapshot.token_usage
+    assert analyzer.reset_calls == 2
+
+
 def test_failed_analysis_preserves_existing_artifacts(tmp_path, relevance_config):
     data_dir = tmp_path / "data"
     reports_dir = tmp_path / "reports"
@@ -176,6 +252,101 @@ def test_failed_analysis_preserves_existing_artifacts(tmp_path, relevance_config
 
     assert data_file.read_text(encoding="utf-8") == "old data"
     assert latest.read_text(encoding="utf-8") == "old report"
+
+
+def test_failed_run_resumes_only_unfinished_candidates_and_clears_checkpoint(
+    tmp_path, relevance_config
+):
+    first_analyzer = CountingAnalyzer(fail_rank=2)
+    first = DailyPipeline(
+        root=tmp_path,
+        config=relevance_config,
+        trending_provider=FakeTrendingProvider(2),
+        repository_provider=AllRelevantRepositoryProvider(),
+        analyzer=first_analyzer,
+        clock=clock(26),
+    )
+
+    with pytest.raises(RuntimeError, match="model unavailable"):
+        first.run()
+
+    checkpoint = tmp_path / ".state" / "2026-08-26.json"
+    checkpoint_text = checkpoint.read_text(encoding="utf-8")
+    assert first_analyzer.called_ranks == [1, 2]
+    assert "evidence" not in checkpoint_text
+    assert not (tmp_path / "data" / "2026-08-26.json").exists()
+
+    resumed_analyzer = CountingAnalyzer()
+    resumed = DailyPipeline(
+        root=tmp_path,
+        config=relevance_config,
+        trending_provider=FakeTrendingProvider(2),
+        repository_provider=AllRelevantRepositoryProvider(),
+        analyzer=resumed_analyzer,
+        clock=clock(26),
+    ).run()
+
+    assert resumed_analyzer.called_ranks == [2]
+    assert resumed.snapshot.token_usage.total_tokens == 300
+    assert not checkpoint.exists()
+    assert (tmp_path / "data" / "2026-08-26.json").exists()
+
+
+def test_changed_readme_recomputes_only_changed_checkpoint_candidate(
+    tmp_path, relevance_config
+):
+    first_analyzer = CountingAnalyzer(fail_rank=2)
+    first = DailyPipeline(
+        root=tmp_path,
+        config=relevance_config,
+        trending_provider=FakeTrendingProvider(2),
+        repository_provider=AllRelevantRepositoryProvider(),
+        analyzer=first_analyzer,
+        clock=clock(26),
+    )
+    with pytest.raises(RuntimeError):
+        first.run()
+
+    resumed_analyzer = CountingAnalyzer()
+    DailyPipeline(
+        root=tmp_path,
+        config=relevance_config,
+        trending_provider=FakeTrendingProvider(2),
+        repository_provider=AllRelevantRepositoryProvider(changed_readme_rank=1),
+        analyzer=resumed_analyzer,
+        clock=clock(26),
+    ).run()
+
+    assert resumed_analyzer.called_ranks == [1, 2]
+
+
+def test_changed_config_discards_incompatible_checkpoint(tmp_path, relevance_config):
+    first_analyzer = CountingAnalyzer(fail_rank=2)
+    first = DailyPipeline(
+        root=tmp_path,
+        config=relevance_config,
+        trending_provider=FakeTrendingProvider(2),
+        repository_provider=AllRelevantRepositoryProvider(),
+        analyzer=first_analyzer,
+        clock=clock(26),
+    )
+    with pytest.raises(RuntimeError):
+        first.run()
+
+    changed_categories = dict(relevance_config.categories)
+    changed_categories["agent_framework"] = "Agent 框架（测试变更）"
+    changed_config = relevance_config.model_copy(update={"categories": changed_categories})
+    resumed_analyzer = CountingAnalyzer()
+    DailyPipeline(
+        root=tmp_path,
+        config=changed_config,
+        trending_provider=FakeTrendingProvider(2),
+        repository_provider=AllRelevantRepositoryProvider(),
+        analyzer=resumed_analyzer,
+        clock=clock(26),
+    ).run()
+
+    assert resumed_analyzer.called_ranks == [1, 2]
 
 
 def test_history_counts_consecutive_days_and_keeps_first_seen(tmp_path, relevance_config):

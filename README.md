@@ -39,6 +39,13 @@ uv run agent-trending render data/YYYY-MM-DD.json
 - `reports/latest.md`：与当日日报内容一致的 Markdown 入口；
 - `reports/YYYY-MM-DD.html` 和 `reports/latest.html`：适合浏览器阅读的网页简报。
 
+HTML 页首会在“最终入选”旁展示本次模型调用的总 token 量和人民币估算费用。费用按
+`qwen3.7-plus` 华北 2 实时调用的限时 8 折价格计算，并考虑 API 返回的缓存命中 token；
+当前价格口径核验于 2026-08-27，免费额度等账单抵扣不包含在估算内。
+
+`render` 总会重建指定日期的报告；仅当该快照日期不早于 `data/` 中的最新日期时，才会
+同步更新 `reports/latest.md` 和 `reports/latest.html`，避免重渲染历史快照时降级最新入口。
+
 ## 配置
 
 相关词、排除词、分类标签、`allowlist` 和 `denylist` 位于
@@ -84,3 +91,12 @@ cd ~/.local/share/agent-trending-daily
 
 Mac 在 09:00 休眠时，`launchd` 会在唤醒后补跑任务。弹窗需要用户已登录桌面会话，且
 Mac 时区应保持为 `Asia/Shanghai`。
+
+任务启动后会读取 macOS 当前 HTTPS 代理；代理可用时优先使用，失败时回退直连。GitHub
+连通性会在约 10 分钟窗口内按退避间隔重试，`git pull`、`uv sync`、日报流水线和
+`git push` 也有各自的有限重试。每条运行日志包含北京时间、运行 ID、阶段和尝试次数，
+但不会记录密钥、Token、Workspace ID 或模型原始响应。
+
+未完成运行会把已经严格验证的候选和累计 Token 用量原子保存到未跟踪的
+`.state/YYYY-MM-DD.json`。自动补跑只重新处理失败、缺失或输入指纹已变化的候选；全部
+候选完成并成功发布后删除断点。断点不保存 README 正文、凭据或未经验证的模型输出。

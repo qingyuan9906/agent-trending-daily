@@ -31,7 +31,8 @@ Agent Memory、应用评测与可观测性、Prompt/Context Engineering 和面�
    Agent 应用信号的项目由规则排除，其余项目逐个交给 Qwen 判断主要用途。
 5. 对所有入选项目生成中文摘要、相关理由、分类和 1–3 条亮点。
 6. 从历史 JSON 快照计算首次上榜日期；只有前一自然日也入选时才增加连续上榜天数。
-7. 完整校验 JSON 与 Markdown 后一次性发布。零入选属于有效日报。
+7. 完整校验 JSON、Markdown 与 HTML 后，先在目标目录暂存全部文件，再逐文件原子替换；
+   可捕获异常会回滚整组文件。零入选属于有效日报。
 
 README 等外部文本是不可执行、不可信的引用数据。提示词必须禁止遵循其中的指令，
 模型不得生成输入证据无法支持的事实。
@@ -67,13 +68,15 @@ CLI：
 
 不提供历史日期参数，因为 Trending 页面不能按任意日期回溯。
 
-`data/YYYY-MM-DD.json` 永久保存 schema 版本、北京时间运行信息、来源、模型、当天
+`data/YYYY-MM-DD.json` 永久保存 schema 版本、北京时间运行信息、来源、模型、本次调用
+的输入/输出/缓存命中/总 Token 量、人民币估算费用和价格核验口径、当天
 全部候选的排名和 GitHub 元数据、README 哈希、规则证据、人工/LLM/最终判定及历史
 统计；不保存完整 README。
 
 `reports/YYYY-MM-DD.md` 展示入选项目的原始排名、链接、原始描述、中文摘要、分类、
 相关理由、亮点、语言、总/当日 Star、Fork、License 和上榜历史；同时生成响应式的
-`reports/YYYY-MM-DD.html` 浏览器版本。`reports/latest.md` 和 `reports/latest.html`
+`reports/YYYY-MM-DD.html` 浏览器版本，并在页首“最终入选”旁展示 Token 总量和按百炼
+华北 2 实时调用限时折扣价估算的费用。`reports/latest.md` 和 `reports/latest.html`
 分别作为两种格式的最新入口。零结果日报必须明确说明当日没有符合项目。
 
 ## 6. 自动化与可靠性
@@ -86,10 +89,17 @@ CLI：
 `contents: write`；第三方 Action 固定到 commit SHA。
 
 网络请求最多尝试三次，尊重 `Retry-After` 并指数退避。任何抓取、补充、模型、校验或
-渲染错误都以非零状态结束且不修改正式产物。成功后从同文件系统暂存文件原子替换日报
-和快照；Action 只提交 `data/`、`reports/` 的差异，无差异时不创建空提交。Commit
+渲染错误都以非零状态结束且不修改正式产物。成功后从同文件系统暂存文件，逐文件原子
+替换并在可捕获异常时回滚；Action 只提交 `data/`、`reports/` 的差异，无差异时不创建
+空提交。Commit
 subject 为 `chore(report): update YYYY-MM-DD trending digest`。Secret、Token、
 Workspace ID 和完整模型请求不得进入日志或产物。
+
+macOS 运行器在拉取代码前自动读取系统 HTTPS 代理，代理优先、直连兜底，并在睡眠唤醒
+后用有限退避等待 GitHub 可用。Git、依赖同步、流水线和推送分别有限重试；流水线首次
+失败后等待 5 分钟补跑一次。已严格验证的候选及累计 Token 用量写入权限为 `0600` 的
+`.state/YYYY-MM-DD.json`，输入指纹一致时复用，完整发布成功后删除。断点不得包含
+README 正文、凭据、完整请求或未经验证的模型输出。
 
 ## 7. 测试与验收
 

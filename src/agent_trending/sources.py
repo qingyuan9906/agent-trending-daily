@@ -9,11 +9,12 @@ from typing import Any
 import httpx
 from bs4 import BeautifulSoup
 
+from agent_trending import __version__
 from agent_trending.models import EnrichedRepository, RepositoryInfo, TrendingRepository
 
 TRENDING_URL = "https://github.com/trending?since=daily"
 GITHUB_API_URL = "https://api.github.com"
-USER_AGENT = "agent-trending-daily/0.1 (+https://github.com/)"
+USER_AGENT = f"agent-trending-daily/{__version__} (+https://github.com/)"
 
 
 class SourceError(RuntimeError):
@@ -107,7 +108,7 @@ def parse_trending_html(html: str) -> list[TrendingRepository]:
         description_node = article.select_one("p")
         language_node = article.select_one('[itemprop="programmingLanguage"]')
         card_text = article.get_text(" ", strip=True)
-        stars_match = re.search(r"([\d,.]+)\s+stars?\s+today", card_text, re.IGNORECASE)
+        stars_match = re.search(r"([\d,.]+k?)\s+stars?\s+today", card_text, re.IGNORECASE)
         if stars_match is None:
             raise SourceError(f"trending repository card is missing daily stars: {full_name}")
         stars_today = _parse_count(stars_match.group(1))

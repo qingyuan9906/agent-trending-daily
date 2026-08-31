@@ -1,13 +1,22 @@
 from __future__ import annotations
 
 import json
+import re
 from collections.abc import Callable
+from decimal import Decimal
 from typing import Any, TypeVar
 
-from openai import OpenAI
+from openai import (
+    APIConnectionError,
+    APITimeoutError,
+    InternalServerError,
+    OpenAI,
+    OpenAIError,
+    RateLimitError,
+)
 from pydantic import ValidationError
 
-from agent_trending.config import RelevanceConfig
+from agent_trending.config import ConfigurationError, RelevanceConfig, normalize_workspace_id
 from agent_trending.models import (
     EnrichedRepository,
     ProjectBrief,
@@ -15,9 +24,19 @@ from agent_trending.models import (
     RelevanceDecision,
     RuleEvidence,
     StrictModel,
+    TokenUsage,
 )
 
 T = TypeVar("T", bound=StrictModel)
+
+_MILLION_TOKENS = Decimal(1_000_000)
+_SHORT_INPUT_LIMIT = 256_000
+_SHORT_INPUT_PRICE = Decimal("1.6")
+_SHORT_OUTPUT_PRICE = Decimal("6.4")
+_LONG_INPUT_PRICE = Decimal("4.8")
+_LONG_OUTPUT_PRICE = Decimal("19.2")
+_IMPLICIT_CACHE_FACTOR = Decimal("0.2")
+_PRICING_BASIS = "qwen3.7-plus/cn-beijing/limited-80pct/checked-2026-08-27"
 
 
 class LLMError(RuntimeError):
@@ -34,15 +53,39 @@ class DashScopeAnalyzer:
         client: Any | None = None,
         attempts: int = 3,
     ) -> None:
-        workspace_id = workspace_id.strip()
-        if not workspace_id or "/" in workspace_id or any(char.isspace() for char in workspace_id):
-            raise LLMError("invalid DASHSCOPE_WORKSPACE_ID")
+        try:
+            workspace_id = normalize_workspace_id(workspace_id)
+        except ConfigurationError as error:
+            raise LLMError(str(error)) from error
+        if attempts < 1:
+            raise LLMError("attempts must be at least 1")
         self.config = config
         self.attempts = attempts
+        self._redactions = (api_key, workspace_id)
+        self.reset_usage()
         self.client = client or OpenAI(
             api_key=api_key,
             base_url=(f"https://{workspace_id}.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"),
-            max_retries=0,
+            max_retries=2,
+        )
+
+    def reset_usage(self) -> None:
+        self._input_tokens = 0
+        self._output_tokens = 0
+        self._cached_input_tokens = 0
+        self._estimated_cost_cny = Decimal(0)
+
+    @property
+    def token_usage(self) -> TokenUsage:
+        return TokenUsage(
+            input_tokens=self._input_tokens,
+            output_tokens=self._output_tokens,
+            cached_input_tokens=self._cached_input_tokens,
+            total_tokens=self._input_tokens + self._output_tokens,
+            estimated_cost_cny=float(
+                self._estimated_cost_cny.quantize(Decimal("0.000001"))
+            ),
+            pricing_basis=_PRICING_BASIS,
         )
 
     def analyze(
@@ -66,6 +109,7 @@ class DashScopeAnalyzer:
             user=prompt,
             schema_builder=RelevanceDecision.model_json_schema,
             business_validator=lambda _: None,
+            repository_name=repository.info.full_name,
         )
         if not decision.is_relevant:
             return RelevanceAnalysis(
@@ -123,6 +167,7 @@ class DashScopeAnalyzer:
             user=prompt,
             schema_builder=self._brief_schema,
             business_validator=self._validate_brief,
+            repository_name=repository.info.full_name,
         )
 
     def _call_strict(
@@ -134,6 +179,7 @@ class DashScopeAnalyzer:
         user: str,
         schema_builder: Callable[[], dict[str, Any]],
         business_validator: Callable[[T], None],
+        repository_name: str,
     ) -> T:
         validation_feedback = ""
         last_error: Exception | None = None
@@ -157,19 +203,72 @@ class DashScopeAnalyzer:
                     },
                     extra_body={"enable_thinking": False},
                 )
+                self._record_usage(getattr(completion, "usage", None))
                 content = completion.choices[0].message.content
                 if not isinstance(content, str):
                     raise LLMError("model response content is not a JSON string")
                 result = model_type.model_validate_json(content, strict=True)
                 business_validator(result)
                 return result
-            except Exception as error:  # API and validation failures share the retry contract.
+            except (
+                APIConnectionError,
+                APITimeoutError,
+                InternalServerError,
+                RateLimitError,
+            ) as error:
+                reason = self._concise_error(error)
+                raise LLMError(
+                    f"repository={repository_name} schema={schema_name} transport failed: {reason}"
+                ) from error
+            except OpenAIError as error:
+                reason = self._concise_error(error)
+                raise LLMError(
+                    f"repository={repository_name} schema={schema_name} "
+                    f"provider request failed: {reason}"
+                ) from error
+            except (ValidationError, ValueError, LLMError) as error:
                 last_error = error
                 validation_feedback = (
                     "\n上次输出未通过校验，请修正后重新生成。校验错误："
                     f"{self._concise_error(error)}"
                 )
-        raise LLMError(f"strict model output failed after {self.attempts} attempts") from last_error
+            except Exception as error:
+                reason = self._concise_error(error)
+                raise LLMError(
+                    f"repository={repository_name} schema={schema_name} "
+                    f"unexpected failure: {reason}"
+                ) from error
+        reason = self._concise_error(last_error) if last_error else "unknown validation error"
+        raise LLMError(
+            f"repository={repository_name} schema={schema_name} strict output failed "
+            f"after {self.attempts} attempts: {reason}"
+        ) from last_error
+
+    def _record_usage(self, usage: Any | None) -> None:
+        if usage is None:
+            return
+        input_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
+        output_tokens = int(getattr(usage, "completion_tokens", 0) or 0)
+        details = getattr(usage, "prompt_tokens_details", None)
+        cached_tokens = int(getattr(details, "cached_tokens", 0) or 0)
+        cached_tokens = min(cached_tokens, input_tokens)
+
+        input_price, output_price = (
+            (_SHORT_INPUT_PRICE, _SHORT_OUTPUT_PRICE)
+            if input_tokens <= _SHORT_INPUT_LIMIT
+            else (_LONG_INPUT_PRICE, _LONG_OUTPUT_PRICE)
+        )
+        regular_input_tokens = input_tokens - cached_tokens
+        input_cost = (
+            Decimal(regular_input_tokens) * input_price
+            + Decimal(cached_tokens) * input_price * _IMPLICIT_CACHE_FACTOR
+        ) / _MILLION_TOKENS
+        output_cost = Decimal(output_tokens) * output_price / _MILLION_TOKENS
+
+        self._input_tokens += input_tokens
+        self._output_tokens += output_tokens
+        self._cached_input_tokens += cached_tokens
+        self._estimated_cost_cny += input_cost + output_cost
 
     def _brief_schema(self) -> dict[str, Any]:
         schema = ProjectBrief.model_json_schema()
@@ -196,8 +295,12 @@ class DashScopeAnalyzer:
     def _validate_plain_text(field: str, value: str, *, max_length: int) -> None:
         if len(value) > max_length:
             raise ValueError(f"{field} must not exceed {max_length} characters")
-        forbidden = ("\n", "\r", "**", "`", "- ", "* ", "',")
+        forbidden = ("\n", "\r", "**", "__", "`", "[", "]")
         if any(marker in value for marker in forbidden):
+            raise ValueError(f"{field} must be plain text without list or Markdown syntax")
+        if value.lstrip().startswith(("- ", "* ", "+ ", "# ", "> ")):
+            raise ValueError(f"{field} must be plain text without list or Markdown syntax")
+        if re.match(r"^\s*\d+[.)]\s", value):
             raise ValueError(f"{field} must be plain text without list or Markdown syntax")
 
     @staticmethod
@@ -219,12 +322,22 @@ class DashScopeAnalyzer:
             payload, ensure_ascii=False, separators=(",", ":")
         )
 
-    @staticmethod
-    def _concise_error(error: Exception) -> str:
+    def _concise_error(self, error: Exception) -> str:
         if isinstance(error, ValidationError):
             details = error.errors(include_url=False)
-            return "; ".join(
+            message = "; ".join(
                 f"{'.'.join(str(part) for part in item['loc'])}: {item['msg']}"
                 for item in details[:3]
             )[:500]
-        return f"{type(error).__name__}: {str(error)[:400]}"
+        else:
+            message = f"{type(error).__name__}: {str(error)[:400]}"
+        for secret in self._redactions:
+            if secret:
+                message = message.replace(secret, "<redacted>")
+        message = re.sub(
+            r"(?i)\b(authorization|api[_-]?key|token)\b(\s*[:=]\s*)\S+",
+            r"\1\2<redacted>",
+            message,
+        )
+        message = re.sub(r"(?i)Bearer\s+\S+", "Bearer <redacted>", message)
+        return message

@@ -54,6 +54,7 @@ def main(argv: list[str] | None = None, *, root: Path | None = None) -> int:
             run_date=snapshot.run_date,
             report=report,
             html_report=html_report,
+            update_latest=_is_latest_snapshot(project_root, snapshot.run_date),
         )
         print(f"rendered Markdown and HTML reports for {snapshot.run_date}")
         return 0
@@ -84,6 +85,11 @@ def main(argv: list[str] | None = None, *, root: Path | None = None) -> int:
         f"{result.snapshot.included_count}/{result.snapshot.candidate_count} included"
     )
     return 0
+
+
+def _is_latest_snapshot(project_root: Path, run_date: str) -> bool:
+    snapshot_dates = [path.stem for path in (project_root / "data").glob("????-??-??.json")]
+    return not snapshot_dates or run_date >= max(snapshot_dates)
 
 
 def entrypoint() -> None:

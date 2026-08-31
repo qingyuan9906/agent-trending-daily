@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>LANG</key>
+		<string>en_US.UTF-8</string>
+		<key>PATH</key>
+		<string>/Users/lxy/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+	</dict>
+	<key>Label</key>
+	<string>com.lxy.agent-trending-daily</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>/Users/lxy/Documents/agents_study/agent-trending-daily/scripts/run_daily_macos.sh</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/Users/lxy/Documents/agents_study/agent-trending-daily/logs/launchd.err.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/lxy/Documents/agents_study/agent-trending-daily/logs/launchd.out.log</string>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>9</integer>
+		<key>Minute</key>
+		<integer>0</integer>
+	</dict>
+	<key>WorkingDirectory</key>
+	<string>/Users/lxy/Documents/agents_study/agent-trending-daily</string>
+</dict>
+</plist>
