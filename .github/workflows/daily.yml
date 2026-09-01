@@ -1,4 +1,4 @@
-name: Daily Agent Trending Report
+name: Weekly Agent Trending Report
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: daily-agent-trending-report
+  group: weekly-agent-trending-report
   cancel-in-progress: false
 
 jobs:
@@ -41,12 +41,12 @@ jobs:
           DASHSCOPE_WORKSPACE_ID: ${{ vars.DASHSCOPE_WORKSPACE_ID }}
         run: uv run agent-trending validate-config
 
-      - name: Generate daily report
+      - name: Generate weekly report
         env:
           DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
           DASHSCOPE_WORKSPACE_ID: ${{ vars.DASHSCOPE_WORKSPACE_ID }}
           GITHUB_TOKEN: ${{ github.token }}
-        run: uv run agent-trending run
+        run: uv run agent-trending publish-weekly
 
       - name: Commit generated artifacts
         shell: bash
@@ -58,9 +58,9 @@ jobs:
             echo "No report changes to commit."
             exit 0
           fi
-          report_date="$(TZ=Asia/Shanghai date +%F)"
+          report_date="$(python -c 'from datetime import datetime,timedelta; from zoneinfo import ZoneInfo; now=datetime.now(ZoneInfo("Asia/Shanghai")); print((now-timedelta(days=now.weekday())).date())')"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore(report): update ${report_date} trending digest"
+          git commit -m "chore(report): update ${report_date} weekly trending digest"
           gh auth setup-git
           git push

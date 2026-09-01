@@ -13,6 +13,7 @@ from agent_trending import __version__
 from agent_trending.models import EnrichedRepository, RepositoryInfo, TrendingRepository
 
 TRENDING_URL = "https://github.com/trending?since=daily"
+WEEKLY_TRENDING_URL = "https://github.com/trending?since=weekly"
 GITHUB_API_URL = "https://api.github.com"
 USER_AGENT = f"agent-trending-daily/{__version__} (+https://github.com/)"
 
@@ -80,19 +81,25 @@ class HttpRequester:
 
 
 class TrendingSource:
-    def __init__(self, requester: HttpRequester) -> None:
+    def __init__(self, requester: HttpRequester, *, period: str = "daily") -> None:
+        if period not in {"daily", "weekly"}:
+            raise ValueError("trending period must be daily or weekly")
         self.requester = requester
+        self.period = period
 
     def fetch(self) -> list[TrendingRepository]:
+        url = TRENDING_URL if self.period == "daily" else WEEKLY_TRENDING_URL
         response = self.requester.request(
             "GET",
-            TRENDING_URL,
+            url,
             headers={"User-Agent": USER_AGENT, "Accept": "text/html"},
         )
-        return parse_trending_html(response.text)
+        return parse_trending_html(response.text, period=self.period)
 
 
-def parse_trending_html(html: str) -> list[TrendingRepository]:
+def parse_trending_html(html: str, *, period: str = "daily") -> list[TrendingRepository]:
+    if period not in {"daily", "weekly"}:
+        raise ValueError("trending period must be daily or weekly")
     soup = BeautifulSoup(html, "html.parser")
     articles = soup.select("article.Box-row")
     repositories: list[TrendingRepository] = []
@@ -108,9 +115,12 @@ def parse_trending_html(html: str) -> list[TrendingRepository]:
         description_node = article.select_one("p")
         language_node = article.select_one('[itemprop="programmingLanguage"]')
         card_text = article.get_text(" ", strip=True)
-        stars_match = re.search(r"([\d,.]+k?)\s+stars?\s+today", card_text, re.IGNORECASE)
+        label = "today" if period == "daily" else "this week"
+        stars_match = re.search(
+            rf"([\d,.]+k?)\s+stars?\s+{re.escape(label)}", card_text, re.IGNORECASE
+        )
         if stars_match is None:
-            raise SourceError(f"trending repository card is missing daily stars: {full_name}")
+            raise SourceError(f"trending repository card is missing {period} stars: {full_name}")
         stars_today = _parse_count(stars_match.group(1))
         repositories.append(
             TrendingRepository(
@@ -125,7 +135,7 @@ def parse_trending_html(html: str) -> list[TrendingRepository]:
             )
         )
     if not repositories:
-        raise SourceError("daily trending page contains no repository cards")
+        raise SourceError(f"{period} trending page contains no repository cards")
     return repositories
 
 

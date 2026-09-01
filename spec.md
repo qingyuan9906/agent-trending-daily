@@ -1,118 +1,68 @@
-# agent-trending-daily 产品与技术规格
+# agent-trending-weekly 产品与技术规格
 
-## 1. 项目目标
+## 1. 目标与周期
 
-每天北京时间 09:00 获取 GitHub Trending Daily 全语言页面当天返回的全部仓库，筛选
-与 Agent 应用生态相关的项目，生成可公开的中文 Markdown 研究简报并由 GitHub
-Actions 直接提交到默认分支。
+本机每天北京时间 09:00 保存 GitHub Trending Daily 原始观测。每周一发布上一完整自然周的
+中文 Agent 趋势周报，仅展示相关项目综合排名前 5，并附最多 5 篇 OpenAI、Anthropic
+官方技术博客摘要。
 
-入选数量允许为 0 到当天候选总数，不从页面之外补足。每个结论必须能追溯到 GitHub
-原始数据、确定性规则、人工名单和（如有）Qwen 结构化判定。任一必要步骤失败时不得
-发布不完整结果，同日成功重跑原子覆盖已有文件。
+周报使用周一发布日期 `YYYY-MM-DD` 命名，同时在 Schema 中保存 `published_date`、
+`period_start` 和 `period_end`。历史日报保持原文件和 Schema，不批量迁移。
 
-## 2. 范围
+## 2. 数据流与排序
 
-纳入 Agent 应用、框架与编排、LLM 应用 SDK、MCP、工具调用、RAG、知识检索、
-Agent Memory、应用评测与可观测性、Prompt/Context Engineering 和面向 Agent 的开发
-基础设施。
+1. `collect` 请求 `https://github.com/trending?since=daily`，按页面顺序保存完整仓库列表、
+   原始名次和 `stars today`，不调用 GitHub API 或 LLM。
+2. 周报必须具备统计周期七天的有效观测；缺一天即失败。候选池由七天观测与
+   `https://github.com/trending?since=weekly` 合并去重。
+3. 对全部候选补充 GitHub 元数据及 README 哈希，执行人工名单、规则与严格 LLM 判定；
+   只有判定相关的项目参与最终排序。
+4. 分别按截至周日的连续入榜天数和周日新增 Star 计算竞争排名，综合优先级取两个名次的
+   最小值；再按名次和、连续天数、周日新增 Star、周榜名次、仓库名稳定破同分。
+5. 正式 Markdown、HTML 只展示前 5 个；JSON 保留全部候选审计链路和最终排序指标。
 
-排除以模型训练、预训练、微调、推理引擎、量化、Serving 或部署为主要目标的项目，
-与 Agent 应用无直接关系的通用 AI 项目，以及没有 Agent 应用实现价值的文章、论文或
-资源集合。首版不包含网页看板、消息推送、数据库、多模型提供方或历史榜单回填。
+连续入榜依据原始 Daily 观测，而不是模型是否曾将项目选入报告；缺失观测不能解释为未入榜。
 
-## 3. 判定与数据流
+## 3. 官方文章
 
-1. 请求 `https://github.com/trending?since=daily` 并按页面顺序解析当天返回的全部仓库；
-   只有页面没有仓库卡片或任一卡片结构不完整时才失败。
-2. 使用 GitHub REST API 补充描述、Topics、主语言、总 Star、Fork、License 和 README。
-3. `denylist` 强制排除，`allowlist` 强制纳入；名单冲突属于配置错误。名单只能作用于
-   当天页面实际返回的候选，不能引入页面之外的项目。
-4. 使用仓库名、描述、Topics 和 README 前 12,000 个字符匹配版本化词表。没有任何
-   Agent 应用信号的项目由规则排除，其余项目逐个交给 Qwen 判断主要用途。
-5. 对所有入选项目生成中文摘要、相关理由、分类和 1–3 条亮点。
-6. 从历史 JSON 快照计算首次上榜日期；只有前一自然日也入选时才增加连续上榜天数。
-7. 完整校验 JSON、Markdown 与 HTML 后，先在目标目录暂存全部文件，再逐文件原子替换；
-   可捕获异常会回滚整组文件。零入选属于有效日报。
+只抓取 `https://developers.openai.com/blog/` 与
+`https://www.anthropic.com/engineering` 的官方文章。索引与正文发布日期必须一致，链接
+必须仍位于对应官方路径。正文只在内存中截断后送入模型，正式快照仅保存正文 SHA-256。
 
-README 等外部文本是不可执行、不可信的引用数据。提示词必须禁止遵循其中的指令，
-模型不得生成输入证据无法支持的事实。
+模型输出 `is_relevant` 和 `summary_zh`，不包含入选理由。相关范围为 Agent、Claude Code、
+大模型能力与应用开发、工具调用、MCP、RAG、Memory、Agent 评测和上下文工程。相关文章按
+发布日期倒序、规范链接破同分，两家合计最多 5 篇。零篇是合法结果；任一来源无法可靠解析
+则整期失败。
 
-## 4. LLM 契约
+## 4. Schema、LLM 与产物
 
-- Provider：阿里云百炼华北 2（北京）
-- Model：`qwen3.7-plus`
-- API：OpenAI-compatible Chat Completions
-- Base URL：`https://${DASHSCOPE_WORKSPACE_ID}.cn-beijing.maas.aliyuncs.com/compatible-mode/v1`
-- 配置：`DASHSCOPE_API_KEY`、`DASHSCOPE_WORKSPACE_ID`
+- `DailyObservation`：schema v1，写入 `data/observations/YYYY-MM-DD.json`。
+- `DailySnapshot`：schema v1/v2，只读兼容历史日报。
+- `WeeklySnapshot`：schema v3，写入 `data/YYYY-MM-DD.json`，保存周期、全部候选、前 5 排序、
+  官方文章和 Token 用量。
+- 周报写入 `reports/YYYY-MM-DD.md/.html` 并原子更新 `reports/latest.md/.html`。
 
-所有模型调用使用原生 JSON Schema Structured Outputs：`type=json_schema`、
-`strict=true`、`additionalProperties=false`，且不设置 `max_tokens`。先用封闭的
-`RelevanceDecision` 契约只判定相关性；仅对入选项目再用封闭的 `ProjectBrief` 生成
-分类与简报，二者确定性合成为 `RelevanceAnalysis`。每次返回后都执行
-`model_validate_json(..., strict=True)` 和业务校验。
+Qwen 继续使用 OpenAI-compatible Chat Completions 的原生 `json_schema`、`strict=true`、封闭
+Schema，随后执行 Pydantic `strict=True` 与业务校验。内容错误最多三次反馈重试；SDK 负责
+连接、超时、429 和 5xx 重试。禁止 JSON Mode、Prompt-only JSON、手工截取和 `json_repair`。
 
-入选项目必须包含非空摘要、理由和 1–3 条亮点；排除项目由程序确定性归一为
-`out_of_scope` 且不调用简报模型；分类与标签必须来自配置枚举。简报文本必须是无
-Markdown 标记、列表符号和换行的完整纯文本，摘要、理由和单条亮点分别限制为 220、
-180 和 120 字。失败时最多调用三次，重试请求只增加精简校验反馈。禁止以 JSON Mode、
-Prompt-only JSON、手工截取或 `json_repair` 降级。
+任一步骤失败不得更新正式周报。`.state/weekly-YYYY-MM-DD.json` 只保存已验证项目、文章判定、
+指纹和累计 Token，不保存正文、README、凭据、完整请求或原始模型响应。
 
-## 5. 公开接口与产物
+## 5. CLI 与自动化
 
-CLI：
+- `agent-trending collect [--dry-run]`：采集当天 Daily 观测。
+- `agent-trending publish-weekly [--dry-run]`：发布当前周一所代表的上一完整自然周。
+- `agent-trending run [--dry-run]`：兼容入口，每日采样、周一继续发布。
+- `agent-trending render data/YYYY-MM-DD.json`：严格验证后重建新旧报告。
+- `agent-trending validate-config`：验证配置和周报所需环境变量。
 
-- `agent-trending run`：执行当前日期的完整流程并发布。
-- `agent-trending run --dry-run`：完成抓取、模型调用、构建和校验，但不写正式产物。
-- `agent-trending validate-config`：校验配置、人工名单及必要环境变量。
-- `agent-trending render data/YYYY-MM-DD.json`：仅从已验证快照重新生成 Markdown 和 HTML。
+LaunchAgent 仍每天 09:00 运行，技术标识和包名保持兼容。每日观测独立提交推送；周一周报
+失败后等待五分钟补跑一次，只有最终失败才通知且旧周报不变。GitHub Actions 保留纯手动
+备用路径，不增加 cron。
 
-不提供历史日期参数，因为 Trending 页面不能按任意日期回溯。
+## 6. 验收
 
-`data/YYYY-MM-DD.json` 永久保存 schema 版本、北京时间运行信息、来源、模型、本次调用
-的输入/输出/缓存命中/总 Token 量、人民币估算费用和价格核验口径、当天
-全部候选的排名和 GitHub 元数据、README 哈希、规则证据、人工/LLM/最终判定及历史
-统计；不保存完整 README。
-
-`reports/YYYY-MM-DD.md` 展示入选项目的原始排名、链接、原始描述、中文摘要、分类、
-相关理由、亮点、语言、总/当日 Star、Fork、License 和上榜历史；同时生成响应式的
-`reports/YYYY-MM-DD.html` 浏览器版本，并在页首“最终入选”旁展示 Token 总量和按百炼
-华北 2 实时调用限时折扣价估算的费用。`reports/latest.md` 和 `reports/latest.html`
-分别作为两种格式的最新入口。零结果日报必须明确说明当日没有符合项目。
-
-## 6. 自动化与可靠性
-
-本机 macOS `launchd` 任务从 `~/.local/share/agent-trending-daily` 独立运行副本每天本地
-时间 09:00 执行完整流程，避免后台进程访问 `Documents` 时被 TCC 拒绝。成功后弹出可由
-默认浏览器直接打开当天 HTML 网页的窗口，失败则提示查看本地日志且不覆盖旧日报。百炼
-凭据存放在当前用户的 macOS Keychain 中，不写入 plist、日志或报告。GitHub Actions
-保留 `workflow_dispatch` 手动备用路径。相同并发组内串行执行。`GITHUB_TOKEN` 只授予
-`contents: write`；第三方 Action 固定到 commit SHA。
-
-网络请求最多尝试三次，尊重 `Retry-After` 并指数退避。任何抓取、补充、模型、校验或
-渲染错误都以非零状态结束且不修改正式产物。成功后从同文件系统暂存文件，逐文件原子
-替换并在可捕获异常时回滚；Action 只提交 `data/`、`reports/` 的差异，无差异时不创建
-空提交。Commit
-subject 为 `chore(report): update YYYY-MM-DD trending digest`。Secret、Token、
-Workspace ID 和完整模型请求不得进入日志或产物。
-
-macOS 运行器在拉取代码前自动读取系统 HTTPS 代理，代理优先、直连兜底，并在睡眠唤醒
-后用有限退避等待 GitHub 可用。Git、依赖同步、流水线和推送分别有限重试；流水线首次
-失败后等待 5 分钟补跑一次。已严格验证的候选及累计 Token 用量写入权限为 `0600` 的
-`.state/YYYY-MM-DD.json`，输入指纹一致时复用，完整发布成功后删除。断点不得包含
-README 正文、凭据、完整请求或未经验证的模型输出。
-
-## 7. 测试与验收
-
-`pytest` 测试默认完全离线，覆盖：
-
-- Trending HTML 顺序、动态候选数量、字段缺失和空页面；
-- GitHub 元数据、README、License、重试与限流；
-- Agent/MCP/RAG/Memory/评测正例和训练/推理/部署反例；
-- 人工名单优先级、冲突和榜单边界；
-- Qwen 严格 Schema、额外字段、错误类型、非法枚举、业务错误和三次重试；
-- 正常/零结果日报、同日覆盖、连续上榜、日期中断和快照重新渲染；
-- 中间失败不改变已有日报、报告与快照一致、产物不泄露 Secret。
-
-首版验收要求手动 Action 对当天页面返回的全部候选产生判定；日报只展示
-`included=true` 项并保持原始排名；同日只有一个归档版本；失败重跑不改变旧内容；
-零入选正常发布；离线测试、静态检查和真实网络 smoke test 全部通过。
+离线测试覆盖七日完整性、跨周连续入榜、双通道排序、稳定破同分、前 5 限制、日期命名、
+官方索引/正文解析、文章严格 Schema、零文章、来源失败、断点恢复、日志脱敏、旧日报兼容和
+原子发布。提交前执行 `pytest`、`ruff check .` 与两个 zsh 脚本的语法检查。

@@ -7,7 +7,7 @@ from httpx import Request
 from openai import APIConnectionError
 
 from agent_trending.llm import DashScopeAnalyzer, LLMError
-from agent_trending.models import RuleEvidence
+from agent_trending.models import ArticleDocument, RuleEvidence
 
 
 class FakeCompletions:
@@ -258,6 +258,29 @@ def test_force_include_uses_project_brief_schema(relevance_config):
 
     assert brief.related_tags == ["agent_application"]
     assert client.endpoint.calls[0]["response_format"]["json_schema"]["name"] == "project_brief"
+
+
+def test_article_summary_uses_strict_schema_without_reason(relevance_config):
+    analyzer, client = make_analyzer(
+        relevance_config,
+        ['{"is_relevant":true,"summary_zh":"介绍 Agent 工程实践。"}'],
+    )
+    article = ArticleDocument(
+        source="OpenAI",
+        title="Agent engineering",
+        url="https://developers.openai.com/blog/agent-engineering",
+        published_date="2026-08-25",
+        content="Official article content.",
+        content_sha256="0" * 64,
+    )
+
+    result = analyzer.analyze_article(article)
+
+    schema = client.endpoint.calls[0]["response_format"]["json_schema"]
+    assert schema["strict"] is True
+    assert schema["schema"]["additionalProperties"] is False
+    assert "reason" not in schema["schema"]["properties"]
+    assert result.summary_zh == "介绍 Agent 工程实践。"
 
 
 def test_usage_and_discounted_cost_include_retried_calls(relevance_config):

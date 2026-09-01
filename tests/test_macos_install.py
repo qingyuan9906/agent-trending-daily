@@ -30,7 +30,8 @@ def test_daily_runner_has_bounded_network_and_pipeline_retries():
     assert "network_preflight.py" in runner
     assert "retry_command git_pull 3 20" in runner
     assert "retry_command uv_sync 3 20" in runner
-    assert "retry_command pipeline 2 300" in runner
+    assert "retry_command collect 2 300" in runner
+    assert "retry_command weekly_pipeline 2 300" in runner
     assert "retry_command git_push 3 20" in runner
     assert "git rev-list '@{upstream}..HEAD'" in runner
     subprocess.run(["zsh", "-n", runner_path], check=True)

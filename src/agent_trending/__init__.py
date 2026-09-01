@@ -1,4 +1,4 @@
-"""Agent Trending Daily."""
+"""Agent Trending Weekly."""
 
 from importlib.metadata import PackageNotFoundError, version
 

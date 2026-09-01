@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "agent-trending-daily"
 version = "0.1.0"
-description = "Daily Chinese research digest for Agent-related GitHub Trending repositories."
+description = "Weekly Chinese research digest for Agent-related GitHub Trending repositories."
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 dependencies = [

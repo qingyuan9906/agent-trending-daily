@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -140,8 +140,8 @@ class CandidateRecord(StrictModel):
                 raise ValueError("included candidate cannot use out_of_scope")
             if self.primary_category not in self.related_tags:
                 raise ValueError("included candidate primary category must appear in related_tags")
-            if self.first_seen_date is None or self.consecutive_days < 1:
-                raise ValueError("included candidate requires history fields")
+            if self.first_seen_date is None:
+                raise ValueError("included candidate requires first_seen_date")
             if self.llm_output is None:
                 raise ValueError("included candidate requires llm_output")
             if isinstance(self.llm_output, RelevanceAnalysis):
@@ -238,6 +238,8 @@ class DailySnapshot(StrictModel):
                 first_seen = date.fromisoformat(candidate.first_seen_date)
                 if first_seen > run_date:
                     raise ValueError("candidate first_seen_date cannot be after run_date")
+            if candidate.included and candidate.consecutive_days < 1:
+                raise ValueError("daily included candidate requires an active streak")
         included_count = sum(candidate.included for candidate in self.candidates)
         if self.included_count != included_count:
             raise ValueError("included_count does not match candidates")
@@ -247,4 +249,209 @@ class DailySnapshot(StrictModel):
         names = [candidate.repository.full_name.casefold() for candidate in self.candidates]
         if len(names) != len(set(names)):
             raise ValueError("candidate repository names must be unique")
+        return self
+
+
+class DailyObservation(StrictModel):
+    schema_version: Literal[1]
+    observed_date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    generated_at: str
+    timezone: Literal["Asia/Shanghai"]
+    source_url: Literal["https://github.com/trending?since=daily"]
+    repositories: list[TrendingRepository] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_observation(self) -> DailyObservation:
+        observed_date = date.fromisoformat(self.observed_date)
+        generated_at = datetime.fromisoformat(self.generated_at)
+        if generated_at.tzinfo is None or generated_at.date() != observed_date:
+            raise ValueError("generated_at must be timezone-aware and match observed_date")
+        ranks = [repository.rank for repository in self.repositories]
+        if ranks != list(range(1, len(ranks) + 1)):
+            raise ValueError("observation ranks must be contiguous and start at 1")
+        names = [repository.full_name.casefold() for repository in self.repositories]
+        if len(names) != len(set(names)):
+            raise ValueError("observation repository names must be unique")
+        return self
+
+
+class ArticleDocument(StrictModel):
+    source: Literal["OpenAI", "Anthropic"]
+    title: str = Field(min_length=1, max_length=240)
+    url: str
+    published_date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    content: str = Field(min_length=1)
+    content_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+
+    @model_validator(mode="after")
+    def validate_article_document(self) -> ArticleDocument:
+        date.fromisoformat(self.published_date)
+        allowed_prefix = {
+            "OpenAI": "https://developers.openai.com/blog/",
+            "Anthropic": "https://www.anthropic.com/engineering/",
+        }[self.source]
+        if not self.url.startswith(allowed_prefix):
+            raise ValueError("article URL does not match its official source")
+        return self
+
+
+class ArticleAssessment(StrictModel):
+    is_relevant: bool
+    summary_zh: str = Field(max_length=320)
+
+    @model_validator(mode="after")
+    def validate_article_assessment(self) -> ArticleAssessment:
+        if self.is_relevant != bool(self.summary_zh.strip()):
+            raise ValueError("relevant article requires a summary and excluded article forbids one")
+        return self
+
+
+class OfficialArticleRecord(StrictModel):
+    source: Literal["OpenAI", "Anthropic"]
+    title: str = Field(min_length=1, max_length=240)
+    url: str
+    published_date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    summary_zh: str = Field(min_length=1, max_length=320)
+    content_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+
+    @field_validator("summary_zh")
+    @classmethod
+    def validate_summary_plain_text(cls, value: str) -> str:
+        if any(marker in value for marker in ("\n", "\r", "**", "__", "`", "[", "]")):
+            raise ValueError("article summary must be plain text")
+        return value
+
+    @model_validator(mode="after")
+    def validate_official_article(self) -> OfficialArticleRecord:
+        document = ArticleDocument(
+            source=self.source,
+            title=self.title,
+            url=self.url,
+            published_date=self.published_date,
+            content="validated separately",
+            content_sha256=self.content_sha256,
+        )
+        del document
+        return self
+
+
+class WeeklyProjectRanking(StrictModel):
+    full_name: str = Field(pattern=REPOSITORY_NAME_PATTERN)
+    display_rank: int = Field(ge=1, le=5)
+    consecutive_days: int = Field(ge=0)
+    stars_last_day: int = Field(ge=0)
+    streak_rank: int = Field(ge=1)
+    star_rank: int = Field(ge=1)
+    priority_rank: int = Field(ge=1)
+    weekly_rank: int | None = Field(default=None, ge=1)
+
+
+class WeeklySnapshot(StrictModel):
+    schema_version: Literal[3]
+    published_date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    period_start: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    period_end: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    generated_at: str
+    timezone: Literal["Asia/Shanghai"]
+    source_urls: list[Literal[
+        "https://github.com/trending?since=daily",
+        "https://github.com/trending?since=weekly",
+        "https://developers.openai.com/blog/",
+        "https://www.anthropic.com/engineering",
+    ]]
+    model: str
+    token_usage: TokenUsage
+    candidate_count: int = Field(ge=1)
+    relevant_count: int = Field(ge=0)
+    selected_count: int = Field(ge=0, le=5)
+    candidates: list[CandidateRecord] = Field(min_length=1)
+    selected_projects: list[WeeklyProjectRanking] = Field(max_length=5)
+    articles: list[OfficialArticleRecord] = Field(max_length=5)
+
+    @model_validator(mode="after")
+    def validate_weekly_snapshot(self) -> WeeklySnapshot:
+        published = date.fromisoformat(self.published_date)
+        period_start = date.fromisoformat(self.period_start)
+        period_end = date.fromisoformat(self.period_end)
+        generated_at = datetime.fromisoformat(self.generated_at)
+        if published.weekday() != 0:
+            raise ValueError("published_date must be a Monday")
+        if period_start.weekday() != 0 or period_end != published - timedelta(days=1):
+            raise ValueError("weekly period must end the Sunday before published_date")
+        if period_end - timedelta(days=6) != period_start:
+            raise ValueError("weekly period must contain exactly seven days")
+        generated_date = generated_at.date()
+        if generated_at.tzinfo is None or not (
+            published <= generated_date <= published + timedelta(days=6)
+        ):
+            raise ValueError("generated_at must fall within the publication week")
+        if self.candidate_count != len(self.candidates):
+            raise ValueError("candidate_count does not match candidates")
+        ranks = [candidate.repository.rank for candidate in self.candidates]
+        if ranks != list(range(1, len(ranks) + 1)):
+            raise ValueError("weekly candidate ranks must be contiguous and start at 1")
+        candidate_names = [
+            candidate.repository.full_name.casefold() for candidate in self.candidates
+        ]
+        if len(candidate_names) != len(set(candidate_names)):
+            raise ValueError("weekly candidate repository names must be unique")
+        if any(
+            candidate.first_seen_date is not None
+            and date.fromisoformat(candidate.first_seen_date) > period_end
+            for candidate in self.candidates
+        ):
+            raise ValueError("candidate first_seen_date cannot be after period_end")
+        relevant = {
+            item.repository.full_name.casefold(): item
+            for item in self.candidates
+            if item.included
+        }
+        if self.relevant_count != len(relevant):
+            raise ValueError("relevant_count does not match candidates")
+        if self.selected_count != len(self.selected_projects):
+            raise ValueError("selected_count does not match selected_projects")
+        if [item.display_rank for item in self.selected_projects] != list(
+            range(1, len(self.selected_projects) + 1)
+        ):
+            raise ValueError("selected project display ranks must be contiguous")
+        selected_names = [item.full_name.casefold() for item in self.selected_projects]
+        if len(selected_names) != len(set(selected_names)) or not set(selected_names) <= set(
+            relevant
+        ):
+            raise ValueError("selected projects must uniquely reference relevant candidates")
+        for ranking in self.selected_projects:
+            candidate = relevant[ranking.full_name.casefold()]
+            if candidate.consecutive_days != ranking.consecutive_days:
+                raise ValueError("selected project streak does not match candidate")
+            if candidate.repository.stars_today != ranking.stars_last_day:
+                raise ValueError("selected project daily stars do not match candidate")
+        article_urls = [article.url for article in self.articles]
+        if len(article_urls) != len(set(article_urls)):
+            raise ValueError("article URLs must be unique")
+        if article_urls != [
+            article.url
+            for article in sorted(
+                self.articles,
+                key=lambda item: (
+                    -date.fromisoformat(item.published_date).toordinal(),
+                    item.url,
+                ),
+            )
+        ]:
+            raise ValueError("articles must be sorted by published date and URL")
+        if any(
+            not period_start <= date.fromisoformat(article.published_date) <= period_end
+            for article in self.articles
+        ):
+            raise ValueError("article published_date must fall within the weekly period")
+        expected_sources = {
+            "https://github.com/trending?since=daily",
+            "https://github.com/trending?since=weekly",
+            "https://developers.openai.com/blog/",
+            "https://www.anthropic.com/engineering",
+        }
+        if set(self.source_urls) != expected_sources or len(self.source_urls) != len(
+            expected_sources
+        ):
+            raise ValueError("weekly source_urls must list all configured sources once")
         return self

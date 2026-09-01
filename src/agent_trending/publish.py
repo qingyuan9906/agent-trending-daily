@@ -26,6 +26,24 @@ class AtomicPublisher:
             }
         )
 
+    def publish_observation(self, *, observed_date: str, snapshot_json: str) -> None:
+        self._replace_group(
+            {self.root / "data" / "observations" / f"{observed_date}.json": snapshot_json}
+        )
+
+    def publish_weekly(
+        self, *, published_date: str, snapshot_json: str, report: str, html_report: str
+    ) -> None:
+        self._replace_group(
+            {
+                self.root / "data" / f"{published_date}.json": snapshot_json,
+                self.root / "reports" / f"{published_date}.md": report,
+                self.root / "reports" / "latest.md": report,
+                self.root / "reports" / f"{published_date}.html": html_report,
+                self.root / "reports" / "latest.html": html_report,
+            }
+        )
+
     def publish_reports(
         self, *, run_date: str, report: str, html_report: str, update_latest: bool = True
     ) -> None:

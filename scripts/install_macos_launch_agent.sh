@@ -73,4 +73,4 @@ if [[ "$timezone_path" != *"/Asia/Shanghai" ]]; then
     print -u2 "warning: launchd uses the Mac local timezone; current timezone is not Asia/Shanghai"
 fi
 
-print "installed $label; next scheduled run is 09:00 Mac local time"
+print "installed $label; daily sampling and Monday publishing run at 09:00 Mac local time"

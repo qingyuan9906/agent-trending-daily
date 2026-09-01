@@ -78,19 +78,6 @@ fi
 retry_command git_pull 3 20 git pull --ff-only
 retry_command uv_sync 3 20 uv sync --locked
 
-export DASHSCOPE_API_KEY="$(
-    /usr/bin/security find-generic-password \
-        -a "$keychain_account" \
-        -s "agent-trending-daily/DASHSCOPE_API_KEY" \
-        -w
-)"
-export DASHSCOPE_WORKSPACE_ID="$(
-    /usr/bin/security find-generic-password \
-        -a "$keychain_account" \
-        -s "agent-trending-daily/DASHSCOPE_WORKSPACE_ID" \
-        -w
-)"
-
 credential_block="$(
     printf 'protocol=https\nhost=github.com\n\n' \
         | GIT_TERMINAL_PROMPT=0 git credential fill 2>/dev/null \
@@ -101,31 +88,59 @@ github_token="$(
         | awk -F= '$1 == "password" {print substr($0, index($0, "=") + 1)}'
 )"
 
-test -n "$DASHSCOPE_API_KEY"
-test -n "$DASHSCOPE_WORKSPACE_ID"
 if [[ -n "$github_token" ]]; then
     export GITHUB_TOKEN="$github_token"
 fi
 
-retry_command pipeline 2 300 uv run agent-trending run
-
+retry_command collect 2 300 uv run agent-trending collect
 run_date="$(TZ=Asia/Shanghai date +%F)"
-report_path="$project_root/reports/$run_date.html"
-test -f "$report_path"
-
-git add \
-    "data/$run_date.json" \
-    "reports/$run_date.md" \
-    "reports/$run_date.html" \
-    reports/latest.md \
-    reports/latest.html
+observation_path="$project_root/data/observations/$run_date.json"
+test -f "$observation_path"
+git add "data/observations/$run_date.json"
 if ! git diff --cached --quiet; then
-    git commit -m "chore(report): update $run_date trending digest"
+    git commit -m "chore(observation): collect $run_date trending data"
 fi
 if [[ -n "$(git rev-list '@{upstream}..HEAD')" ]]; then
     retry_command git_push 3 20 git push origin HEAD
 fi
 
+if [[ "$(TZ=Asia/Shanghai date +%u)" == "1" ]]; then
+    export DASHSCOPE_API_KEY="$(
+        /usr/bin/security find-generic-password \
+            -a "$keychain_account" \
+            -s "agent-trending-daily/DASHSCOPE_API_KEY" \
+            -w
+    )"
+    export DASHSCOPE_WORKSPACE_ID="$(
+        /usr/bin/security find-generic-password \
+            -a "$keychain_account" \
+            -s "agent-trending-daily/DASHSCOPE_WORKSPACE_ID" \
+            -w
+    )"
+    test -n "$DASHSCOPE_API_KEY"
+    test -n "$DASHSCOPE_WORKSPACE_ID"
+    retry_command weekly_pipeline 2 300 uv run agent-trending publish-weekly
+
+    report_path="$project_root/reports/$run_date.html"
+    test -f "$report_path"
+    git add \
+        "data/$run_date.json" \
+        "reports/$run_date.md" \
+        "reports/$run_date.html" \
+        reports/latest.md \
+        reports/latest.html
+    if ! git diff --cached --quiet; then
+        git commit -m "chore(report): update $run_date weekly trending digest"
+    fi
+    if [[ -n "$(git rev-list '@{upstream}..HEAD')" ]]; then
+        retry_command git_push 3 20 git push origin HEAD
+    fi
+fi
+
 trap - EXIT
-log_stage complete "status=success report=$report_path"
-notify_user success "$report_path"
+if [[ -n "${report_path:-}" ]]; then
+    log_stage complete "status=success report=$report_path"
+    notify_user success "$report_path"
+else
+    log_stage complete "status=success observation=$observation_path"
+fi
