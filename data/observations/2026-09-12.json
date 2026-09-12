@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-09-12",
+  "generated_at": "2026-09-12T09:03:45+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://github.com/trending?since=daily",
+  "repositories": [
+    {
+      "rank": 1,
+      "full_name": "ayghri/i-have-adhd",
+      "url": "https://github.com/ayghri/i-have-adhd",
+      "page_description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
+      "language": "Python",
+      "stars_today": 3463
+    },
+    {
+      "rank": 2,
+      "full_name": "bilawalsidhu/gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "page_description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+      "language": "JavaScript",
+      "stars_today": 3680
+    },
+    {
+      "rank": 3,
+      "full_name": "nab138/iloader",
+      "url": "https://github.com/nab138/iloader",
+      "page_description": "User friendly sideloader",
+      "language": "TypeScript",
+      "stars_today": 50
+    },
+    {
+      "rank": 4,
+      "full_name": "melgarafael/DeskcommCRM",
+      "url": "https://github.com/melgarafael/DeskcommCRM",
+      "page_description": "Open-source AI sales OS — self-hosted CRM with native AI agents + WhatsApp (WAHA). Open alternative to Kommo, Octadesk & Intercom for any business that sells by chat. MCP-ready, multi-tenant, LGPD.",
+      "language": "TypeScript",
+      "stars_today": 152
+    },
+    {
+      "rank": 5,
+      "full_name": "vastsa/PI-Desktop",
+      "url": "https://github.com/vastsa/PI-Desktop",
+      "page_description": "Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins",
+      "language": "TypeScript",
+      "stars_today": 552
+    },
+    {
+      "rank": 6,
+      "full_name": "armory3d/armorpaint",
+      "url": "https://github.com/armory3d/armorpaint",
+      "page_description": "Graphics Creation Tools",
+      "language": "C",
+      "stars_today": 350
+    },
+    {
+      "rank": 7,
+      "full_name": "alsk1992/CloddsBot",
+      "url": "https://github.com/alsk1992/CloddsBot",
+      "page_description": "Open Source AI trading agent that operates autonomously across 1000+ markets - Polymarket, Kalshi, Binance, Hyperliquid, Solana DEXs, 5 EVM chains. Scans for edge, executes instantly, manages risk while you sleep. Agent commerce protocol for machine-to-machine payments. Self-hosted. Built on Claude.",
+      "language": "TypeScript",
+      "stars_today": 626
+    },
+    {
+      "rank": 8,
+      "full_name": "nashsu/llm_wiki",
+      "url": "https://github.com/nashsu/llm_wiki",
+      "page_description": "LLM Wiki is a cross-platform desktop application that turns your documents into an organized, interlinked knowledge base — automatically. Instead of traditional RAG (retrieve-and-answer from scratch every time), the LLM incrementally builds and maintains a persistent wiki from your sources。",
+      "language": "TypeScript",
+      "stars_today": 647
+    },
+    {
+      "rank": 9,
+      "full_name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "page_description": "An agentic skills framework & software development methodology that works.",
+      "language": "Shell",
+      "stars_today": 729
+    },
+    {
+      "rank": 10,
+      "full_name": "Sonarr/Sonarr",
+      "url": "https://github.com/Sonarr/Sonarr",
+      "page_description": "Smart PVR for newsgroup and bittorrent users.",
+      "language": "C#",
+      "stars_today": 191
+    },
+    {
+      "rank": 11,
+      "full_name": "jihe520/MathModelAgent",
+      "url": "https://github.com/jihe520/MathModelAgent",
+      "page_description": "🤖📐专为数学建模设计的 Agent & skills ,自动完成数学建模，生成一份完整的可以直接提交的论文。 An Agent Designed for Mathematical Modeling ,Automatically complete mathmodel and generate a complete paper ready for submission.",
+      "language": "Python",
+      "stars_today": 129
+    },
+    {
+      "rank": 12,
+      "full_name": "p1neappleXpress/OpenFlux",
+      "url": "https://github.com/p1neappleXpress/OpenFlux",
+      "page_description": "Network stack research tool. TCP tunnel with pluggable transports.",
+      "language": "Go",
+      "stars_today": 198
+    },
+    {
+      "rank": 13,
+      "full_name": "jordan-gibbs/hyperresearch",
+      "url": "https://github.com/jordan-gibbs/hyperresearch",
+      "page_description": "Agent-driven research knowledge base. Agents collect, search, and synthesize web research into a persistent, searchable wiki.",
+      "language": "Python",
+      "stars_today": 153
+    },
+    {
+      "rank": 14,
+      "full_name": "alphaXiv/OpenResearch",
+      "url": "https://github.com/alphaXiv/OpenResearch",
+      "page_description": "Run parallel research agents with any model",
+      "language": "Rust",
+      "stars_today": 120
+    },
+    {
+      "rank": 15,
+      "full_name": "github/spec-kit",
+      "url": "https://github.com/github/spec-kit",
+      "page_description": "💫 Toolkit to help you get started with Spec-Driven Development",
+      "language": "Python",
+      "stars_today": 1015
+    },
+    {
+      "rank": 16,
+      "full_name": "pascalorg/editor",
+      "url": "https://github.com/pascalorg/editor",
+      "page_description": "Open-source 3D architectural editor with a local CLI, MCP tools, and practical workflows for humans and AI agents.",
+      "language": "TypeScript",
+      "stars_today": 106
+    }
+  ]
+}
