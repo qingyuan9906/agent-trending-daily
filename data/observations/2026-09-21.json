@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-09-21",
+  "generated_at": "2026-09-21T09:09:50+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://github.com/trending?since=daily",
+  "repositories": [
+    {
+      "rank": 1,
+      "full_name": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "page_description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "language": "JavaScript",
+      "stars_today": 826
+    },
+    {
+      "rank": 2,
+      "full_name": "BuilderIO/agent-native",
+      "url": "https://github.com/BuilderIO/agent-native",
+      "page_description": "A framework for building agentic apps",
+      "language": "TypeScript",
+      "stars_today": 98
+    },
+    {
+      "rank": 3,
+      "full_name": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "page_description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+      "language": "JavaScript",
+      "stars_today": 2428
+    },
+    {
+      "rank": 4,
+      "full_name": "trycua/cua",
+      "url": "https://github.com/trycua/cua",
+      "page_description": "Scale computer-use 2.0 with open-source drivers, cross-OS fleets, and benchmarks for training, evaluation, and data generation.",
+      "language": "HTML",
+      "stars_today": 1018
+    },
+    {
+      "rank": 5,
+      "full_name": "anthropics/financial-services",
+      "url": "https://github.com/anthropics/financial-services",
+      "page_description": "",
+      "language": "Python",
+      "stars_today": 260
+    },
+    {
+      "rank": 6,
+      "full_name": "paperless-ngx/paperless-ngx",
+      "url": "https://github.com/paperless-ngx/paperless-ngx",
+      "page_description": "A community-supported supercharged document management system: scan, index and archive all your documents",
+      "language": "Python",
+      "stars_today": 57
+    },
+    {
+      "rank": 7,
+      "full_name": "anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code",
+      "page_description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
+      "language": "TypeScript",
+      "stars_today": 419
+    },
+    {
+      "rank": 8,
+      "full_name": "mihail911/modern-software-dev-assignments",
+      "url": "https://github.com/mihail911/modern-software-dev-assignments",
+      "page_description": "Assignments for CS146S: The Modern Software Dev (Stanford University Fall 2026/2025)",
+      "language": "Python",
+      "stars_today": 172
+    },
+    {
+      "rank": 9,
+      "full_name": "higgsfield-ai/higgsfield",
+      "url": "https://github.com/higgsfield-ai/higgsfield",
+      "page_description": "Fault-tolerant, highly scalable GPU orchestration, and a machine learning framework designed for training models with billions to trillions of parameters",
+      "language": "Jupyter Notebook",
+      "stars_today": 465
+    },
+    {
+      "rank": 10,
+      "full_name": "Open-Dev-Society/OpenStock",
+      "url": "https://github.com/Open-Dev-Society/OpenStock",
+      "page_description": "OpenStock is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free.",
+      "language": "TypeScript",
+      "stars_today": 755
+    },
+    {
+      "rank": 11,
+      "full_name": "coder/coder",
+      "url": "https://github.com/coder/coder",
+      "page_description": "Secure environments for developers and their agents",
+      "language": "Go",
+      "stars_today": 379
+    },
+    {
+      "rank": 12,
+      "full_name": "vercel-labs/json-render",
+      "url": "https://github.com/vercel-labs/json-render",
+      "page_description": "The Generative UI framework",
+      "language": "TypeScript",
+      "stars_today": 291
+    },
+    {
+      "rank": 13,
+      "full_name": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "page_description": "Production-grade engineering skills for AI coding agents.",
+      "language": "JavaScript",
+      "stars_today": 736
+    }
+  ]
+}
