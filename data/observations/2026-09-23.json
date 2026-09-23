@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-09-23",
+  "generated_at": "2026-09-23T09:16:55+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://github.com/trending?since=daily",
+  "repositories": [
+    {
+      "rank": 1,
+      "full_name": "anthropics/financial-services",
+      "url": "https://github.com/anthropics/financial-services",
+      "page_description": "",
+      "language": "Python",
+      "stars_today": 438
+    },
+    {
+      "rank": 2,
+      "full_name": "agent-substrate/substrate",
+      "url": "https://github.com/agent-substrate/substrate",
+      "page_description": "Agent Substrate: the core system",
+      "language": "Go",
+      "stars_today": 245
+    },
+    {
+      "rank": 3,
+      "full_name": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "page_description": "The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime.",
+      "language": "TypeScript",
+      "stars_today": 255
+    },
+    {
+      "rank": 4,
+      "full_name": "davila7/claude-code-templates",
+      "url": "https://github.com/davila7/claude-code-templates",
+      "page_description": "CLI tool for configuring and monitoring Claude Code",
+      "language": "Python",
+      "stars_today": 64
+    },
+    {
+      "rank": 5,
+      "full_name": "google/ax",
+      "url": "https://github.com/google/ax",
+      "page_description": "Google's open agentic orchestration runtime",
+      "language": "Go",
+      "stars_today": 2305
+    },
+    {
+      "rank": 6,
+      "full_name": "mvt-project/mvt",
+      "url": "https://github.com/mvt-project/mvt",
+      "page_description": "MVT (Mobile Verification Toolkit) helps with conducting forensics of mobile devices in order to find signs of a potential compromise.",
+      "language": "Python",
+      "stars_today": 441
+    },
+    {
+      "rank": 7,
+      "full_name": "superdesigndev/treg",
+      "url": "https://github.com/superdesigndev/treg",
+      "page_description": "OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn",
+      "language": "Python",
+      "stars_today": 230
+    },
+    {
+      "rank": 8,
+      "full_name": "browser-use/video-use",
+      "url": "https://github.com/browser-use/video-use",
+      "page_description": "Edit videos with coding agents",
+      "language": "Python",
+      "stars_today": 191
+    }
+  ]
+}
