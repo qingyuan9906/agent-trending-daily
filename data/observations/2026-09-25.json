@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-09-25",
+  "generated_at": "2026-09-25T09:48:56+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://github.com/trending?since=daily",
+  "repositories": [
+    {
+      "rank": 1,
+      "full_name": "rohitg00/ai-engineering-from-scratch",
+      "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "page_description": "Learn it. Build it. Ship it for others.",
+      "language": "Python",
+      "stars_today": 347
+    },
+    {
+      "rank": 2,
+      "full_name": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "page_description": "Hindsight: Agent Memory That Learns",
+      "language": "Python",
+      "stars_today": 1668
+    },
+    {
+      "rank": 3,
+      "full_name": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "page_description": "The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime.",
+      "language": "TypeScript",
+      "stars_today": 1082
+    },
+    {
+      "rank": 4,
+      "full_name": "google/ax",
+      "url": "https://github.com/google/ax",
+      "page_description": "Google's open agentic orchestration runtime",
+      "language": "Go",
+      "stars_today": 1373
+    },
+    {
+      "rank": 5,
+      "full_name": "NVIDIA/Model-Optimizer",
+      "url": "https://github.com/NVIDIA/Model-Optimizer",
+      "page_description": "A unified library of SOTA model optimization techniques like quantization, distillation, pruning, neural architecture search, speculative decoding, etc. It compresses deep learning models for downstream deployment frameworks like TensorRT-LLM, TensorRT, vLLM, etc. to optimize inference speed.",
+      "language": "Python",
+      "stars_today": 44
+    },
+    {
+      "rank": 6,
+      "full_name": "FxEmbed/FxEmbed",
+      "url": "https://github.com/FxEmbed/FxEmbed",
+      "page_description": "Fix X/Twitter and Bluesky embeds! Use multiple images, videos, polls, translations and more on Discord, Telegram and others",
+      "language": "TypeScript",
+      "stars_today": 182
+    },
+    {
+      "rank": 7,
+      "full_name": "anthropics/financial-services",
+      "url": "https://github.com/anthropics/financial-services",
+      "page_description": "",
+      "language": "Python",
+      "stars_today": 509
+    },
+    {
+      "rank": 8,
+      "full_name": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "page_description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "language": "Python",
+      "stars_today": 413
+    },
+    {
+      "rank": 9,
+      "full_name": "mvt-project/mvt",
+      "url": "https://github.com/mvt-project/mvt",
+      "page_description": "MVT (Mobile Verification Toolkit) helps with conducting forensics of mobile devices in order to find signs of a potential compromise.",
+      "language": "Python",
+      "stars_today": 272
+    },
+    {
+      "rank": 10,
+      "full_name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "page_description": "An agentic skills framework & software development methodology that works.",
+      "language": "Shell",
+      "stars_today": 611
+    },
+    {
+      "rank": 11,
+      "full_name": "strands-agents/harness-sdk",
+      "url": "https://github.com/strands-agents/harness-sdk",
+      "page_description": "Build an agent harness and control it end-to-end. Open-source SDK for production AI agents in Python & TypeScript - any model, any cloud.",
+      "language": "Python",
+      "stars_today": 455
+    },
+    {
+      "rank": 12,
+      "full_name": "julyx10/lap",
+      "url": "https://github.com/julyx10/lap",
+      "page_description": "An offline-first photo manager for large local libraries",
+      "language": "Vue",
+      "stars_today": 122
+    },
+    {
+      "rank": 13,
+      "full_name": "superdesigndev/treg",
+      "url": "https://github.com/superdesigndev/treg",
+      "page_description": "OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn",
+      "language": "Python",
+      "stars_today": 468
+    },
+    {
+      "rank": 14,
+      "full_name": "leejet/stable-diffusion.cpp",
+      "url": "https://github.com/leejet/stable-diffusion.cpp",
+      "page_description": "Diffusion model(SD,Flux,Wan,Qwen Image,Z-Image,...) inference in pure C/C++",
+      "language": "C++",
+      "stars_today": 36
+    }
+  ]
+}
