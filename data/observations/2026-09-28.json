@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-09-28",
+  "generated_at": "2026-09-28T09:01:56+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://github.com/trending?since=daily",
+  "repositories": [
+    {
+      "rank": 1,
+      "full_name": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "page_description": "The open-source app everyone uses to manage agents at work",
+      "language": "TypeScript",
+      "stars_today": 2401
+    },
+    {
+      "rank": 2,
+      "full_name": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "page_description": "Hindsight: Agent Memory That Learns",
+      "language": "Python",
+      "stars_today": 4520
+    },
+    {
+      "rank": 3,
+      "full_name": "debpalash/VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "page_description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+      "language": "Python",
+      "stars_today": 3086
+    },
+    {
+      "rank": 4,
+      "full_name": "rohitg00/ai-engineering-from-scratch",
+      "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "page_description": "Learn it. Build it. Ship it for others.",
+      "language": "Python",
+      "stars_today": 790
+    },
+    {
+      "rank": 5,
+      "full_name": "InfinityLoop1308/PipePipe",
+      "url": "https://github.com/InfinityLoop1308/PipePipe",
+      "page_description": "An open-source Android app to let you browse YouTube and other services freely.",
+      "language": "Shell",
+      "stars_today": 242
+    },
+    {
+      "rank": 6,
+      "full_name": "vercel-labs/scriptc",
+      "url": "https://github.com/vercel-labs/scriptc",
+      "page_description": "TypeScript-to-Native Compiler",
+      "language": "TypeScript",
+      "stars_today": 102
+    },
+    {
+      "rank": 7,
+      "full_name": "mvschwarz/openrig",
+      "url": "https://github.com/mvschwarz/openrig",
+      "page_description": "Multi-agent harness that runs Claude Code and Codex together as one system",
+      "language": "TypeScript",
+      "stars_today": 114
+    },
+    {
+      "rank": 8,
+      "full_name": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "page_description": "The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime.",
+      "language": "TypeScript",
+      "stars_today": 895
+    },
+    {
+      "rank": 9,
+      "full_name": "willfaust/Madeira",
+      "url": "https://github.com/willfaust/Madeira",
+      "page_description": "Run x86-64 Windows PC games on jailed iOS via FEX-Emu + Wine + DXMT",
+      "language": "C",
+      "stars_today": 83
+    }
+  ]
+}
