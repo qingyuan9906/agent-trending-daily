@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-09-30",
+  "generated_at": "2026-09-30T09:04:18+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://github.com/trending?since=daily",
+  "repositories": [
+    {
+      "rank": 1,
+      "full_name": "debpalash/VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "page_description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+      "language": "Python",
+      "stars_today": 4758
+    },
+    {
+      "rank": 2,
+      "full_name": "NVIDIA/OpenShell",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "page_description": "OpenShell is the safe, private runtime for autonomous AI agents.",
+      "language": "Rust",
+      "stars_today": 990
+    },
+    {
+      "rank": 3,
+      "full_name": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "page_description": "Hindsight: Agent Memory That Learns",
+      "language": "Python",
+      "stars_today": 2575
+    },
+    {
+      "rank": 4,
+      "full_name": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "page_description": "The open-source app everyone uses to manage agents at work",
+      "language": "TypeScript",
+      "stars_today": 2458
+    },
+    {
+      "rank": 5,
+      "full_name": "t8y2/dbx",
+      "url": "https://github.com/t8y2/dbx",
+      "page_description": "25 MB lightweight cross-platform database client for 100+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker. | 轻量级跨平台数据库管理工具，支持 MySQL、PostgreSQL、SQLite、Redis、MongoDB、达梦等 100+ 数据库，提供桌面端、Docker、CLI、内置 AI 助手和 MCP。",
+      "language": "Rust",
+      "stars_today": 232
+    },
+    {
+      "rank": 6,
+      "full_name": "mvschwarz/openrig",
+      "url": "https://github.com/mvschwarz/openrig",
+      "page_description": "Multi-agent harness that runs Claude Code and Codex together as one system",
+      "language": "TypeScript",
+      "stars_today": 737
+    },
+    {
+      "rank": 7,
+      "full_name": "oblien/openship",
+      "url": "https://github.com/oblien/openship",
+      "page_description": "Self-hosted deployment platform",
+      "language": "TypeScript",
+      "stars_today": 437
+    },
+    {
+      "rank": 8,
+      "full_name": "averygan/reclip",
+      "url": "https://github.com/averygan/reclip",
+      "page_description": "Download videos from almost any website. Lightweight, self-hosted media downloader with a clean web UI.",
+      "language": "HTML",
+      "stars_today": 113
+    },
+    {
+      "rank": 9,
+      "full_name": "cs341-illinois/coursebook",
+      "url": "https://github.com/cs341-illinois/coursebook",
+      "page_description": "Open Source Introductory Systems Programming Textbook for the University of Illinois",
+      "language": "TeX",
+      "stars_today": 572
+    },
+    {
+      "rank": 10,
+      "full_name": "rohitg00/ai-engineering-from-scratch",
+      "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "page_description": "Learn it. Build it. Ship it for others.",
+      "language": "Python",
+      "stars_today": 786
+    },
+    {
+      "rank": 11,
+      "full_name": "VectifyAI/PageIndex",
+      "url": "https://github.com/VectifyAI/PageIndex",
+      "page_description": "📑 PageIndex: Document Index for Vectorless, Reasoning-based RAG",
+      "language": "Python",
+      "stars_today": 835
+    },
+    {
+      "rank": 12,
+      "full_name": "willfaust/Madeira",
+      "url": "https://github.com/willfaust/Madeira",
+      "page_description": "Run x86-64 Windows PC games on jailed iOS via FEX-Emu + Wine + DXMT",
+      "language": "C",
+      "stars_today": 81
+    },
+    {
+      "rank": 13,
+      "full_name": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "page_description": "The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime.",
+      "language": "TypeScript",
+      "stars_today": 696
+    },
+    {
+      "rank": 14,
+      "full_name": "rakyll/hey",
+      "url": "https://github.com/rakyll/hey",
+      "page_description": "HTTP load generator, ApacheBench (ab) replacement",
+      "language": "Go",
+      "stars_today": 34
+    }
+  ]
+}
