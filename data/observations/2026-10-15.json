@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-10-15",
+  "generated_at": "2026-10-15T09:08:59+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_url": "https://github.com/trending?since=daily",
+  "repositories": [
+    {
+      "rank": 1,
+      "full_name": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "page_description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+      "language": "TypeScript",
+      "stars_today": 41034
+    },
+    {
+      "rank": 2,
+      "full_name": "debpalash/VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "page_description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+      "language": "Python",
+      "stars_today": 3538
+    },
+    {
+      "rank": 3,
+      "full_name": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "page_description": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.",
+      "language": "TypeScript",
+      "stars_today": 947
+    },
+    {
+      "rank": 4,
+      "full_name": "nvm-sh/nvm",
+      "url": "https://github.com/nvm-sh/nvm",
+      "page_description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions.",
+      "language": "Shell",
+      "stars_today": 52
+    },
+    {
+      "rank": 5,
+      "full_name": "K-Dense-AI/scientific-agent-skills",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "page_description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+      "language": "Python",
+      "stars_today": 163
+    },
+    {
+      "rank": 6,
+      "full_name": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "page_description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "language": "Python",
+      "stars_today": 103
+    },
+    {
+      "rank": 7,
+      "full_name": "ifixai-ai/iFixAi",
+      "url": "https://github.com/ifixai-ai/iFixAi",
+      "page_description": "Independent Auditing of AI Agents. Run by human or the agent itself, to answer the most crucial question in the AI Agent Economy. Is the agent doing what is supposed to do? With iFixAi you can have this answer in less than 120 seconds.",
+      "language": "Python",
+      "stars_today": 2109
+    },
+    {
+      "rank": 8,
+      "full_name": "vxcontrol/pentagi",
+      "url": "https://github.com/vxcontrol/pentagi",
+      "page_description": "Fully autonomous AI Agents system capable of performing complex penetration testing tasks",
+      "language": "Go",
+      "stars_today": 1025
+    },
+    {
+      "rank": 9,
+      "full_name": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust",
+      "page_description": "Empowering everyone to build reliable and efficient software.",
+      "language": "Rust",
+      "stars_today": 207
+    },
+    {
+      "rank": 10,
+      "full_name": "xtool-org/xtool",
+      "url": "https://github.com/xtool-org/xtool",
+      "page_description": "Cross-platform Xcode replacement. Build and deploy iOS apps with SwiftPM on Linux, Windows, macOS.",
+      "language": "Swift",
+      "stars_today": 1502
+    },
+    {
+      "rank": 11,
+      "full_name": "ntdevlabs/tiny11builder",
+      "url": "https://github.com/ntdevlabs/tiny11builder",
+      "page_description": "WinUI app for building smaller, customized Windows 11 images.",
+      "language": "C#",
+      "stars_today": 139
+    },
+    {
+      "rank": 12,
+      "full_name": "NationalSecurityAgency/ghidra",
+      "url": "https://github.com/NationalSecurityAgency/ghidra",
+      "page_description": "Ghidra is a software reverse engineering (SRE) framework",
+      "language": "Java",
+      "stars_today": 1008
+    }
+  ]
+}
