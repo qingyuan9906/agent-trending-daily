@@ -1,0 +1,2436 @@
+{
+  "schema_version": 3,
+  "published_date": "2026-10-19",
+  "period_start": "2026-10-12",
+  "period_end": "2026-10-18",
+  "generated_at": "2026-10-19T09:06:05+08:00",
+  "timezone": "Asia/Shanghai",
+  "source_urls": [
+    "https://github.com/trending?since=daily",
+    "https://github.com/trending?since=weekly",
+    "https://developers.openai.com/blog/",
+    "https://www.anthropic.com/engineering"
+  ],
+  "model": "qwen3.7-plus",
+  "token_usage": {
+    "input_tokens": 249486,
+    "output_tokens": 16154,
+    "cached_input_tokens": 8960,
+    "total_tokens": 265640,
+    "estimated_cost_cny": 0.491094,
+    "pricing_basis": "qwen3.7-plus/cn-beijing/limited-80pct/checked-2026-08-27"
+  },
+  "candidate_count": 39,
+  "relevant_count": 26,
+  "selected_count": 5,
+  "candidates": [
+    {
+      "repository": {
+        "rank": 1,
+        "full_name": "morluto/rea",
+        "url": "https://github.com/morluto/rea",
+        "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+        "language": "TypeScript",
+        "stars_total": 322429,
+        "stars_today": 0,
+        "forks": 81698,
+        "license": "MIT",
+        "topics": [
+          "agent-skills",
+          "ai-agents",
+          "binary-analysis",
+          "claude-code",
+          "cli",
+          "codex",
+          "cordis",
+          "decompiler",
+          "developer-tools",
+          "dsh",
+          "dsh-plugin",
+          "ghidra",
+          "hopper",
+          "llm",
+          "mcp",
+          "model-context-protocol",
+          "rea",
+          "reverse-engineering",
+          "static-analysis",
+          "touhou"
+        ],
+        "readme_sha256": "75ca44765dfa3d5bce1dfba3c9ddad35fca29f8e8fbc8cae60b4d9078e43e211"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "mcp"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库明确集成MCP协议并支持多种AI代理，属于典型的Agent应用生态工具。它通过标准化接口将反向工程能力暴露给大语言模型，使代理能够自主调用二进制分析、静态检查等功能，实现了AI驱动的代码逆向工作流，符合Agent应用的核心定义。",
+        "confidence": "high",
+        "summary_zh": "REA是一个基于模型上下文协议的反向工程工具，旨在通过AI代理分析从应用程序行为到原生二进制文件的各类目标。它支持连接Claude Code等代理，利用Ghidra或Hopper等工具进行本地分析，涵盖JavaScript、.NET及Android APK等多种格式。该工具能解释功能原理并提供证据，帮助开发者在无源码情况下理解并复现应用特性，所有分析均在本地运行以保障安全。",
+        "highlights_zh": [
+          "REA通过模型上下文协议连接AI代理与反向工程工具，支持自动化分析原生二进制文件、JavaScript应用及网站结构，无需人工干预即可获取代码逻辑证据。",
+          "该工具兼容Ghidra、Hopper及IDA等专业逆向平台，同时内置对.NET程序集、Android APK及Go二进制文件的静态分析能力，提供跨平台的本地化安全分析环境。",
+          "开发者可通过命令行或集成代理查询应用功能实现细节，REA会返回包含模块依赖、IPC通信及源码映射的详细报告，辅助无源码情况下的功能复现与开发。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "REA是一个基于模型上下文协议的反向工程工具，旨在通过AI代理分析从应用程序行为到原生二进制文件的各类目标。它支持连接Claude Code等代理，利用Ghidra或Hopper等工具进行本地分析，涵盖JavaScript、.NET及Android APK等多种格式。该工具能解释功能原理并提供证据，帮助开发者在无源码情况下理解并复现应用特性，所有分析均在本地运行以保障安全。",
+      "relevance_reason_zh": "该仓库明确集成MCP协议并支持多种AI代理，属于典型的Agent应用生态工具。它通过标准化接口将反向工程能力暴露给大语言模型，使代理能够自主调用二进制分析、静态检查等功能，实现了AI驱动的代码逆向工作流，符合Agent应用的核心定义。",
+      "highlights_zh": [
+        "REA通过模型上下文协议连接AI代理与反向工程工具，支持自动化分析原生二进制文件、JavaScript应用及网站结构，无需人工干预即可获取代码逻辑证据。",
+        "该工具兼容Ghidra、Hopper及IDA等专业逆向平台，同时内置对.NET程序集、Android APK及Go二进制文件的静态分析能力，提供跨平台的本地化安全分析环境。",
+        "开发者可通过命令行或集成代理查询应用功能实现细节，REA会返回包含模块依赖、IPC通信及源码映射的详细报告，辅助无源码情况下的功能复现与开发。"
+      ],
+      "first_seen_date": "2026-10-08",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 2,
+        "full_name": "storytold/artcraft",
+        "url": "https://github.com/storytold/artcraft",
+        "description": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers",
+        "language": "Rust",
+        "stars_total": 32746,
+        "stars_today": 0,
+        "forks": 5188,
+        "license": "Apache-2.0",
+        "topics": [
+          "3d-graphics",
+          "ai",
+          "aivideo",
+          "filmmaking",
+          "imagegeneration"
+        ],
+        "readme_sha256": "933462209ceb7309defc4ec7df50b110ae17d26d9ab2ff38e241d1081d7045a1"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 3,
+        "full_name": "boykopovar/AnyPS5",
+        "url": "https://github.com/boykopovar/AnyPS5",
+        "description": "Tool for automatic PS5 executables porting to Linux and Windows",
+        "language": "C++",
+        "stars_total": 43228,
+        "stars_today": 0,
+        "forks": 3922,
+        "license": "GPL-2.0",
+        "topics": [
+          "anyps5",
+          "dynamic-library",
+          "game-porting",
+          "ps5",
+          "ps5-tools",
+          "spir-v",
+          "vulkan"
+        ],
+        "readme_sha256": "83645464d5569fd51ce58194625995eee1941aed92874babcf5a174e56353ada"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 4,
+        "full_name": "anthropics/claude-plugins-official",
+        "url": "https://github.com/anthropics/claude-plugins-official",
+        "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+        "language": "Python",
+        "stars_total": 42702,
+        "stars_today": 1397,
+        "forks": 4535,
+        "license": "Apache-2.0",
+        "topics": [
+          "claude-code",
+          "mcp",
+          "skills"
+        ],
+        "readme_sha256": "f34b8730d2b61617045c61ea2d9bf3ab08561305bfac77ea061e755bf46aeac2"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "mcp",
+          "claude-plugins"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_framework",
+        "related_tags": [
+          "agent_framework",
+          "mcp_tools",
+          "agent_application"
+        ],
+        "reason_zh": "该仓库直接定义了Claude Code的智能体扩展机制，包含智能体定义、技能包及MCP服务器配置。作为官方插件市场，它构成了Agent应用生态的核心基础设施，允许通过标准化接口增强智能体的功能边界与交互能力。",
+        "confidence": "high",
+        "summary_zh": "该仓库是Anthropic官方管理的Claude Code插件目录，旨在提供高质量的插件生态。它包含内部开发的插件以及经过审核的第三方合作伙伴插件。通过模型上下文协议和标准化结构，该目录支持命令、智能体定义和技能包的集成。用户可通过命令行或发现界面安装插件，开发者需遵循严格的元数据规范和不可变命名规则以确保系统稳定性与安全性。",
+        "highlights_zh": [
+          "提供标准化的插件目录结构，支持内部及第三方高质量插件的集成与管理，确保生态系统的统一性与规范性。",
+          "通过模型上下文协议配置和可选的智能体定义文件，实现外部工具与Claude Code智能体的无缝连接和功能扩展。",
+          "实施严格的插件命名不可变规则及自动迁移机制，保障用户已安装插件的稳定性，防止因重命名导致的服务中断。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_framework",
+      "related_tags": [
+        "agent_framework",
+        "mcp_tools",
+        "agent_application"
+      ],
+      "summary_zh": "该仓库是Anthropic官方管理的Claude Code插件目录，旨在提供高质量的插件生态。它包含内部开发的插件以及经过审核的第三方合作伙伴插件。通过模型上下文协议和标准化结构，该目录支持命令、智能体定义和技能包的集成。用户可通过命令行或发现界面安装插件，开发者需遵循严格的元数据规范和不可变命名规则以确保系统稳定性与安全性。",
+      "relevance_reason_zh": "该仓库直接定义了Claude Code的智能体扩展机制，包含智能体定义、技能包及MCP服务器配置。作为官方插件市场，它构成了Agent应用生态的核心基础设施，允许通过标准化接口增强智能体的功能边界与交互能力。",
+      "highlights_zh": [
+        "提供标准化的插件目录结构，支持内部及第三方高质量插件的集成与管理，确保生态系统的统一性与规范性。",
+        "通过模型上下文协议配置和可选的智能体定义文件，实现外部工具与Claude Code智能体的无缝连接和功能扩展。",
+        "实施严格的插件命名不可变规则及自动迁移机制，保障用户已安装插件的稳定性，防止因重命名导致的服务中断。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 3
+    },
+    {
+      "repository": {
+        "rank": 5,
+        "full_name": "mksglu/context-mode",
+        "url": "https://github.com/mksglu/context-mode",
+        "description": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and   enforces routing across 17 platforms via MCP + hooks.",
+        "language": "TypeScript",
+        "stars_total": 30762,
+        "stars_today": 0,
+        "forks": 2277,
+        "license": null,
+        "topics": [
+          "antigravity",
+          "claude",
+          "claude-code",
+          "claude-code-hooks",
+          "claude-code-plugins",
+          "claude-code-skill",
+          "codex",
+          "codex-cli",
+          "context-mode",
+          "copilot",
+          "cursor-plugin",
+          "kiro",
+          "mcp",
+          "mcp-server",
+          "mcp-tools",
+          "openclaw",
+          "opencode",
+          "pi-agent",
+          "skills",
+          "zed-extension"
+        ],
+        "readme_sha256": "9308e09043c4746340662e7a72e68de155fc28d70a1dd316f5ff292596076d04"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "mcp",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库直接服务于AI编程代理生态，通过MCP协议优化代理的上下文管理、工具调用及记忆机制，显著提升代理在长会话中的稳定性与效率，属于典型的代理应用基础设施。",
+        "confidence": "high",
+        "summary_zh": "Context Mode是一款针对AI编程代理的上下文窗口优化工具。它通过沙盒机制将工具输出减少98%，利用SQLite和FTS5实现会话记忆持久化与精准检索。该方案支持17个平台，强制推行代码生成而非数据处理的范式，有效解决上下文溢出问题并提升代理效率。",
+        "highlights_zh": [
+          "通过沙盒机制隔离原始数据，将315KB的工具输出压缩至5.4KB，实现98%的上下文节省，有效防止窗口溢出。",
+          "利用SQLite和FTS5索引会话事件，支持BM25搜索检索相关记忆，确保对话压缩后代理仍能无缝接续任务。",
+          "强制推行代码生成范式，让代理编写脚本执行分析而非直接读取大量文件，以极少token替代多次工具调用。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "Context Mode是一款针对AI编程代理的上下文窗口优化工具。它通过沙盒机制将工具输出减少98%，利用SQLite和FTS5实现会话记忆持久化与精准检索。该方案支持17个平台，强制推行代码生成而非数据处理的范式，有效解决上下文溢出问题并提升代理效率。",
+      "relevance_reason_zh": "该仓库直接服务于AI编程代理生态，通过MCP协议优化代理的上下文管理、工具调用及记忆机制，显著提升代理在长会话中的稳定性与效率，属于典型的代理应用基础设施。",
+      "highlights_zh": [
+        "通过沙盒机制隔离原始数据，将315KB的工具输出压缩至5.4KB，实现98%的上下文节省，有效防止窗口溢出。",
+        "利用SQLite和FTS5索引会话事件，支持BM25搜索检索相关记忆，确保对话压缩后代理仍能无缝接续任务。",
+        "强制推行代码生成范式，让代理编写脚本执行分析而非直接读取大量文件，以极少token替代多次工具调用。"
+      ],
+      "first_seen_date": "2026-09-08",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 6,
+        "full_name": "cathrynlavery/diagram-design",
+        "url": "https://github.com/cathrynlavery/diagram-design",
+        "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+        "language": "HTML",
+        "stars_total": 57706,
+        "stars_today": 0,
+        "forks": 3694,
+        "license": "MIT",
+        "topics": [
+          "agent-skills",
+          "claude-code",
+          "codex",
+          "data-visualization",
+          "diagrams",
+          "drawio",
+          "mermaid",
+          "svg"
+        ],
+        "readme_sha256": "95d1168f46727ffffdc5440c07480b318fa72b6fa2f21ab2d9a7e35790403c74"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application"
+        ],
+        "reason_zh": "该仓库明确标记为agent-skills，旨在增强AI代理的可视化能力。它允许代理根据自然语言描述自主规划并生成高质量图表文件。这种将复杂设计任务封装为可调用技能的模式，完美契合Agent应用生态中扩展模型执行能力的核心需求。",
+        "confidence": "high",
+        "summary_zh": "这是一个专为Claude Code、Cursor等AI代理设计的图表生成技能。它支持45种图表类型，通过自然语言指令生成独立的HTML加SVG文件。该工具强调无阴影的编辑级设计风格，避免Mermaid的粗糙感。用户可导入Drawio或Excalidraw文件并重绘，也能导出为PNG或SVG。它支持品牌色彩与字体匹配，确保输出符合视觉规范。安装方式兼容多种主流代理平台，提供统一的跨平台图表解决方案。",
+        "highlights_zh": [
+          "支持Claude Code、Cursor、GitHub Copilot等多种主流AI代理平台，通过统一接口实现跨平台图表生成能力。",
+          "提供45种预设图表类型，用户只需使用自然语言描述需求，代理即可自动选择类型并生成布局合理的图表。",
+          "生成单个自包含的HTML与SVG文件，无需外部依赖，支持导出为PNG格式，便于直接嵌入文档或演示文稿。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application"
+      ],
+      "summary_zh": "这是一个专为Claude Code、Cursor等AI代理设计的图表生成技能。它支持45种图表类型，通过自然语言指令生成独立的HTML加SVG文件。该工具强调无阴影的编辑级设计风格，避免Mermaid的粗糙感。用户可导入Drawio或Excalidraw文件并重绘，也能导出为PNG或SVG。它支持品牌色彩与字体匹配，确保输出符合视觉规范。安装方式兼容多种主流代理平台，提供统一的跨平台图表解决方案。",
+      "relevance_reason_zh": "该仓库明确标记为agent-skills，旨在增强AI代理的可视化能力。它允许代理根据自然语言描述自主规划并生成高质量图表文件。这种将复杂设计任务封装为可调用技能的模式，完美契合Agent应用生态中扩展模型执行能力的核心需求。",
+      "highlights_zh": [
+        "支持Claude Code、Cursor、GitHub Copilot等多种主流AI代理平台，通过统一接口实现跨平台图表生成能力。",
+        "提供45种预设图表类型，用户只需使用自然语言描述需求，代理即可自动选择类型并生成布局合理的图表。",
+        "生成单个自包含的HTML与SVG文件，无需外部依赖，支持导出为PNG格式，便于直接嵌入文档或演示文稿。"
+      ],
+      "first_seen_date": "2026-09-05",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 7,
+        "full_name": "NationalSecurityAgency/ghidra",
+        "url": "https://github.com/NationalSecurityAgency/ghidra",
+        "description": "Ghidra is a software reverse engineering (SRE) framework",
+        "language": "Java",
+        "stars_total": 90916,
+        "stars_today": 0,
+        "forks": 10180,
+        "license": "Apache-2.0",
+        "topics": [
+          "disassembler",
+          "reverse-engineering",
+          "software-analysis"
+        ],
+        "readme_sha256": "8d4cc75b5c6d0d6ce218bbfa45adc36029d4719d6bcabb33499a36d66ccbf3ec"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 8,
+        "full_name": "heygen-com/hyperframes",
+        "url": "https://github.com/heygen-com/hyperframes",
+        "description": "Write HTML. Render video. Built for agents.",
+        "language": "TypeScript",
+        "stars_total": 66749,
+        "stars_today": 0,
+        "forks": 6055,
+        "license": "Apache-2.0",
+        "topics": [
+          "ai",
+          "animation",
+          "ffmpeg",
+          "framework",
+          "gsap",
+          "html",
+          "mcp",
+          "puppeteer",
+          "rendering",
+          "typescript",
+          "video"
+        ],
+        "readme_sha256": "3e8f26d5e35c6a8c32c661bf1439443d8eee332eedc9bf1a32bfe3dc417c218e"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "mcp",
+          "coding agent",
+          "claude plugin"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库明确标注为Built for agents，并提供针对Claude Code、Codex等AI编码智能体的插件和技能包。其核心功能是通过自然语言指令驱动智能体完成视频创作，属于典型的智能体应用生态工具，具备高度的智能体集成能力和自动化工作流特征。",
+        "confidence": "high",
+        "summary_zh": "HyperFrames是一个专为智能体设计的开源框架，能够将HTML、CSS和动画转化为确定性MP4视频。它支持通过CLI本地使用，或作为AI编码智能体的渲染核心。该工具提供21种按需加载的技能，涵盖产品发布视频、无脸解说、PR转视频等多种创作工作流。它兼容Claude Code、Cursor等主流编码智能体，通过技能系统教导智能体规划视频、编写有效HTML并渲染输出，实现了从代码到视频的高效自动化生成流程。",
+        "highlights_zh": [
+          "专为智能体设计，支持Claude Code、Cursor等主流AI编码助手，通过技能系统实现视频创作的自动化规划与渲染。",
+          "提供21种按需加载的创作技能，涵盖产品视频、无脸解说、PR转视频等场景，智能体可根据意图自动选择合适工作流。",
+          "将HTML、CSS及GSAP等动画转化为确定性MP4视频，确保渲染结果可预测，适合作为智能体背后的标准化视频生成引擎。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "HyperFrames是一个专为智能体设计的开源框架，能够将HTML、CSS和动画转化为确定性MP4视频。它支持通过CLI本地使用，或作为AI编码智能体的渲染核心。该工具提供21种按需加载的技能，涵盖产品发布视频、无脸解说、PR转视频等多种创作工作流。它兼容Claude Code、Cursor等主流编码智能体，通过技能系统教导智能体规划视频、编写有效HTML并渲染输出，实现了从代码到视频的高效自动化生成流程。",
+      "relevance_reason_zh": "该仓库明确标注为Built for agents，并提供针对Claude Code、Codex等AI编码智能体的插件和技能包。其核心功能是通过自然语言指令驱动智能体完成视频创作，属于典型的智能体应用生态工具，具备高度的智能体集成能力和自动化工作流特征。",
+      "highlights_zh": [
+        "专为智能体设计，支持Claude Code、Cursor等主流AI编码助手，通过技能系统实现视频创作的自动化规划与渲染。",
+        "提供21种按需加载的创作技能，涵盖产品视频、无脸解说、PR转视频等场景，智能体可根据意图自动选择合适工作流。",
+        "将HTML、CSS及GSAP等动画转化为确定性MP4视频，确保渲染结果可预测，适合作为智能体背后的标准化视频生成引擎。"
+      ],
+      "first_seen_date": "2026-09-08",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 9,
+        "full_name": "cursor/plugins",
+        "url": "https://github.com/cursor/plugins",
+        "description": "Cursor plugin specification and official plugins",
+        "language": "TypeScript",
+        "stars_total": 12748,
+        "stars_today": 0,
+        "forks": 1255,
+        "license": null,
+        "topics": [],
+        "readme_sha256": "c065fb800897365ec0b7811b3534adb3f50e604bd65b0d0851b55d56c32c863f"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_framework",
+          "llm_app_sdk",
+          "agent_application"
+        ],
+        "reason_zh": "仓库明确包含coding agent、agents等关键词，提供用于构建和扩展AI代理能力的插件系统。其内容涉及代理编排、自我迭代循环、并行云代理任务分发及针对代理优化的CLI设计模式，完全符合Agent应用生态中关于智能体工具集成与工作流自动化的核心定义。",
+        "confidence": "high",
+        "summary_zh": "该仓库提供Cursor官方插件规范及一系列面向开发者工具、SaaS产品和流行框架的独立插件。每个插件包含manifest文件，涵盖教学辅助、持续学习记忆更新、团队工作流自动化、深度代码审查、并行代理编排等开发增强功能。同时集成大量第三方服务如Google套件、Salesforce、GitHub及各类营销招聘工具，旨在通过标准化接口扩展AI编码助手的生态能力，实现跨平台任务自动化与数据交互。",
+        "highlights_zh": [
+          "提供Teaching插件支持技能映射与实践计划，Continual Learning插件通过高信号要点增量更新AGENTS.md记忆，增强代理长期学习能力。",
+          "Thermos插件执行深度安全与正确性审计，利用并行子代理进行热核分支审查，提供严苛的代码质量评估与合并就绪流程。",
+          "Orchestrate插件将大型任务分发至并行云代理，通过规划器、工作者和验证器实现结构化交接，提升复杂任务处理效率。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_framework",
+        "llm_app_sdk",
+        "agent_application"
+      ],
+      "summary_zh": "该仓库提供Cursor官方插件规范及一系列面向开发者工具、SaaS产品和流行框架的独立插件。每个插件包含manifest文件，涵盖教学辅助、持续学习记忆更新、团队工作流自动化、深度代码审查、并行代理编排等开发增强功能。同时集成大量第三方服务如Google套件、Salesforce、GitHub及各类营销招聘工具，旨在通过标准化接口扩展AI编码助手的生态能力，实现跨平台任务自动化与数据交互。",
+      "relevance_reason_zh": "仓库明确包含coding agent、agents等关键词，提供用于构建和扩展AI代理能力的插件系统。其内容涉及代理编排、自我迭代循环、并行云代理任务分发及针对代理优化的CLI设计模式，完全符合Agent应用生态中关于智能体工具集成与工作流自动化的核心定义。",
+      "highlights_zh": [
+        "提供Teaching插件支持技能映射与实践计划，Continual Learning插件通过高信号要点增量更新AGENTS.md记忆，增强代理长期学习能力。",
+        "Thermos插件执行深度安全与正确性审计，利用并行子代理进行热核分支审查，提供严苛的代码质量评估与合并就绪流程。",
+        "Orchestrate插件将大型任务分发至并行云代理，通过规划器、工作者和验证器实现结构化交接，提升复杂任务处理效率。"
+      ],
+      "first_seen_date": "2026-10-17",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 10,
+        "full_name": "MadsLorentzen/ai-job-search",
+        "url": "https://github.com/MadsLorentzen/ai-job-search",
+        "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
+        "language": "Python",
+        "stars_total": 53238,
+        "stars_today": 1365,
+        "forks": 17388,
+        "license": "MIT",
+        "topics": [
+          "ai",
+          "ai-agents",
+          "career",
+          "claude-code",
+          "cover-letter",
+          "cv",
+          "interview-preparation",
+          "job-application",
+          "job-hunting",
+          "job-search",
+          "latex",
+          "resume"
+        ],
+        "readme_sha256": "07913dc10a82720c40df82f30c0f9d624b64e52d9062e014a1780db6a1b6191c"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "agentic",
+          "mcp"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该项目明确标记为ai-agents，核心功能依赖Claude Code执行多步代理任务。它包含起草者、审查者等多个智能体角色，具备自主搜索、评估及生成能力，符合Agent应用生态中关于自主性与工具调用的定义，展现了智能体在复杂个人工作流中的实际应用。",
+        "confidence": "high",
+        "summary_zh": "这是一个基于Claude Code构建的本地化AI求职应用框架。它通过结构化工作流协助用户评估职位匹配度、定制简历与求职信以及准备面试。系统支持从多个招聘门户抓取数据，利用多智能体协作进行内容生成与审查，并集成Notion和Gmail同步功能以追踪申请状态。该工具强调数据隐私，所有操作均在用户本地机器上运行，旨在提供端到端的自动化求职辅助服务。",
+        "highlights_zh": [
+          "该框架构建了完整的求职工作流，包括自我画像建立、职位匹配评估以及申请材料生成。通过集成多个招聘网站的数据抓取能力，系统能够自动筛选并排序潜在机会，显著提升了求职效率。",
+          "采用多智能体协作模式，由一个智能体负责起草简历和求职信，另一个智能体担任审查者角色进行批判性反馈。这种机制确保了输出内容的质量，并遵循职业指导的最佳实践标准。",
+          "支持与Notion数据库和Gmail账户的双向同步功能。用户可以实时查看申请进度，系统能自动识别邮件中的面试邀请或拒信，并更新本地追踪记录，实现了求职过程的数字化管理。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "这是一个基于Claude Code构建的本地化AI求职应用框架。它通过结构化工作流协助用户评估职位匹配度、定制简历与求职信以及准备面试。系统支持从多个招聘门户抓取数据，利用多智能体协作进行内容生成与审查，并集成Notion和Gmail同步功能以追踪申请状态。该工具强调数据隐私，所有操作均在用户本地机器上运行，旨在提供端到端的自动化求职辅助服务。",
+      "relevance_reason_zh": "该项目明确标记为ai-agents，核心功能依赖Claude Code执行多步代理任务。它包含起草者、审查者等多个智能体角色，具备自主搜索、评估及生成能力，符合Agent应用生态中关于自主性与工具调用的定义，展现了智能体在复杂个人工作流中的实际应用。",
+      "highlights_zh": [
+        "该框架构建了完整的求职工作流，包括自我画像建立、职位匹配评估以及申请材料生成。通过集成多个招聘网站的数据抓取能力，系统能够自动筛选并排序潜在机会，显著提升了求职效率。",
+        "采用多智能体协作模式，由一个智能体负责起草简历和求职信，另一个智能体担任审查者角色进行批判性反馈。这种机制确保了输出内容的质量，并遵循职业指导的最佳实践标准。",
+        "支持与Notion数据库和Gmail账户的双向同步功能。用户可以实时查看申请进度，系统能自动识别邮件中的面试邀请或拒信，并更新本地追踪记录，实现了求职过程的数字化管理。"
+      ],
+      "first_seen_date": "2026-08-26",
+      "consecutive_days": 2
+    },
+    {
+      "repository": {
+        "rank": 11,
+        "full_name": "bilawalsidhu/gods-eye-view",
+        "url": "https://github.com/bilawalsidhu/gods-eye-view",
+        "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+        "language": "JavaScript",
+        "stars_total": 57967,
+        "stars_today": 0,
+        "forks": 11304,
+        "license": null,
+        "topics": [
+          "3d-globe",
+          "cesium",
+          "flight-tracking",
+          "geospatial",
+          "geospatial-intelligence",
+          "gis",
+          "osint",
+          "photogrammetry",
+          "satellite-tracking",
+          "spatial-intelligence",
+          "webgl",
+          "worldview"
+        ],
+        "readme_sha256": "569fa5279e485779ad24a99b77f31a3bf622f589448681f844585f38109b9659"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "mcp",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools"
+        ],
+        "reason_zh": "该仓库明确集成了实时AI代理以支持免提语音控制，允许用户通过自然语言与全球数据进行交互。它具备典型的Agent应用特征，能够理解并执行如统计、过滤和排名等复杂查询指令，符合智能体应用的定义。",
+        "confidence": "high",
+        "summary_zh": "该项目是一个基于浏览器的实时空间情报平台，通过集成飞行、船舶、卫星及地震等公开数据源构建逼真的三维地球。其核心Agent特性体现在支持免提语音控制，用户可通过自然语言指令查询卫星过境时间、统计基础设施数量或筛选特定目标。系统能解析语音意图并执行复杂的数据过滤与排名任务，同时提供战术HUD和场景导演功能，将开源地理空间数据转化为可交互的智能分析环境。",
+        "highlights_zh": [
+          "支持免提语音控制的实时AI代理，允许用户通过自然语言指令与三维地球上的实时数据进行交互和查询。",
+          "能够通过语音命令执行复杂分析任务，包括按类别统计卫星数量、筛选数据中心以及排名大坝等基础设施。",
+          "提供战术级 heads-up 显示界面，结合实时遥测数据和检测覆盖层，为用户提供军事风格的情报可视化体验。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools"
+      ],
+      "summary_zh": "该项目是一个基于浏览器的实时空间情报平台，通过集成飞行、船舶、卫星及地震等公开数据源构建逼真的三维地球。其核心Agent特性体现在支持免提语音控制，用户可通过自然语言指令查询卫星过境时间、统计基础设施数量或筛选特定目标。系统能解析语音意图并执行复杂的数据过滤与排名任务，同时提供战术HUD和场景导演功能，将开源地理空间数据转化为可交互的智能分析环境。",
+      "relevance_reason_zh": "该仓库明确集成了实时AI代理以支持免提语音控制，允许用户通过自然语言与全球数据进行交互。它具备典型的Agent应用特征，能够理解并执行如统计、过滤和排名等复杂查询指令，符合智能体应用的定义。",
+      "highlights_zh": [
+        "支持免提语音控制的实时AI代理，允许用户通过自然语言指令与三维地球上的实时数据进行交互和查询。",
+        "能够通过语音命令执行复杂分析任务，包括按类别统计卫星数量、筛选数据中心以及排名大坝等基础设施。",
+        "提供战术级 heads-up 显示界面，结合实时遥测数据和检测覆盖层，为用户提供军事风格的情报可视化体验。"
+      ],
+      "first_seen_date": "2026-09-11",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 12,
+        "full_name": "pytorch/pytorch",
+        "url": "https://github.com/pytorch/pytorch",
+        "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+        "language": "Python",
+        "stars_total": 104845,
+        "stars_today": 0,
+        "forks": 32794,
+        "license": null,
+        "topics": [
+          "autograd",
+          "deep-learning",
+          "gpu",
+          "machine-learning",
+          "neural-network",
+          "numpy",
+          "python",
+          "tensor"
+        ],
+        "readme_sha256": "c839137f1d406e0ba4f641222471a5cbfabb2141b39491f7267f57cf5e2107b9"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 13,
+        "full_name": "lyogavin/airllm",
+        "url": "https://github.com/lyogavin/airllm",
+        "description": "AirLLM 2.8T LLM inference with single 4GB GPU",
+        "language": "Jupyter Notebook",
+        "stars_total": 39345,
+        "stars_today": 0,
+        "forks": 4011,
+        "license": "Apache-2.0",
+        "topics": [
+          "chinese-llm",
+          "chinese-nlp",
+          "finetune",
+          "generative-ai",
+          "instruct-gpt",
+          "instruction-set",
+          "llama",
+          "llm",
+          "lora",
+          "open-models",
+          "open-source",
+          "open-source-models",
+          "qlora"
+        ],
+        "readme_sha256": "746f35e0bee6598643666792c050c8833b5d441d36e0a60dd0846ae0d34ece73"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agents",
+          "llm",
+          "large language model"
+        ],
+        "matched_excluded_terms": [
+          "quantization"
+        ],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": false,
+        "primary_category": "out_of_scope",
+        "related_tags": [],
+        "reason_zh": "该项目是一个专注于降低大语言模型推理内存占用的底层推理库（Inference Engine/Library），核心功能是通过层卸载（layer-wise offloading）和压缩技术实现在低显存GPU上运行超大模型。根据规则，主要用于推理引擎、量化及部署基础设施的项目被明确排除在Agent应用生态之外。尽管README中提及了少量外部Agent工具链接，但这并非项目本身的功能或用途。",
+        "confidence": "high",
+        "summary_zh": "",
+        "highlights_zh": []
+      },
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "该项目是一个专注于降低大语言模型推理内存占用的底层推理库（Inference Engine/Library），核心功能是通过层卸载（layer-wise offloading）和压缩技术实现在低显存GPU上运行超大模型。根据规则，主要用于推理引擎、量化及部署基础设施的项目被明确排除在Agent应用生态之外。尽管README中提及了少量外部Agent工具链接，但这并非项目本身的功能或用途。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 14,
+        "full_name": "chrislgarry/Apollo-11",
+        "url": "https://github.com/chrislgarry/Apollo-11",
+        "description": "Original Apollo 11 Guidance Computer (AGC) source code for the command and lunar modules.",
+        "language": "Assembly",
+        "stars_total": 75439,
+        "stars_today": 0,
+        "forks": 8200,
+        "license": null,
+        "topics": [
+          "agc",
+          "apollo",
+          "hacktoberfest",
+          "nasa"
+        ],
+        "readme_sha256": "51742a8bfc44fd5bc5b32776ebfe11a1d009e55611c35feb4b61ca1fc8d5e7fe"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 15,
+        "full_name": "open-webui/open-webui",
+        "url": "https://github.com/open-webui/open-webui",
+        "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+        "language": "Python",
+        "stars_total": 156089,
+        "stars_today": 0,
+        "forks": 22722,
+        "license": null,
+        "topics": [
+          "ai",
+          "llm",
+          "llm-ui",
+          "llm-webui",
+          "llms",
+          "mcp",
+          "ollama",
+          "ollama-webui",
+          "open-webui",
+          "openai",
+          "openapi",
+          "rag",
+          "self-hosted",
+          "ui",
+          "webui"
+        ],
+        "readme_sha256": "da3d46f4d7e6c158e13ed91e5e46250d22d278b972d8d1b028f5e0bb62be612b"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "agentic",
+          "llm",
+          "mcp",
+          "function calling",
+          "rag",
+          "retrieval augmented generation",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk",
+          "rag_knowledge"
+        ],
+        "reason_zh": "该仓库明确支持构建和管理AI代理，允许用户包装基础模型以创建具有特定工具和知识的专用代理。它集成了MCP协议和函数调用能力，使代理能够执行复杂的多步任务，如代码编写和系统交互。这些特性完全符合Agent应用生态的核心定义，即赋予AI自主规划和执行任务的能力。",
+        "confidence": "high",
+        "summary_zh": "Open WebUI是一个用户友好的自托管AI平台，支持Ollama和OpenAI兼容API。它提供丰富的代理功能，包括通过MCP和OpenAPI连接外部服务、构建具有自定义指令和工具的专用代理。平台支持代理执行多步任务，如数据分析、脚本运行和文件生成，并具备持久记忆、实时工作流监控及自动化调度能力。其生态系统包含独立的计算机代理和终端环境，增强了AI的自主操作能力，适用于本地和云端模型集成。",
+        "highlights_zh": [
+          "支持通过Filters、Actions、Pipes等插件机制扩展功能，并利用MCP和OpenAPI工具服务器连接外部服务，增强代理的互操作性和自定义能力。",
+          "允许用户将基础模型包装为专用代理，配置自定义指令、工具和知识库，支持动态变量和细粒度的访问控制，实现个性化的代理行为。",
+          "提供Open Terminal集成，赋予代理终端和文件系统访问权限，使其能够执行多步任务，如分析数据、运行脚本、修复错误并直接生成文件。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk",
+        "rag_knowledge"
+      ],
+      "summary_zh": "Open WebUI是一个用户友好的自托管AI平台，支持Ollama和OpenAI兼容API。它提供丰富的代理功能，包括通过MCP和OpenAPI连接外部服务、构建具有自定义指令和工具的专用代理。平台支持代理执行多步任务，如数据分析、脚本运行和文件生成，并具备持久记忆、实时工作流监控及自动化调度能力。其生态系统包含独立的计算机代理和终端环境，增强了AI的自主操作能力，适用于本地和云端模型集成。",
+      "relevance_reason_zh": "该仓库明确支持构建和管理AI代理，允许用户包装基础模型以创建具有特定工具和知识的专用代理。它集成了MCP协议和函数调用能力，使代理能够执行复杂的多步任务，如代码编写和系统交互。这些特性完全符合Agent应用生态的核心定义，即赋予AI自主规划和执行任务的能力。",
+      "highlights_zh": [
+        "支持通过Filters、Actions、Pipes等插件机制扩展功能，并利用MCP和OpenAPI工具服务器连接外部服务，增强代理的互操作性和自定义能力。",
+        "允许用户将基础模型包装为专用代理，配置自定义指令、工具和知识库，支持动态变量和细粒度的访问控制，实现个性化的代理行为。",
+        "提供Open Terminal集成，赋予代理终端和文件系统访问权限，使其能够执行多步任务，如分析数据、运行脚本、修复错误并直接生成文件。"
+      ],
+      "first_seen_date": "2026-10-13",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 16,
+        "full_name": "microsoft/BitNet",
+        "url": "https://github.com/microsoft/BitNet",
+        "description": "Official inference framework for 1-bit LLMs",
+        "language": "C++",
+        "stars_total": 41194,
+        "stars_today": 0,
+        "forks": 3836,
+        "license": "MIT",
+        "topics": [],
+        "readme_sha256": "f4e045fd07ed789ea28095c3f87ef0453d0c31218fb033b74543dff0f16910b0"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [
+          "large language model"
+        ],
+        "matched_excluded_terms": [
+          "inference engine",
+          "quantization",
+          "gpu kernel"
+        ],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 17,
+        "full_name": "Alishahryar1/free-claude-code",
+        "url": "https://github.com/Alishahryar1/free-claude-code",
+        "description": "Use Claude Code, Codex, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser sessions (multi-harness + multi-model) like OpenClaw (voice supported + ToS friendly)",
+        "language": "Python",
+        "stars_total": 61556,
+        "stars_today": 0,
+        "forks": 9659,
+        "license": null,
+        "topics": [],
+        "readme_sha256": "5d5f7a4a441ce5a8497056fd758a44ba7529bcd60d7080b5bde1af536349342c"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk",
+          "agent_framework"
+        ],
+        "reason_zh": "该仓库明确支持运行包括Claude Code、Codex在内的十一种编码代理，并提供了统一的模型目录和故障转移机制。其核心功能是作为代理生态的基础设施，允许用户在不同代理框架间自由切换并整合多种后端模型资源，完全符合智能体应用生态的定义。",
+        "confidence": "high",
+        "summary_zh": "该项目是一个开源多模型代理编排工具，支持在终端、IDE或浏览器中集成Claude Code、Codex等十一种编码代理。它聚合了六十多个符合服务条款的提供商，提供每月超过十三亿免费令牌额度。系统具备自动故障转移功能，可在提供商中断时无缝切换模型。此外，它还支持语音输入转代码、原生浏览器会话及多种客户端连接，旨在通过统一界面降低开发成本并提升编码代理的可用性。",
+        "highlights_zh": [
+          "支持集成Claude Code、Codex、Pi等十一种主流编码代理，通过统一的可搜索界面管理模型，无需担心账户风险。",
+          "聚合六十多个符合服务条款的提供商，提供每月超过十三亿免费令牌额度，并能在提供商中断时自动切换备用模型。",
+          "提供原生浏览器代码会话功能，允许用户在浏览器中直接运行Codex，支持实时交互及在同一会话中自由切换提供商和模型。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk",
+        "agent_framework"
+      ],
+      "summary_zh": "该项目是一个开源多模型代理编排工具，支持在终端、IDE或浏览器中集成Claude Code、Codex等十一种编码代理。它聚合了六十多个符合服务条款的提供商，提供每月超过十三亿免费令牌额度。系统具备自动故障转移功能，可在提供商中断时无缝切换模型。此外，它还支持语音输入转代码、原生浏览器会话及多种客户端连接，旨在通过统一界面降低开发成本并提升编码代理的可用性。",
+      "relevance_reason_zh": "该仓库明确支持运行包括Claude Code、Codex在内的十一种编码代理，并提供了统一的模型目录和故障转移机制。其核心功能是作为代理生态的基础设施，允许用户在不同代理框架间自由切换并整合多种后端模型资源，完全符合智能体应用生态的定义。",
+      "highlights_zh": [
+        "支持集成Claude Code、Codex、Pi等十一种主流编码代理，通过统一的可搜索界面管理模型，无需担心账户风险。",
+        "聚合六十多个符合服务条款的提供商，提供每月超过十三亿免费令牌额度，并能在提供商中断时自动切换备用模型。",
+        "提供原生浏览器代码会话功能，允许用户在浏览器中直接运行Codex，支持实时交互及在同一会话中自由切换提供商和模型。"
+      ],
+      "first_seen_date": "2026-08-27",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 18,
+        "full_name": "debpalash/VoiceStudio",
+        "url": "https://github.com/debpalash/VoiceStudio",
+        "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+        "language": "Python",
+        "stars_total": 75414,
+        "stars_today": 2125,
+        "forks": 8256,
+        "license": "AGPL-3.0",
+        "topics": [
+          "ai",
+          "audiobook",
+          "cuda",
+          "dubbing",
+          "elevenlabs-alternative",
+          "huggingface",
+          "local-first",
+          "mlx",
+          "omnivoice-studio",
+          "speech-to-text",
+          "text-to-speech",
+          "transcription",
+          "translate",
+          "tts",
+          "voice-ai",
+          "voice-cloning",
+          "voice-generation",
+          "voicestudio",
+          "workflow"
+        ],
+        "readme_sha256": "2019405cdf4fdabf41a15e0338b660698296ad7c05d9faeb3921bd4495ad39d2"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "mcp",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该项目明确支持MCP协议并提供本地API，专为智能体集成设计。文档中包含针对编码智能体的安装指南及技能包支持，允许智能体直接管理音频工作流。其本地优先架构与智能体生态高度契合，具备显著的Agent应用特征。",
+        "confidence": "high",
+        "summary_zh": "VoiceStudio是一款开源且完全本地化的语音AI工具，支持646种语言的语音克隆、设计及视频配音。它提供听写、转录和有声书制作功能，并集成MCP协议与本地API以支持智能体工作流。该应用基于Electron构建，兼容CUDA及Apple Silicon加速，旨在作为ElevenLabs的本地替代方案，确保数据隐私与离线可用性。",
+        "highlights_zh": [
+          "提供本地API与MCP协议支持，允许智能体无缝集成语音克隆、配音及转录工作流，实现自动化音频处理。",
+          "作为完全本地运行的ElevenLabs替代方案，支持646种语言，确保用户数据隐私并降低对云服务的依赖。",
+          "内置针对Claude Code等编码智能体的安装脚本与技能包，简化部署流程并支持智能体自主验证环境可用性。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "VoiceStudio是一款开源且完全本地化的语音AI工具，支持646种语言的语音克隆、设计及视频配音。它提供听写、转录和有声书制作功能，并集成MCP协议与本地API以支持智能体工作流。该应用基于Electron构建，兼容CUDA及Apple Silicon加速，旨在作为ElevenLabs的本地替代方案，确保数据隐私与离线可用性。",
+      "relevance_reason_zh": "该项目明确支持MCP协议并提供本地API，专为智能体集成设计。文档中包含针对编码智能体的安装指南及技能包支持，允许智能体直接管理音频工作流。其本地优先架构与智能体生态高度契合，具备显著的Agent应用特征。",
+      "highlights_zh": [
+        "提供本地API与MCP协议支持，允许智能体无缝集成语音克隆、配音及转录工作流，实现自动化音频处理。",
+        "作为完全本地运行的ElevenLabs替代方案，支持646种语言，确保用户数据隐私并降低对云服务的依赖。",
+        "内置针对Claude Code等编码智能体的安装脚本与技能包，简化部署流程并支持智能体自主验证环境可用性。"
+      ],
+      "first_seen_date": "2026-09-03",
+      "consecutive_days": 5
+    },
+    {
+      "repository": {
+        "rank": 19,
+        "full_name": "vercel-labs/skills",
+        "url": "https://github.com/vercel-labs/skills",
+        "description": "The open agent skills tool - npx skills",
+        "language": "TypeScript",
+        "stars_total": 35499,
+        "stars_today": 0,
+        "forks": 3029,
+        "license": "MIT",
+        "topics": [],
+        "readme_sha256": "e555a40d019f5c4a68ede233c3f2cafa9085e6526284ccfb2adebf2c5cf9d2c0"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "agent_framework",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该工具直接服务于编码智能体生态，通过标准化技能包格式增强多种主流AI代理的能力。其核心功能围绕智能体指令集的分发与管理展开，明确支持数十种智能体应用，完全符合智能体应用生态的定义范畴。",
+        "confidence": "high",
+        "summary_zh": "该仓库提供名为skills的开源命令行工具，旨在构建开放的智能体技能生态系统。它支持OpenCode、Claude Code及Cursor等七十余种编码智能体，允许用户通过npx命令从GitHub或本地源安装、管理及使用可复用的SKILL.md指令集。工具具备全局与项目级安装范围，支持符号链接或文件复制模式，并提供搜索、更新及移除技能的完整生命周期管理功能，有效扩展智能体的专业能力。",
+        "highlights_zh": [
+          "支持OpenCode、Claude Code、Codex及Cursor等超过七十五种编码智能体，实现广泛的平台兼容性。",
+          "提供完整的技能生命周期管理命令，包括交互式搜索、版本更新、批量移除及初始化模板创建功能。",
+          "支持从GitHub、GitLab、Azure Repos及本地路径等多种来源安装技能，并兼容私有仓库的认证机制。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "agent_framework",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "该仓库提供名为skills的开源命令行工具，旨在构建开放的智能体技能生态系统。它支持OpenCode、Claude Code及Cursor等七十余种编码智能体，允许用户通过npx命令从GitHub或本地源安装、管理及使用可复用的SKILL.md指令集。工具具备全局与项目级安装范围，支持符号链接或文件复制模式，并提供搜索、更新及移除技能的完整生命周期管理功能，有效扩展智能体的专业能力。",
+      "relevance_reason_zh": "该工具直接服务于编码智能体生态，通过标准化技能包格式增强多种主流AI代理的能力。其核心功能围绕智能体指令集的分发与管理展开，明确支持数十种智能体应用，完全符合智能体应用生态的定义范畴。",
+      "highlights_zh": [
+        "支持OpenCode、Claude Code、Codex及Cursor等超过七十五种编码智能体，实现广泛的平台兼容性。",
+        "提供完整的技能生命周期管理命令，包括交互式搜索、版本更新、批量移除及初始化模板创建功能。",
+        "支持从GitHub、GitLab、Azure Repos及本地路径等多种来源安装技能，并兼容私有仓库的认证机制。"
+      ],
+      "first_seen_date": "2026-09-11",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 20,
+        "full_name": "xtool-org/xtool",
+        "url": "https://github.com/xtool-org/xtool",
+        "description": "Cross-platform Xcode replacement. Build and deploy iOS apps with SwiftPM on Linux, Windows, macOS.",
+        "language": "Swift",
+        "stars_total": 12687,
+        "stars_today": 0,
+        "forks": 642,
+        "license": "MIT",
+        "topics": [
+          "ios",
+          "linux",
+          "swift",
+          "swift-package-manager",
+          "windows",
+          "xcode"
+        ],
+        "readme_sha256": "a5ad69e621ea705d353b7b8afe89020eef782d2a5827a97b73022c349f5f42bc"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 21,
+        "full_name": "nvm-sh/nvm",
+        "url": "https://github.com/nvm-sh/nvm",
+        "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions.",
+        "language": "Shell",
+        "stars_total": 95571,
+        "stars_today": 0,
+        "forks": 10551,
+        "license": "MIT",
+        "topics": [
+          "bash",
+          "install",
+          "lts",
+          "node",
+          "node-js",
+          "nodejs",
+          "nvm",
+          "nvmrc",
+          "posix",
+          "posix-compliant",
+          "shell",
+          "version-manager",
+          "zsh"
+        ],
+        "readme_sha256": "36436f39282bebd81747d950702dd3f174ca56ffb66fcae74a5f53345c7e4a3b"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 22,
+        "full_name": "K-Dense-AI/scientific-agent-skills",
+        "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+        "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+        "language": "Python",
+        "stars_total": 52660,
+        "stars_today": 878,
+        "forks": 4667,
+        "license": "MIT",
+        "topics": [
+          "agent-skills",
+          "ai-scientist",
+          "bioinformatics",
+          "chemoinformatics",
+          "claude",
+          "claude-skills",
+          "claudecode",
+          "clinical-research",
+          "computational-biology",
+          "data-analysis",
+          "drug-discovery",
+          "genomics",
+          "materials-science",
+          "metabolomics",
+          "proteomics",
+          "scientific-computing",
+          "scientific-visualization"
+        ],
+        "readme_sha256": "2d4a9f2268c6ed70fc0d0d769921963da6b82966bd71c4b0225e35b0779b2447"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "agent_framework",
+          "agent_infrastructure"
+        ],
+        "reason_zh": "该仓库直接服务于Agent应用生态，提供了标准化的技能库以增强AI代理在科学领域的专业能力。其核心功能是通过预定义的技能模块提升代理执行复杂科研任务的准确性，完全符合Agent应用开发与应用的核心定义，具有高度的领域相关性与实用价值。",
+        "confidence": "high",
+        "summary_zh": "该仓库提供名为Scientific Agent Skills的库，旨在将AI代理转化为AI科学家。它包含177个经过验证的科学技能及100多个科学数据库，覆盖生物、化学、医学等领域。该库兼容Cursor、Claude Code等主流代理平台，并遵循开放的Agent Skills标准。通过提供特定工作流的指导与验证检查，它增强了代理在科研任务中的可靠性与专业性，支持从数据分析到科学沟通的多种应用场景。",
+        "highlights_zh": [
+          "提供177个即用型科学技能，涵盖生物信息学、药物发现、临床医学等广泛领域，显著扩展AI代理的专业能力边界。",
+          "兼容Cursor、Claude Code等多种主流AI代理平台，并遵循开放的Agent Skills标准，确保良好的互操作性与易用性。",
+          "集成100多个科学数据库访问技能，包括PubChem和UniProt等，为代理提供权威数据源支持，提升科研工作的准确性。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "agent_framework",
+        "agent_infrastructure"
+      ],
+      "summary_zh": "该仓库提供名为Scientific Agent Skills的库，旨在将AI代理转化为AI科学家。它包含177个经过验证的科学技能及100多个科学数据库，覆盖生物、化学、医学等领域。该库兼容Cursor、Claude Code等主流代理平台，并遵循开放的Agent Skills标准。通过提供特定工作流的指导与验证检查，它增强了代理在科研任务中的可靠性与专业性，支持从数据分析到科学沟通的多种应用场景。",
+      "relevance_reason_zh": "该仓库直接服务于Agent应用生态，提供了标准化的技能库以增强AI代理在科学领域的专业能力。其核心功能是通过预定义的技能模块提升代理执行复杂科研任务的准确性，完全符合Agent应用开发与应用的核心定义，具有高度的领域相关性与实用价值。",
+      "highlights_zh": [
+        "提供177个即用型科学技能，涵盖生物信息学、药物发现、临床医学等广泛领域，显著扩展AI代理的专业能力边界。",
+        "兼容Cursor、Claude Code等多种主流AI代理平台，并遵循开放的Agent Skills标准，确保良好的互操作性与易用性。",
+        "集成100多个科学数据库访问技能，包括PubChem和UniProt等，为代理提供权威数据源支持，提升科研工作的准确性。"
+      ],
+      "first_seen_date": "2026-08-27",
+      "consecutive_days": 4
+    },
+    {
+      "repository": {
+        "rank": 23,
+        "full_name": "HKUDS/CLI-Anything",
+        "url": "https://github.com/HKUDS/CLI-Anything",
+        "description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+        "language": "Python",
+        "stars_total": 54595,
+        "stars_today": 574,
+        "forks": 4947,
+        "license": "Apache-2.0",
+        "topics": [],
+        "readme_sha256": "24669c9549ad753b173eead4ffc465ebc0b8dc9b4d64e7be73cd5b3b03f56ac9"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "mcp",
+          "agent memory",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "mcp_tools",
+          "agent_infrastructure"
+        ],
+        "reason_zh": "该仓库明确致力于让软件对AI智能体原生友好，通过标准化CLI接口消除智能体与现有软件间的隔阂。其核心功能包括为各类应用创建智能体可用的命令行包装器，并维护一个集中的CLI-Hub以便智能体发现和调用这些工具。这种架构直接服务于智能体应用生态，增强了智能体在真实世界软件环境中的执行力和互操作性，符合智能体基础设施的定义。",
+        "confidence": "high",
+        "summary_zh": "CLI-Anything项目旨在使所有软件具备智能体原生能力，通过提供命令行接口桥接AI智能体与各类软件。该项目包含CLI-Hub注册中心，支持浏览、安装和管理社区构建的CLI工具。它允许AI智能体利用生成的CLI及实时预览功能执行复杂任务，如CAD构建、3D场景生成和数据处理。项目支持多种主流智能体框架，并持续集成新的软件适配器，如Obsidian、QGIS和Unreal Editor，以扩展智能体的操作范围和能力边界。",
+        "highlights_zh": [
+          "CLI-Anything通过为各种软件生成标准化的命令行接口，使AI智能体能够无缝控制和操作这些应用程序，从而实现软件的原生智能体化。",
+          "CLI-Hub作为一个集中式注册中心，允许用户和智能体浏览、安装及管理社区贡献的CLI工具，简化了智能体技能的发现与部署流程。",
+          "项目展示了智能体利用生成的CLI执行复杂现实任务的能力，包括CAD建模、3D场景构建、视频字幕生成及游戏自动化等多样化应用场景。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "mcp_tools",
+        "agent_infrastructure"
+      ],
+      "summary_zh": "CLI-Anything项目旨在使所有软件具备智能体原生能力，通过提供命令行接口桥接AI智能体与各类软件。该项目包含CLI-Hub注册中心，支持浏览、安装和管理社区构建的CLI工具。它允许AI智能体利用生成的CLI及实时预览功能执行复杂任务，如CAD构建、3D场景生成和数据处理。项目支持多种主流智能体框架，并持续集成新的软件适配器，如Obsidian、QGIS和Unreal Editor，以扩展智能体的操作范围和能力边界。",
+      "relevance_reason_zh": "该仓库明确致力于让软件对AI智能体原生友好，通过标准化CLI接口消除智能体与现有软件间的隔阂。其核心功能包括为各类应用创建智能体可用的命令行包装器，并维护一个集中的CLI-Hub以便智能体发现和调用这些工具。这种架构直接服务于智能体应用生态，增强了智能体在真实世界软件环境中的执行力和互操作性，符合智能体基础设施的定义。",
+      "highlights_zh": [
+        "CLI-Anything通过为各种软件生成标准化的命令行接口，使AI智能体能够无缝控制和操作这些应用程序，从而实现软件的原生智能体化。",
+        "CLI-Hub作为一个集中式注册中心，允许用户和智能体浏览、安装及管理社区贡献的CLI工具，简化了智能体技能的发现与部署流程。",
+        "项目展示了智能体利用生成的CLI执行复杂现实任务的能力，包括CAD建模、3D场景构建、视频字幕生成及游戏自动化等多样化应用场景。"
+      ],
+      "first_seen_date": "2026-09-24",
+      "consecutive_days": 2
+    },
+    {
+      "repository": {
+        "rank": 24,
+        "full_name": "ifixai-ai/iFixAi",
+        "url": "https://github.com/ifixai-ai/iFixAi",
+        "description": "Independent Auditing of AI Agents. Run by human or the agent itself, to answer the most crucial question in the AI Agent Economy. Is the agent doing what is supposed to do? With iFixAi you can have this answer in less than 120 seconds.",
+        "language": "Python",
+        "stars_total": 29575,
+        "stars_today": 0,
+        "forks": 1631,
+        "license": "Apache-2.0",
+        "topics": [
+          "agent-evaluation",
+          "ai",
+          "ai-alignment",
+          "ai-evaluation",
+          "ai-governance",
+          "ai-safety",
+          "cli",
+          "diagnostic-tool",
+          "eu-ai-act",
+          "hallucination-detection",
+          "iso-42001",
+          "llm-evaluation",
+          "llm-security",
+          "nist-ai-rmf",
+          "owasp-llm",
+          "prompt-injection",
+          "python",
+          "responsible-ai",
+          "risk-assessment",
+          "risk-management"
+        ],
+        "readme_sha256": "c0942a6bb6645b124c500542cd0a0b00c371085e31be80234ee8a13dbf3446c1"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application"
+        ],
+        "reason_zh": "该仓库直接服务于AI智能体生态，提供专门的评估与审计功能。其核心目标是验证智能体行为是否符合业务KPI和组织结构要求，属于智能体安全与治理的关键基础设施，完全契合Agent应用生态的定义。",
+        "confidence": "high",
+        "summary_zh": "iFixAi是一个针对AI智能体的独立审计工具，旨在回答智能体是否按预期执行任务这一核心问题。它通过平衡AI红队测试与运营保证，在120秒内提供诊断结果。该工具支持CLI向导、显式标志及插件等多种运行方式，能够检测幻觉、提示注入等风险，并符合ISO 42001及欧盟AI法案等标准，帮助开发者在部署前发现智能体的错误与盲点。",
+        "highlights_zh": [
+          "提供独立审计功能，能在120秒内通过平衡红队测试与运营保证，验证智能体是否按预期执行业务任务。",
+          "支持CLI向导、显式标志及Claude Code等插件三种运行模式，适应从快速上手到CI自动化的不同场景。",
+          "涵盖幻觉检测、提示注入防御及风险评估，符合ISO 42001、NIST AI RMF及欧盟AI法案等合规标准。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application"
+      ],
+      "summary_zh": "iFixAi是一个针对AI智能体的独立审计工具，旨在回答智能体是否按预期执行任务这一核心问题。它通过平衡AI红队测试与运营保证，在120秒内提供诊断结果。该工具支持CLI向导、显式标志及插件等多种运行方式，能够检测幻觉、提示注入等风险，并符合ISO 42001及欧盟AI法案等标准，帮助开发者在部署前发现智能体的错误与盲点。",
+      "relevance_reason_zh": "该仓库直接服务于AI智能体生态，提供专门的评估与审计功能。其核心目标是验证智能体行为是否符合业务KPI和组织结构要求，属于智能体安全与治理的关键基础设施，完全契合Agent应用生态的定义。",
+      "highlights_zh": [
+        "提供独立审计功能，能在120秒内通过平衡红队测试与运营保证，验证智能体是否按预期执行业务任务。",
+        "支持CLI向导、显式标志及Claude Code等插件三种运行模式，适应从快速上手到CI自动化的不同场景。",
+        "涵盖幻觉检测、提示注入防御及风险评估，符合ISO 42001、NIST AI RMF及欧盟AI法案等合规标准。"
+      ],
+      "first_seen_date": "2026-10-15",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 25,
+        "full_name": "vxcontrol/pentagi",
+        "url": "https://github.com/vxcontrol/pentagi",
+        "description": "Fully autonomous AI Agents system capable of performing complex penetration testing tasks",
+        "language": "Go",
+        "stars_total": 31129,
+        "stars_today": 0,
+        "forks": 4886,
+        "license": "MIT",
+        "topics": [
+          "ai-agents",
+          "ai-security-tool",
+          "anthropic",
+          "autonomous-agents",
+          "golang",
+          "gpt",
+          "graphql",
+          "multi-agent-system",
+          "offensive-security",
+          "open-source",
+          "openai",
+          "penetration-testing",
+          "penetration-testing-tools",
+          "react",
+          "security-automation",
+          "security-testing",
+          "security-tools",
+          "self-hosted"
+        ],
+        "readme_sha256": "6ec53d1da7b36c7146ea9c55056e07e2e7299f6a2ed23876f7f25a85cbd6ad1f"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "multi-agent",
+          "llm",
+          "mcp",
+          "llm observability"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk",
+          "agent_framework"
+        ],
+        "reason_zh": "该仓库明确构建为多智能体系统，具备自主规划、任务分解及执行能力。它集成多种大语言模型作为核心决策引擎，并通过知识图谱增强上下文理解，完全符合Agent应用生态中关于自主性、多模型协作及复杂任务处理的定义特征。",
+        "confidence": "high",
+        "summary_zh": "PentAGI是一个开源自托管的多智能体系统，专为自主渗透测试设计。用户通过自然语言描述目标后，由专业AI代理团队规划并执行任务。系统在隔离的Docker沙箱中运行nmap等二十余种安全工具，并利用PostgreSQL和可选的Neo4j知识图谱存储记忆与关系。支持OpenAI、Anthropic等十余种大模型提供商及本地部署，提供REST和GraphQL接口以实现自动化集成与监控。",
+        "highlights_zh": [
+          "系统采用多智能体架构，包含研究、开发和基础设施等专用代理，通过委托机制协同工作以优化性能。",
+          "支持超过十种云端大模型提供商及本地Ollama部署，允许用户根据需求灵活选择或自定义兼容OpenAI的网关。",
+          "所有操作均在隔离的Docker环境中执行，内置nmap和Metasploit等专业工具，确保测试过程的安全性与独立性。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk",
+        "agent_framework"
+      ],
+      "summary_zh": "PentAGI是一个开源自托管的多智能体系统，专为自主渗透测试设计。用户通过自然语言描述目标后，由专业AI代理团队规划并执行任务。系统在隔离的Docker沙箱中运行nmap等二十余种安全工具，并利用PostgreSQL和可选的Neo4j知识图谱存储记忆与关系。支持OpenAI、Anthropic等十余种大模型提供商及本地部署，提供REST和GraphQL接口以实现自动化集成与监控。",
+      "relevance_reason_zh": "该仓库明确构建为多智能体系统，具备自主规划、任务分解及执行能力。它集成多种大语言模型作为核心决策引擎，并通过知识图谱增强上下文理解，完全符合Agent应用生态中关于自主性、多模型协作及复杂任务处理的定义特征。",
+      "highlights_zh": [
+        "系统采用多智能体架构，包含研究、开发和基础设施等专用代理，通过委托机制协同工作以优化性能。",
+        "支持超过十种云端大模型提供商及本地Ollama部署，允许用户根据需求灵活选择或自定义兼容OpenAI的网关。",
+        "所有操作均在隔离的Docker环境中执行，内置nmap和Metasploit等专业工具，确保测试过程的安全性与独立性。"
+      ],
+      "first_seen_date": "2026-09-13",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 26,
+        "full_name": "rust-lang/rust",
+        "url": "https://github.com/rust-lang/rust",
+        "description": "Empowering everyone to build reliable and efficient software.",
+        "language": "Rust",
+        "stars_total": 120494,
+        "stars_today": 0,
+        "forks": 19035,
+        "license": "Apache-2.0",
+        "topics": [
+          "compiler",
+          "language",
+          "rust"
+        ],
+        "readme_sha256": "b3f6ef2fef88b98cb9ec013a5c86213095e53e40eb228679574e4d06517f33c8"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 27,
+        "full_name": "ntdevlabs/tiny11builder",
+        "url": "https://github.com/ntdevlabs/tiny11builder",
+        "description": "WinUI app for building smaller, customized Windows 11 images.",
+        "language": "C#",
+        "stars_total": 20673,
+        "stars_today": 0,
+        "forks": 1577,
+        "license": null,
+        "topics": [],
+        "readme_sha256": "3f8053d0f159b1276a04273b785e1b64cf837f5ec1a6c474855b13b8bcdb97a3"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 28,
+        "full_name": "JuliusBrussee/caveman",
+        "url": "https://github.com/JuliusBrussee/caveman",
+        "description": "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman.",
+        "language": "Go",
+        "stars_total": 113479,
+        "stars_today": 0,
+        "forks": 6566,
+        "license": "Apache-2.0",
+        "topics": [
+          "ai",
+          "anthropic",
+          "caveman",
+          "claude",
+          "claude-code",
+          "llm",
+          "meme",
+          "prompt-engineering",
+          "skill",
+          "tokens"
+        ],
+        "readme_sha256": "4cd253a32f4ea1a8f10f0d8d98efbac52bb62119ff8ed390441ea05503c6494d"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "mcp",
+          "coding agent",
+          "claude plugin"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application"
+        ],
+        "reason_zh": "该仓库直接服务于Agent应用生态，作为代理层工具优化智能体的输入输出效率。它通过插件形式集成到主流编码智能体中，解决大模型交互中的高令牌成本问题，属于典型的Agent辅助与增强基础设施，符合Agent应用生态的相关性定义。",
+        "confidence": "high",
+        "summary_zh": "Caveman是一个针对编码智能体的令牌优化工具，通过简化输出语言和压缩输入数据来降低65%的令牌消耗。它提供语音精简、读取优化、自动模型选择及代码块复用等功能，支持Claude、Gemini等三十多种智能体。经Adobe和JetBrains测试验证，其在保持回答质量不变的前提下显著降低成本，且保留原始代码完整性，不修改用户提示词。",
+        "highlights_zh": [
+          "通过模拟原始人语言风格精简智能体回复，在保持代码和关键信息完整的前提下，将输出令牌数减少约68%，显著降低交互成本。",
+          "提供输入数据压缩功能，对日志、JSON和CSV等文件进行预处理，使智能体会话的整体输入令牌减少33.2%，提升处理效率。",
+          "内置自动模型选择机制，根据任务难度动态分配计算资源，相比固定使用高端模型，可在保持同等解决率的情况下节省54%的费用。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application"
+      ],
+      "summary_zh": "Caveman是一个针对编码智能体的令牌优化工具，通过简化输出语言和压缩输入数据来降低65%的令牌消耗。它提供语音精简、读取优化、自动模型选择及代码块复用等功能，支持Claude、Gemini等三十多种智能体。经Adobe和JetBrains测试验证，其在保持回答质量不变的前提下显著降低成本，且保留原始代码完整性，不修改用户提示词。",
+      "relevance_reason_zh": "该仓库直接服务于Agent应用生态，作为代理层工具优化智能体的输入输出效率。它通过插件形式集成到主流编码智能体中，解决大模型交互中的高令牌成本问题，属于典型的Agent辅助与增强基础设施，符合Agent应用生态的相关性定义。",
+      "highlights_zh": [
+        "通过模拟原始人语言风格精简智能体回复，在保持代码和关键信息完整的前提下，将输出令牌数减少约68%，显著降低交互成本。",
+        "提供输入数据压缩功能，对日志、JSON和CSV等文件进行预处理，使智能体会话的整体输入令牌减少33.2%，提升处理效率。",
+        "内置自动模型选择机制，根据任务难度动态分配计算资源，相比固定使用高端模型，可在保持同等解决率的情况下节省54%的费用。"
+      ],
+      "first_seen_date": "2026-09-03",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 29,
+        "full_name": "obra/superpowers",
+        "url": "https://github.com/obra/superpowers",
+        "description": "An agentic skills framework & software development methodology that works.",
+        "language": "Shell",
+        "stars_total": 301663,
+        "stars_today": 0,
+        "forks": 26936,
+        "license": "MIT",
+        "topics": [
+          "ai",
+          "brainstorming",
+          "coding",
+          "obra",
+          "sdlc",
+          "skills",
+          "subagent-driven-development",
+          "superpowers"
+        ],
+        "readme_sha256": "9b7be460027bf53c29f628eee72dceeebb83e52dd5e94a1b6f9828a64c579198"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "agentic",
+          "coding agent",
+          "claude plugin",
+          "claude-plugins"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "agent_framework",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库明确描述为编码智能体的技能框架和方法论，核心功能涉及子代理驱动开发和自动化工作流。其广泛兼容各类AI编程助手插件，直接服务于智能体应用生态，符合Agent应用分类标准。",
+        "confidence": "high",
+        "summary_zh": "Superpowers是一个专为编码智能体设计的软件开发方法论框架。它通过可组合的技能集和初始指令，引导智能体在编码前先明确需求并生成设计文档。该框架支持子代理驱动开发，强调测试驱动开发和代码审查。它兼容Claude Code、Cursor、Gemini CLI等多种主流AI编程工具，旨在提升智能体自主工作的准确性和效率，实现从需求澄清到代码交付的标准化流程。",
+        "highlights_zh": [
+          "提供完整的智能体开发方法论，强制智能体在编码前进行需求澄清和设计确认，避免盲目生成代码。",
+          "支持子代理驱动开发模式，可将任务分派给独立子代理执行并自动审查，提升复杂任务的完成质量。",
+          "兼容Claude Code、Cursor、Gemini等十余种主流AI编程工具，通过插件形式无缝集成现有开发环境。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "agent_framework",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "Superpowers是一个专为编码智能体设计的软件开发方法论框架。它通过可组合的技能集和初始指令，引导智能体在编码前先明确需求并生成设计文档。该框架支持子代理驱动开发，强调测试驱动开发和代码审查。它兼容Claude Code、Cursor、Gemini CLI等多种主流AI编程工具，旨在提升智能体自主工作的准确性和效率，实现从需求澄清到代码交付的标准化流程。",
+      "relevance_reason_zh": "该仓库明确描述为编码智能体的技能框架和方法论，核心功能涉及子代理驱动开发和自动化工作流。其广泛兼容各类AI编程助手插件，直接服务于智能体应用生态，符合Agent应用分类标准。",
+      "highlights_zh": [
+        "提供完整的智能体开发方法论，强制智能体在编码前进行需求澄清和设计确认，避免盲目生成代码。",
+        "支持子代理驱动开发模式，可将任务分派给独立子代理执行并自动审查，提升复杂任务的完成质量。",
+        "兼容Claude Code、Cursor、Gemini等十余种主流AI编程工具，通过插件形式无缝集成现有开发环境。"
+      ],
+      "first_seen_date": "2026-09-04",
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 30,
+        "full_name": "ruvnet/ruflo",
+        "url": "https://github.com/ruvnet/ruflo",
+        "description": "🌊 The original agent harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated",
+        "language": "TypeScript",
+        "stars_total": 76526,
+        "stars_today": 420,
+        "forks": 9050,
+        "license": "MIT",
+        "topics": [
+          "agentic-ai",
+          "agentic-framework",
+          "agentic-workflow",
+          "agents",
+          "ai-agents",
+          "ai-assistant",
+          "ai-skills",
+          "autonomous-agents",
+          "claude",
+          "codex",
+          "dsh-plugin",
+          "harness",
+          "mcp-server",
+          "multi-agent",
+          "multi-agent-systems",
+          "npm",
+          "skills",
+          "swarm",
+          "swarm-intelligence",
+          "typescript"
+        ],
+        "readme_sha256": "521ad5d81e6df64a30c9c6ac2d08377200e67b3b7c476796fa7e27be4a466331"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "agentic",
+          "multi-agent",
+          "llm",
+          "mcp",
+          "rag"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_framework",
+        "related_tags": [
+          "agent_framework",
+          "agent_infrastructure",
+          "mcp_tools"
+        ],
+        "reason_zh": "该仓库明确标识为智能体框架，支持多智能体系统、自主工作流及MCP协议集成。其提供的智能体集群协调、自适应记忆及RAG功能完全符合Agent应用生态的核心特征，是典型的智能体基础设施项目。",
+        "confidence": "high",
+        "summary_zh": "Ruflo是一个基于TypeScript开发的智能体元框架，旨在为Claude Code和Codex等模型提供执行层支持。该工具通过MCP服务器集成，支持部署多智能体集群、协调自主工作流及构建对话式AI系统。其核心功能包括自适应记忆、自学习智能、联邦通信机制以及向量RAG集成。用户可通过命令行界面或可视化控制台监控智能体任务、成本及事件，实现跨机器的安全协作与策略执行。",
+        "highlights_zh": [
+          "提供针对Claude Code和Codex的插件化集成方案，通过核心工具、可视化控制台及运行时模块增强模型执行能力，支持在代码环境中直接部署智能体工作流。",
+          "内置自适应记忆与自学习智能机制，结合本地向量检索与对比学习技术，使智能体能够从历史任务中积累经验并优化后续路由决策，无需每次依赖大型语言模型。",
+          "支持通过MCP协议实现跨机器联邦通信，确保分布式智能体集群在隔离数据的前提下进行安全协作，同时提供细粒度的权限控制与策略执行保障。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_framework",
+      "related_tags": [
+        "agent_framework",
+        "agent_infrastructure",
+        "mcp_tools"
+      ],
+      "summary_zh": "Ruflo是一个基于TypeScript开发的智能体元框架，旨在为Claude Code和Codex等模型提供执行层支持。该工具通过MCP服务器集成，支持部署多智能体集群、协调自主工作流及构建对话式AI系统。其核心功能包括自适应记忆、自学习智能、联邦通信机制以及向量RAG集成。用户可通过命令行界面或可视化控制台监控智能体任务、成本及事件，实现跨机器的安全协作与策略执行。",
+      "relevance_reason_zh": "该仓库明确标识为智能体框架，支持多智能体系统、自主工作流及MCP协议集成。其提供的智能体集群协调、自适应记忆及RAG功能完全符合Agent应用生态的核心特征，是典型的智能体基础设施项目。",
+      "highlights_zh": [
+        "提供针对Claude Code和Codex的插件化集成方案，通过核心工具、可视化控制台及运行时模块增强模型执行能力，支持在代码环境中直接部署智能体工作流。",
+        "内置自适应记忆与自学习智能机制，结合本地向量检索与对比学习技术，使智能体能够从历史任务中积累经验并优化后续路由决策，无需每次依赖大型语言模型。",
+        "支持通过MCP协议实现跨机器联邦通信，确保分布式智能体集群在隔离数据的前提下进行安全协作，同时提供细粒度的权限控制与策略执行保障。"
+      ],
+      "first_seen_date": "2026-09-06",
+      "consecutive_days": 3
+    },
+    {
+      "repository": {
+        "rank": 31,
+        "full_name": "affaan-m/ECC",
+        "url": "https://github.com/affaan-m/ECC",
+        "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+        "language": "JavaScript",
+        "stars_total": 283300,
+        "stars_today": 1145,
+        "forks": 42078,
+        "license": "MIT",
+        "topics": [
+          "ai-agents",
+          "anthropic",
+          "claude",
+          "claude-code",
+          "developer-tools",
+          "llm",
+          "mcp",
+          "productivity"
+        ],
+        "readme_sha256": "891c1db3e717d893e625c9a87194a2dda07185911019a6e0e8b4c4bfd5d3b92c"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "mcp",
+          "claude plugin"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_framework",
+        "related_tags": [
+          "agent_framework",
+          "llm_app_sdk",
+          "mcp_tools"
+        ],
+        "reason_zh": "该仓库明确描述为智能体编排系统，支持Claude Code等主流AI编程助手。其核心功能包括智能体技能管理、记忆机制及安全扫描，直接服务于Agent应用生态的性能优化与工程化落地，符合Agent应用分类标准。",
+        "confidence": "high",
+        "summary_zh": "ECC是一个智能体编排性能优化系统，旨在为Claude Code、Codex等开发工具提供协调的工程体系。它通过技能、本能、记忆和安全机制增强智能体能力，支持规划、测试、审查及持续学习流程。该系统包含71个专用智能体、311项技能及安全扫描工具AgentShield，采用MIT开源协议，致力于优化上下文窗口并持久化关键信息，提升智能体在代码生成与工程任务中的效率与安全性。",
+        "highlights_zh": [
+          "ECC提供71个专用智能体和311项技能，涵盖规划、审查、安全及领域工作，显著增强智能体的工程执行能力与专业度。",
+          "内置AgentShield安全扫描功能，可检测提示词、钩子、MCP配置及权限设置，有效防范潜在安全风险并保护敏感信息。",
+          "支持Claude Code、Codex、Cursor等多种开发环境，通过统一安装脚本简化部署流程，实现跨平台的智能体能力扩展与集成。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_framework",
+      "related_tags": [
+        "agent_framework",
+        "llm_app_sdk",
+        "mcp_tools"
+      ],
+      "summary_zh": "ECC是一个智能体编排性能优化系统，旨在为Claude Code、Codex等开发工具提供协调的工程体系。它通过技能、本能、记忆和安全机制增强智能体能力，支持规划、测试、审查及持续学习流程。该系统包含71个专用智能体、311项技能及安全扫描工具AgentShield，采用MIT开源协议，致力于优化上下文窗口并持久化关键信息，提升智能体在代码生成与工程任务中的效率与安全性。",
+      "relevance_reason_zh": "该仓库明确描述为智能体编排系统，支持Claude Code等主流AI编程助手。其核心功能包括智能体技能管理、记忆机制及安全扫描，直接服务于Agent应用生态的性能优化与工程化落地，符合Agent应用分类标准。",
+      "highlights_zh": [
+        "ECC提供71个专用智能体和311项技能，涵盖规划、审查、安全及领域工作，显著增强智能体的工程执行能力与专业度。",
+        "内置AgentShield安全扫描功能，可检测提示词、钩子、MCP配置及权限设置，有效防范潜在安全风险并保护敏感信息。",
+        "支持Claude Code、Codex、Cursor等多种开发环境，通过统一安装脚本简化部署流程，实现跨平台的智能体能力扩展与集成。"
+      ],
+      "first_seen_date": "2026-09-01",
+      "consecutive_days": 3
+    },
+    {
+      "repository": {
+        "rank": 32,
+        "full_name": "lightseekorg/tokenspeed",
+        "url": "https://github.com/lightseekorg/tokenspeed",
+        "description": "TokenSpeed is a speed-of-light LLM inference engine.",
+        "language": "Python",
+        "stars_total": 2701,
+        "stars_today": 0,
+        "forks": 367,
+        "license": "MIT",
+        "topics": [
+          "b200",
+          "b300",
+          "blackwell",
+          "deepseek",
+          "gb200",
+          "gb300",
+          "glm",
+          "gpt-oss",
+          "inkling",
+          "kimi",
+          "lightseek",
+          "llm",
+          "mi355x",
+          "mi455x",
+          "minimax",
+          "qwen",
+          "rubin",
+          "speed-of-light",
+          "tokenspeed",
+          "vlm"
+        ],
+        "readme_sha256": "89ae587a405824d6172d48920950837f8631012182ddd5a6897611caadfe7a56"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agentic",
+          "llm"
+        ],
+        "matched_excluded_terms": [
+          "inference engine"
+        ],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": false,
+        "primary_category": "out_of_scope",
+        "related_tags": [],
+        "reason_zh": "该项目明确自称为“LLM 推理引擎”（LLM inference engine），其核心组件包括调度器、内核（Kernels）和入口点，旨在提供高性能的模型推理服务。尽管描述中提到针对“agentic workloads”进行了优化，但其本质属于底层推理基础设施（Serving/Inference Engine），符合排除规则中关于“主要用于模型训练、微调、推理引擎、量化、Serving、部署”的定义，而非 Agent 应用生态中的框架、SDK 或工具层。",
+        "confidence": "high",
+        "summary_zh": "",
+        "highlights_zh": []
+      },
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "该项目明确自称为“LLM 推理引擎”（LLM inference engine），其核心组件包括调度器、内核（Kernels）和入口点，旨在提供高性能的模型推理服务。尽管描述中提到针对“agentic workloads”进行了优化，但其本质属于底层推理基础设施（Serving/Inference Engine），符合排除规则中关于“主要用于模型训练、微调、推理引擎、量化、Serving、部署”的定义，而非 Agent 应用生态中的框架、SDK 或工具层。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 33,
+        "full_name": "xerj-org/xerj",
+        "url": "https://github.com/xerj-org/xerj",
+        "description": "XERJ is the new way for AI to search data. Its autoindex capability activates agents to know your data without the token waste of grep (1974 tool). One command indexes code, docs, logs and PDFs for search, RAG, security audits and agent memory, using 40x fewer tokens than grep. It’s durable and can replace ElasticSearch saving you x10 infra costs.",
+        "language": "Rust",
+        "stars_total": 8436,
+        "stars_today": 1160,
+        "forks": 451,
+        "license": "Apache-2.0",
+        "topics": [
+          "ai-search",
+          "ai-search-algorithms",
+          "ai-search-engine",
+          "ai-search-free",
+          "ai-search-module",
+          "ai-search-optimization",
+          "ai-searchengine",
+          "bm25-search",
+          "elastic-search",
+          "elasticsearch",
+          "elasticstack",
+          "graph-search",
+          "graph-semantic-search",
+          "hybrid-search",
+          "hybrid-semantic-search",
+          "search-api",
+          "search-engine",
+          "semantic-search",
+          "vector-database",
+          "vector-search"
+        ],
+        "readme_sha256": "7a5c3bce93c6454c753364ef7655529feac5e9efd29cd2746be66c75edf7193e"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "agentic",
+          "mcp",
+          "rag",
+          "agent memory",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "rag_knowledge",
+          "mcp_tools"
+        ],
+        "reason_zh": "该仓库直接服务于Agent应用生态，通过提供高效的本地数据索引与检索能力，解决Agent在处理私有或复杂数据时的上下文限制问题。其原生支持MCP协议及Agent长期记忆功能，专门针对参考编码场景优化，大幅减少Token浪费，是增强Agent认知与执行能力的关键基础设施。",
+        "confidence": "high",
+        "summary_zh": "XERJ是一款基于Rust开发的本地AI搜索工具，旨在优化Agent应用生态中的数据检索效率。它通过自动索引代码、文档和日志等数据，支持BM25与向量混合搜索，为Agent提供精准的上下文记忆与参考编码能力。该工具兼容Elasticsearch API并原生支持MCP协议，能显著降低Agent在检索过程中的Token消耗与基础设施成本，提升代码生成与安全审计的效率。",
+        "highlights_zh": [
+          "XERJ通过自动索引机制激活Agent对数据的认知，相比传统grep工具节省40倍Token，并能替代ElasticSearch以降低十倍基础设施成本。",
+          "支持参考编码工作流，Agent可先检索相似开源项目的解决方案再生成代码，实测显示输出Token减少2.7倍且保持同等解决率。",
+          "原生集成MCP协议并提供Agent长期记忆命名空间，允许Agent跨会话存储和按语义召回学习到的知识，增强持续工作能力。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "rag_knowledge",
+        "mcp_tools"
+      ],
+      "summary_zh": "XERJ是一款基于Rust开发的本地AI搜索工具，旨在优化Agent应用生态中的数据检索效率。它通过自动索引代码、文档和日志等数据，支持BM25与向量混合搜索，为Agent提供精准的上下文记忆与参考编码能力。该工具兼容Elasticsearch API并原生支持MCP协议，能显著降低Agent在检索过程中的Token消耗与基础设施成本，提升代码生成与安全审计的效率。",
+      "relevance_reason_zh": "该仓库直接服务于Agent应用生态，通过提供高效的本地数据索引与检索能力，解决Agent在处理私有或复杂数据时的上下文限制问题。其原生支持MCP协议及Agent长期记忆功能，专门针对参考编码场景优化，大幅减少Token浪费，是增强Agent认知与执行能力的关键基础设施。",
+      "highlights_zh": [
+        "XERJ通过自动索引机制激活Agent对数据的认知，相比传统grep工具节省40倍Token，并能替代ElasticSearch以降低十倍基础设施成本。",
+        "支持参考编码工作流，Agent可先检索相似开源项目的解决方案再生成代码，实测显示输出Token减少2.7倍且保持同等解决率。",
+        "原生集成MCP协议并提供Agent长期记忆命名空间，允许Agent跨会话存储和按语义召回学习到的知识，增强持续工作能力。"
+      ],
+      "first_seen_date": "2026-10-16",
+      "consecutive_days": 3
+    },
+    {
+      "repository": {
+        "rank": 34,
+        "full_name": "android/skills",
+        "url": "https://github.com/android/skills",
+        "description": "",
+        "language": "Kotlin",
+        "stars_total": 8778,
+        "stars_today": 355,
+        "forks": 568,
+        "license": "Apache-2.0",
+        "topics": [
+          "skills"
+        ],
+        "readme_sha256": "780925875497fa586663913e42875f3ce5b72abbc993ecf3db3001875efc6233"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库明确服务于AI代理生态，提供标准化的技能模块以增强LLM在Android开发领域的执行能力。其核心功能是通过结构化指令引导代理行为，解决模型在复杂工作流中的性能短板，完全符合Agent应用生态的定义。",
+        "confidence": "high",
+        "summary_zh": "该仓库提供专为AI代理优化的Android开发模块化指令集，旨在通过遵循开放标准代理技能规范来增强大型语言模型在特定Android工作流中的表现。它针对评估中显示LLM表现不佳的用例，提供技术规格说明以 grounding 模型。用户可通过Android CLI或作为插件安装到Claude Code等代理环境中，系统会根据任务自动激活相关技能，从而提升代码生成与开发的准确性与规范性。",
+        "highlights_zh": [
+          "提供AI优化的模块化指令，帮助代理理解并执行符合Android最佳实践的特定模式，专注于LLM表现不佳的复杂用例而非基础领域。",
+          "遵循开放标准代理技能规范，使用SKILL.md文件提供任务技术规格，为大型语言模型提供专业领域和工作流的上下文 grounding 信息。",
+          "支持通过Android CLI或插件方式集成至Claude Code等代理环境，并能根据用户提示自动识别并激活相关的Android开发技能。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "该仓库提供专为AI代理优化的Android开发模块化指令集，旨在通过遵循开放标准代理技能规范来增强大型语言模型在特定Android工作流中的表现。它针对评估中显示LLM表现不佳的用例，提供技术规格说明以 grounding 模型。用户可通过Android CLI或作为插件安装到Claude Code等代理环境中，系统会根据任务自动激活相关技能，从而提升代码生成与开发的准确性与规范性。",
+      "relevance_reason_zh": "该仓库明确服务于AI代理生态，提供标准化的技能模块以增强LLM在Android开发领域的执行能力。其核心功能是通过结构化指令引导代理行为，解决模型在复杂工作流中的性能短板，完全符合Agent应用生态的定义。",
+      "highlights_zh": [
+        "提供AI优化的模块化指令，帮助代理理解并执行符合Android最佳实践的特定模式，专注于LLM表现不佳的复杂用例而非基础领域。",
+        "遵循开放标准代理技能规范，使用SKILL.md文件提供任务技术规格，为大型语言模型提供专业领域和工作流的上下文 grounding 信息。",
+        "支持通过Android CLI或插件方式集成至Claude Code等代理环境，并能根据用户提示自动识别并激活相关的Android开发技能。"
+      ],
+      "first_seen_date": "2026-10-17",
+      "consecutive_days": 2
+    },
+    {
+      "repository": {
+        "rank": 35,
+        "full_name": "hmjz100/LinkSwift",
+        "url": "https://github.com/hmjz100/LinkSwift",
+        "description": "一个基于 JavaScript 的网盘文件下载地址获取工具。基于【网盘直链下载助手】修改 ，支持 百度网盘 / 阿里云盘 / 中国移动云盘 / 天翼云盘 / 迅雷云盘 / 夸克网盘 / UC网盘 / 123云盘 八大网盘",
+        "language": "JavaScript",
+        "stars_total": 24959,
+        "stars_today": 0,
+        "forks": 1584,
+        "license": "AGPL-3.0",
+        "topics": [
+          "123pan",
+          "aliyun-drive",
+          "aliyunpan",
+          "aria2",
+          "baidu",
+          "baidu-netdisk",
+          "baidunetdisk",
+          "baidupan",
+          "baiduyun",
+          "guangya-netdisk",
+          "motrix",
+          "quark-netdisk",
+          "tampermonkey",
+          "tampermonkey-script",
+          "tampermonkey-userscript",
+          "tianyi-netdisk",
+          "uc-netdisk",
+          "userscript",
+          "xunlei-netdisk",
+          "yidong-netdisk"
+        ],
+        "readme_sha256": "696a962822dcb9b07a97b00c48fdaf060c96fd775c0167a68e507886231f5dd5"
+      },
+      "rule": {
+        "decision": "rule_exclude",
+        "matched_positive_terms": [],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": null,
+      "included": false,
+      "primary_category": "out_of_scope",
+      "related_tags": [],
+      "summary_zh": "",
+      "relevance_reason_zh": "未发现 Agent 应用相关信号，规则排除。",
+      "highlights_zh": [],
+      "first_seen_date": null,
+      "consecutive_days": 0
+    },
+    {
+      "repository": {
+        "rank": 36,
+        "full_name": "akitaonrails/ai-memory",
+        "url": "https://github.com/akitaonrails/ai-memory",
+        "description": "Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors",
+        "language": "Rust",
+        "stars_total": 10499,
+        "stars_today": 178,
+        "forks": 749,
+        "license": "MIT",
+        "topics": [],
+        "readme_sha256": "07595ba3ba697ad0a44ec3c85914a316b8ad4c6cb65c693983463531b0673bb9"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "llm",
+          "mcp",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "memory",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该项目直接服务于AI编码代理生态，解决多代理间上下文丢失问题。其核心功能包括跨代理握手协议、自动记忆捕获及共享知识库，完美契合Agent应用对长期记忆与状态持久化的需求，属于典型的Agent基础设施组件。",
+        "confidence": "high",
+        "summary_zh": "该仓库提供针对AI编码代理的长期记忆解决方案，旨在促进不同代理供应商之间的任务交接。它通过生命周期钩子自动捕获工作流，将记忆存储为Git支持的Markdown文件，支持跨代理、跨机器及团队协作。默认零LLM调用即可实现记忆衰减与检索，确保数据所有权与隐私，并支持可选的LLM增强功能。",
+        "highlights_zh": [
+          "支持超过二十种编码代理如Claude Code和Codex，实现无缝任务交接与上下文延续。",
+          "采用Git支持的Markdown作为记忆源，无需向量数据库，确保数据可编辑与版本控制。",
+          "默认零LLM调用实现记忆衰减与检索，通过访问加权保留机制优化长期记忆管理。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "memory",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "该仓库提供针对AI编码代理的长期记忆解决方案，旨在促进不同代理供应商之间的任务交接。它通过生命周期钩子自动捕获工作流，将记忆存储为Git支持的Markdown文件，支持跨代理、跨机器及团队协作。默认零LLM调用即可实现记忆衰减与检索，确保数据所有权与隐私，并支持可选的LLM增强功能。",
+      "relevance_reason_zh": "该项目直接服务于AI编码代理生态，解决多代理间上下文丢失问题。其核心功能包括跨代理握手协议、自动记忆捕获及共享知识库，完美契合Agent应用对长期记忆与状态持久化的需求，属于典型的Agent基础设施组件。",
+      "highlights_zh": [
+        "支持超过二十种编码代理如Claude Code和Codex，实现无缝任务交接与上下文延续。",
+        "采用Git支持的Markdown作为记忆源，无需向量数据库，确保数据可编辑与版本控制。",
+        "默认零LLM调用实现记忆衰减与检索，通过访问加权保留机制优化长期记忆管理。"
+      ],
+      "first_seen_date": "2026-09-22",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 37,
+        "full_name": "stablyai/orca",
+        "url": "https://github.com/stablyai/orca",
+        "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
+        "language": "TypeScript",
+        "stars_total": 96677,
+        "stars_today": 830,
+        "forks": 6177,
+        "license": "MIT",
+        "topics": [
+          "ade",
+          "agent-ide",
+          "ai-agents",
+          "automation",
+          "bot",
+          "claude-code",
+          "codex",
+          "ghostty",
+          "grok-bot",
+          "hermes-agent",
+          "mobile-app",
+          "muse",
+          "openclaw",
+          "opencode",
+          "orchestration",
+          "pi",
+          "runtime",
+          "terminal",
+          "worktrees",
+          "yc-backed"
+        ],
+        "readme_sha256": "7fff8237c0eebc35ed411a9ac2b2ca750a99ddb0ce0db33710cb135e3e6ca2ad"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application"
+        ],
+        "reason_zh": "该仓库明确属于Agent应用生态，因为它提供了一个专门用于编排和管理多个AI编码智能体的集成环境。它支持接入多种主流CLI代理工具，并提供了工作树隔离、并行执行及跨设备监控等针对智能体工作流优化的核心功能，完全符合智能体应用平台的定义。",
+        "confidence": "high",
+        "summary_zh": "Orca是一个面向开发者的AI代理编排平台，支持在桌面、移动端及远程运行时环境中统一管理Grok Bot、Claude Code等多种编码智能体。该平台允许用户利用自有订阅并行运行不同代理，并通过隔离的Git工作树对比结果。其核心功能包括移动端监控、终端分屏、设计模式交互、原生集成GitHub与Linear任务流以及SSH远程工作树，旨在通过集中化控制提升多智能体协作效率。",
+        "highlights_zh": [
+          "提供移动端配套应用，允许用户随时随地监控智能体状态、接收完成通知并发送后续指令，实现跨设备的无缝协作与管理体验。",
+          "支持并行工作树功能，可将单个提示词分发至五个不同的智能体，每个智能体在独立的Git工作树中运行，便于对比结果并合并最佳方案。",
+          "内置类Ghostty终端，支持WebGL渲染、无限分屏及重启后保留滚动历史，为智能体交互提供高性能且持久的命令行操作环境。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application"
+      ],
+      "summary_zh": "Orca是一个面向开发者的AI代理编排平台，支持在桌面、移动端及远程运行时环境中统一管理Grok Bot、Claude Code等多种编码智能体。该平台允许用户利用自有订阅并行运行不同代理，并通过隔离的Git工作树对比结果。其核心功能包括移动端监控、终端分屏、设计模式交互、原生集成GitHub与Linear任务流以及SSH远程工作树，旨在通过集中化控制提升多智能体协作效率。",
+      "relevance_reason_zh": "该仓库明确属于Agent应用生态，因为它提供了一个专门用于编排和管理多个AI编码智能体的集成环境。它支持接入多种主流CLI代理工具，并提供了工作树隔离、并行执行及跨设备监控等针对智能体工作流优化的核心功能，完全符合智能体应用平台的定义。",
+      "highlights_zh": [
+        "提供移动端配套应用，允许用户随时随地监控智能体状态、接收完成通知并发送后续指令，实现跨设备的无缝协作与管理体验。",
+        "支持并行工作树功能，可将单个提示词分发至五个不同的智能体，每个智能体在独立的Git工作树中运行，便于对比结果并合并最佳方案。",
+        "内置类Ghostty终端，支持WebGL渲染、无限分屏及重启后保留滚动历史，为智能体交互提供高性能且持久的命令行操作环境。"
+      ],
+      "first_seen_date": "2026-10-18",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 38,
+        "full_name": "anthropics/claude-code",
+        "url": "https://github.com/anthropics/claude-code",
+        "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
+        "language": "TypeScript",
+        "stars_total": 152259,
+        "stars_today": 179,
+        "forks": 27013,
+        "license": null,
+        "topics": [],
+        "readme_sha256": "aa0d8b80ac083e1591be0789273f447058cc9187b4331634a5614155da27778d"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agents",
+          "agentic"
+        ],
+        "matched_excluded_terms": [
+          "model training"
+        ],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application",
+          "agent_framework",
+          "llm_app_sdk"
+        ],
+        "reason_zh": "该仓库被判定为Agent应用生态，因为其描述中明确标识为agentic coding tool，具备自主执行任务和管理工作流的能力。正相关信号包含agents和agentic关键词，且排除了模型训练焦点，符合智能体应用特征。",
+        "confidence": "high",
+        "summary_zh": "Claude Code是一款基于终端的智能体编程工具，能够理解代码库并通过自然语言指令加速开发流程。该工具支持执行常规任务、解释复杂代码及管理Git工作流，适用于终端、IDE及GitHub环境。它通过插件系统扩展功能，并提供多平台安装方式。项目明确收集使用数据与反馈以优化服务，同时实施隐私保护措施，限制敏感信息保留期并禁止将用户反馈用于模型训练。",
+        "highlights_zh": [
+          "Claude Code作为终端智能体工具，能通过自然语言命令执行常规编码任务并处理Git工作流，显著提升开发效率。",
+          "该工具深度理解代码库结构，可协助开发者解释复杂代码逻辑，支持在终端、IDE及GitHub等多种环境中使用。",
+          "项目提供插件系统以扩展功能，允许用户通过自定义命令和智能体增强工具能力，满足多样化开发需求。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application",
+        "agent_framework",
+        "llm_app_sdk"
+      ],
+      "summary_zh": "Claude Code是一款基于终端的智能体编程工具，能够理解代码库并通过自然语言指令加速开发流程。该工具支持执行常规任务、解释复杂代码及管理Git工作流，适用于终端、IDE及GitHub环境。它通过插件系统扩展功能，并提供多平台安装方式。项目明确收集使用数据与反馈以优化服务，同时实施隐私保护措施，限制敏感信息保留期并禁止将用户反馈用于模型训练。",
+      "relevance_reason_zh": "该仓库被判定为Agent应用生态，因为其描述中明确标识为agentic coding tool，具备自主执行任务和管理工作流的能力。正相关信号包含agents和agentic关键词，且排除了模型训练焦点，符合智能体应用特征。",
+      "highlights_zh": [
+        "Claude Code作为终端智能体工具，能通过自然语言命令执行常规编码任务并处理Git工作流，显著提升开发效率。",
+        "该工具深度理解代码库结构，可协助开发者解释复杂代码逻辑，支持在终端、IDE及GitHub等多种环境中使用。",
+        "项目提供插件系统以扩展功能，允许用户通过自定义命令和智能体增强工具能力，满足多样化开发需求。"
+      ],
+      "first_seen_date": "2026-09-17",
+      "consecutive_days": 1
+    },
+    {
+      "repository": {
+        "rank": 39,
+        "full_name": "anomalyco/opencode",
+        "url": "https://github.com/anomalyco/opencode",
+        "description": "The open source coding agent.",
+        "language": "TypeScript",
+        "stars_total": 216618,
+        "stars_today": 438,
+        "forks": 29003,
+        "license": "MIT",
+        "topics": [],
+        "readme_sha256": "977e6c3f56bca4e93c44309dc61fa3988d43913ee8b747a47af2e9717b8b86f6"
+      },
+      "rule": {
+        "decision": "llm_review",
+        "matched_positive_terms": [
+          "agent",
+          "agents",
+          "coding agent"
+        ],
+        "matched_excluded_terms": [],
+        "override": null
+      },
+      "llm_output": {
+        "is_relevant": true,
+        "primary_category": "agent_application",
+        "related_tags": [
+          "agent_application"
+        ],
+        "reason_zh": "该仓库明确自称为开源AI编程智能体，符合Agent应用生态定义。其核心功能围绕内置的智能体展开，包括具备完整开发权限的build智能体和受限的plan智能体，体现了智能体在编码场景下的自主决策与执行能力，完全契合Agent应用的研究范畴。",
+        "confidence": "high",
+        "summary_zh": "OpenCode是一款开源AI编程智能体，基于TypeScript开发。它提供命令行界面及桌面应用，支持多平台安装。内置build全访问开发智能体与plan只读分析智能体，后者默认禁止文件修改并需授权执行命令。系统还包含用于复杂搜索的general子智能体。该项目拥有活跃社区并提供多语言文档，旨在通过不同权限模式的智能体协作提升代码开发与探索效率。",
+        "highlights_zh": [
+          "提供build和plan两种内置智能体，分别用于全权限开发和只读代码分析，支持通过Tab键切换。",
+          "plan智能体默认拒绝文件编辑并在运行bash命令前请求权限，适合探索陌生代码库或规划变更。",
+          "包含名为general的子智能体，专门处理复杂搜索和多步骤任务，可通过特定指令在消息中调用。"
+        ]
+      },
+      "included": true,
+      "primary_category": "agent_application",
+      "related_tags": [
+        "agent_application"
+      ],
+      "summary_zh": "OpenCode是一款开源AI编程智能体，基于TypeScript开发。它提供命令行界面及桌面应用，支持多平台安装。内置build全访问开发智能体与plan只读分析智能体，后者默认禁止文件修改并需授权执行命令。系统还包含用于复杂搜索的general子智能体。该项目拥有活跃社区并提供多语言文档，旨在通过不同权限模式的智能体协作提升代码开发与探索效率。",
+      "relevance_reason_zh": "该仓库明确自称为开源AI编程智能体，符合Agent应用生态定义。其核心功能围绕内置的智能体展开，包括具备完整开发权限的build智能体和受限的plan智能体，体现了智能体在编码场景下的自主决策与执行能力，完全契合Agent应用的研究范畴。",
+      "highlights_zh": [
+        "提供build和plan两种内置智能体，分别用于全权限开发和只读代码分析，支持通过Tab键切换。",
+        "plan智能体默认拒绝文件编辑并在运行bash命令前请求权限，适合探索陌生代码库或规划变更。",
+        "包含名为general的子智能体，专门处理复杂搜索和多步骤任务，可通过特定指令在消息中调用。"
+      ],
+      "first_seen_date": "2026-09-05",
+      "consecutive_days": 1
+    }
+  ],
+  "selected_projects": [
+    {
+      "full_name": "debpalash/VoiceStudio",
+      "display_rank": 1,
+      "consecutive_days": 5,
+      "stars_last_day": 2125,
+      "streak_rank": 1,
+      "star_rank": 1,
+      "priority_rank": 1,
+      "weekly_rank": null
+    },
+    {
+      "full_name": "anthropics/claude-plugins-official",
+      "display_rank": 2,
+      "consecutive_days": 3,
+      "stars_last_day": 1397,
+      "streak_rank": 3,
+      "star_rank": 2,
+      "priority_rank": 2,
+      "weekly_rank": 4
+    },
+    {
+      "full_name": "K-Dense-AI/scientific-agent-skills",
+      "display_rank": 3,
+      "consecutive_days": 4,
+      "stars_last_day": 878,
+      "streak_rank": 2,
+      "star_rank": 6,
+      "priority_rank": 2,
+      "weekly_rank": null
+    },
+    {
+      "full_name": "xerj-org/xerj",
+      "display_rank": 4,
+      "consecutive_days": 3,
+      "stars_last_day": 1160,
+      "streak_rank": 3,
+      "star_rank": 4,
+      "priority_rank": 3,
+      "weekly_rank": null
+    },
+    {
+      "full_name": "affaan-m/ECC",
+      "display_rank": 5,
+      "consecutive_days": 3,
+      "stars_last_day": 1145,
+      "streak_rank": 3,
+      "star_rank": 5,
+      "priority_rank": 3,
+      "weekly_rank": null
+    }
+  ],
+  "articles": [
+    {
+      "source": "OpenAI",
+      "title": "Designing failover across OpenAI model providers",
+      "url": "https://developers.openai.com/blog/designing-failover-across-openai-model-providers",
+      "published_date": "2026-10-14",
+      "summary_zh": "本文探讨在关键AI工作流中设计跨OpenAI模型提供商（第一方1P与第三方3P）的故障转移策略。文章以支付欺诈评估为例，强调直接访问API对预览功能的重要性，并指出故障转移仅适用于可安全重试的无状态操作，而有状态的Agent会话恢复更为复杂。实施需考虑私有连接、区域合规及能力差异，避免盲目切换导致功能缺失或数据违规。建议通过网关统一控制重试，区分瞬时错误与配额耗尽，采用有界指数退避。文中提供了利用Codex生成网关配置代码的Prompt，指导开发者实现禁用默认故障转移、验证次要路由能力及编写集成测试，确保在启用前完成严格的质量、安全及负载验证。",
+      "content_sha256": "6db969c12bbced39bae3c4522be15b9b432013cf2b900926bb985f516aeb0af9"
+    },
+    {
+      "source": "OpenAI",
+      "title": "Maintaining software with the GPT-6 family | OpenAI Developers",
+      "url": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
+      "published_date": "2026-10-14",
+      "summary_zh": "OpenAI分享利用GPT-6系列模型进行软件维护的实践。GPT-6 Astra能处理模糊指令，通过查阅Slack、PR及生产数据识别并删除死代码和过时实验，累计合并1400+ PR，删除80万行代码，显著减小镜像体积并降低CPU开销。GPT-6.1 Sol在保持高效果的同时大幅降低成本，其Ultra模式以14%的费用实现了Astra 92%的发现率。文章还展示了利用Codex修复不稳定测试、优化CI流程（中位数时间从10分钟降至4.5分钟）及改进Agent上下文的方法。建议开发者从小任务入手，验证后逐步扩展至全代码库，并结合人工审查确保安全性。",
+      "content_sha256": "0c2962aa3b99a9a8f11ce687d146a9ab76beb1740c32554045f739f42c9386ce"
+    }
+  ]
+}
